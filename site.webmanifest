@@ -1,0 +1,16 @@
+{
+  "name": "LapSimPro",
+  "short_name": "LapSimPro",
+  "description": "LapSimPro live iRacing coach overlay, pedal targets, and track/car leaderboards. lapsimpro.com",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#07080b",
+  "theme_color": "#07080b",
+  "icons": [
+    {
+      "src": "icon.png",
+      "sizes": "720x720",
+      "type": "image/png"
+    }
+  ]
+}

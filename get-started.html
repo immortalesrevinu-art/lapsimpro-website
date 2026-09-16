@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#07080b" />
+    <title>Get started — LapSimPro</title>
+    <meta
+      name="description"
+      content="Get started with LapSimPro at lapsimpro.com. Run the coach overlay: python -m iracing_coach live --desktop. Use iRacing in borderless windowed mode."
+    />
+    <meta property="og:title" content="Get started with LapSimPro" />
+    <meta property="og:description" content="Install the LapSimPro overlay. Set borderless windowed, go live. lapsimpro.com" />
+    <meta property="og:site_name" content="LapSimPro" />
+    <meta property="og:image" content="./og.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Get started with LapSimPro" />
+    <meta name="twitter:description" content="Install the LapSimPro overlay. Set borderless windowed, go live. lapsimpro.com" />
+    <link rel="icon" type="image/png" href="./favicon.png" />
+    <link rel="apple-touch-icon" href="./apple-touch-icon.png" />
+    <link rel="manifest" href="./site.webmanifest" />
+    <script type="module" crossorigin src="./assets/main-DFTLKTCI.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/main-5q73IhdI.css">
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="site-header">
+      <div class="wrap header-inner">
+        <a class="brand" href="./index.html">
+          <img src="./icon.png" width="40" height="40" alt="LapSimPro app icon" />
+          <span class="brand-copy">
+            <span class="wordmark">LapSim<span class="ai">Pro</span></span>
+            <span class="domain">lapsimpro.com</span>
+          </span>
+        </a>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+        <nav id="site-nav" class="site-nav">
+          <a href="./index.html" data-nav="home">Home</a>
+          <a href="./leaderboards.html" data-nav="boards">Leaderboards</a>
+          <a href="./aid.html" data-nav="aid">Aid</a>
+          <a href="./get-started.html" data-nav="start">Get started</a>
+          <a class="btn btn-ghost" href="https://github.com/immortalesrevinu-art/iracing-coach-overlay">GitHub</a>
+          <a class="btn btn-primary" href="./get-started.html">Launch overlay</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main" class="wrap" style="padding-bottom: 72px">
+      <header class="page-hero">
+        <p class="kicker">Get started · lapsimpro.com</p>
+        <h1>One command over borderless iRacing.</h1>
+        <p class="lede">
+          Clone the overlay package, install the live extra, then run the desktop HUD. This page is the
+          LapSimPro on-ramp at lapsimpro.com — full detail still lives in the repository README.
+          Commands still use the <code>iracing_coach</code> package name.
+        </p>
+        <div class="btn-row" style="margin-top: 18px">
+          <a class="btn btn-primary" href="https://github.com/immortalesrevinu-art/iracing-coach-overlay">Open GitHub repo</a>
+          <a class="btn btn-ghost" href="./aid.html">Preview the HUD</a>
+        </div>
+      </header>
+
+      <div class="note" style="margin: 18px 0 28px">
+        <strong>Borderless windowed is required.</strong>
+        Exclusive fullscreen covers every overlay, including this one. In iRacing go to
+        Options → Graphics → Display Mode → Windowed or Borderless Windowed.
+      </div>
+
+      <div class="steps-list">
+        <article class="install-step">
+          <div class="n">1</div>
+          <div>
+            <h3>Clone the overlay</h3>
+            <p class="lede">Python 3.11+ on the Windows racing PC. The package lives in this repo.</p>
+            <div class="code-block">
+              <div class="code-bar">GitHub <button type="button" data-copy>Copy</button></div>
+              <pre><code>git clone https://github.com/immortalesrevinu-art/iracing-coach-overlay.git
+cd iracing-coach-overlay
+py -3 -m venv .venv
+.venv\Scripts\activate
+pip install -e ".[live]"</code></pre>
+            </div>
+          </div>
+        </article>
+
+        <article class="install-step">
+          <div class="n">2</div>
+          <div>
+            <h3>Token (live catalog)</h3>
+            <p class="lede">Create a Garage 61 personal access token and put it in <code>.env</code> as <code>GARAGE61_TOKEN</code>. Demo mode does not need a token.</p>
+            <div class="code-block">
+              <div class="code-bar">.env <button type="button" data-copy>Copy</button></div>
+              <pre><code>copy .env.example .env
+notepad .env</code></pre>
+            </div>
+            <p class="note info" style="margin-top: 12px">Never commit <code>.env</code>. The overlay never ships credentials.</p>
+          </div>
+        </article>
+
+        <article class="install-step">
+          <div class="n">3</div>
+          <div>
+            <h3>Go live</h3>
+            <p class="lede">Start iRacing (practice or race), then launch the frameless HUD.</p>
+            <div class="code-block">
+              <div class="code-bar">Live desktop HUD <button type="button" data-copy>Copy</button></div>
+              <pre><code>python -m iracing_coach live --desktop</code></pre>
+            </div>
+            <p class="note ok">
+              Default for <code>live</code> is already the desktop window. <code>--desktop</code> makes that explicit.
+              Use <code>--web</code> if you want the browser HUD instead.
+            </p>
+          </div>
+        </article>
+
+        <article class="install-step">
+          <div class="n">4</div>
+          <div>
+            <h3>Drive</h3>
+            <p class="lede">Ctrl+Shift+O toggles click-through so you can drag the HUD. Ctrl+Shift+Q or Esc quits. Catalog + Track Titan lookups happen in the background.</p>
+            <div class="code-block">
+              <div class="code-bar">Optional extras</div>
+              <pre><code>python -m iracing_coach demo
+python -m iracing_coach demo --desktop
+python -m iracing_coach catalog --refresh
+python -m iracing_coach tracktitan --track "Barcelona" --car "296"
+python -m iracing_coach setups sync</code></pre>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <section class="section" style="padding-bottom: 0">
+        <div class="section-head">
+          <p class="kicker">What you should see</p>
+          <h2>Waiting, then armed, then BRAKE NOW.</h2>
+        </div>
+        <div class="feature-grid">
+          <article class="card">
+            <h3>No sim yet</h3>
+            <p>HUD stays up and shows WAITING FOR IRACING until the SDK connects.</p>
+          </article>
+          <article class="card">
+            <h3>Pits / garage</h3>
+            <p>STANDBY once a reference is loaded, so the cue does not pulse on pit speed.</p>
+          </article>
+          <article class="card">
+            <h3>No lap for this track</h3>
+            <p>NO REFERENCE FOR THIS TRACK — retries. It will not apply the Laguna sample to Barcelona.</p>
+          </article>
+          <article class="card">
+            <h3>TT missing</h3>
+            <p>NO TRACK TITAN DATA in the status line. Garage 61 markers still work.</p>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap footer-inner">
+        <div>
+          <div class="footer-brand">
+            <img src="./icon.png" width="32" height="32" alt="" />
+            <span class="brand-copy">
+              <span class="wordmark">LapSim<span class="ai">Pro</span></span>
+              <span class="domain">lapsimpro.com</span>
+            </span>
+          </div>
+          <p class="legal">
+            Product site: lapsimpro.com. Source:
+            <a href="https://github.com/immortalesrevinu-art/iracing-coach-overlay">github.com/immortalesrevinu-art/iracing-coach-overlay</a>
+          </p>
+          <div class="pedal-rail" aria-hidden="true"><span class="b"></span><span class="t"></span></div>
+        </div>
+        <div class="footer-links">
+          <a href="./index.html">Home</a>
+          <a href="./leaderboards.html">Leaderboards</a>
+          <a href="./aid.html">Aid</a>
+        </div>
+      </div>
+      <div class="wrap legal" style="margin-top: 18px">© <span id="year">2026</span> LapSimPro · lapsimpro.com</div>
+    </footer>
+  </body>
+</html>

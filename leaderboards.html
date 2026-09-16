@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#07080b" />
+    <title>Leaderboards — LapSimPro</title>
+    <meta
+      name="description"
+      content="LapSimPro leaderboards at lapsimpro.com by iRacing track and car. Sample ranked tables including Circuit de Barcelona-Catalunya Ferrari 296 GT3."
+    />
+    <meta property="og:title" content="LapSimPro leaderboards" />
+    <meta property="og:description" content="Track Titan–style filters and ranked laps. Sample data for the LapSimPro product preview. lapsimpro.com" />
+    <meta property="og:site_name" content="LapSimPro" />
+    <meta property="og:image" content="./og.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="LapSimPro leaderboards" />
+    <meta name="twitter:description" content="Track Titan–style filters and ranked laps. Sample data for the LapSimPro product preview. lapsimpro.com" />
+    <link rel="icon" type="image/png" href="./favicon.png" />
+    <link rel="apple-touch-icon" href="./apple-touch-icon.png" />
+    <link rel="manifest" href="./site.webmanifest" />
+    <script type="module" crossorigin src="./assets/leaderboards-CqozUfD8.js"></script>
+    <link rel="modulepreload" crossorigin href="./assets/main-DFTLKTCI.js">
+    <link rel="stylesheet" crossorigin href="./assets/main-5q73IhdI.css">
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="site-header">
+      <div class="wrap header-inner">
+        <a class="brand" href="./index.html">
+          <img src="./icon.png" width="40" height="40" alt="LapSimPro app icon" />
+          <span class="brand-copy">
+            <span class="wordmark">LapSim<span class="ai">Pro</span></span>
+            <span class="domain">lapsimpro.com</span>
+          </span>
+        </a>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+        <nav id="site-nav" class="site-nav">
+          <a href="./index.html" data-nav="home">Home</a>
+          <a href="./leaderboards.html" data-nav="boards">Leaderboards</a>
+          <a href="./aid.html" data-nav="aid">Aid</a>
+          <a href="./get-started.html" data-nav="start">Get started</a>
+          <a class="btn btn-ghost" href="https://github.com/immortalesrevinu-art/iracing-coach-overlay">GitHub</a>
+          <a class="btn btn-primary" href="./get-started.html">Launch overlay</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main" class="wrap" style="padding-bottom: 64px">
+      <header class="page-hero">
+        <p class="kicker">Leaderboards</p>
+        <h1>Ranked laps by track and car.</h1>
+        <p class="lede">
+          Same mental model as Track Titan: pick iRacing, pick a circuit, pick a car, read the board.
+          The live overlay can fetch public Track Titan community bests with no API key. This page is an
+          authored product preview so the site works offline and on GitHub Pages.
+        </p>
+      </header>
+
+      <div class="banner" role="status">
+        <span class="pill demo">Sample data</span>
+        <p>
+          Times, names, and iRatings below are demo rows for the LapSimPro website — not a live Track Titan
+          or iRacing scrape. Default combo is <strong>Barcelona · Ferrari 296 GT3</strong>. The overlay HUD
+          still uses public TT JSON for <code>TT best</code> when a track/car matches.
+        </p>
+      </div>
+
+      <form class="filters" onsubmit="return false">
+        <div class="field">
+          <label for="track">Track</label>
+          <select id="track"></select>
+        </div>
+        <div class="field">
+          <label for="car">Car</label>
+          <select id="car"></select>
+        </div>
+        <div class="field">
+          <label for="session">Session</label>
+          <select id="session">
+            <option value="all">All sessions</option>
+            <option value="Official">Official</option>
+            <option value="Practice">Practice</option>
+            <option value="Time Trial">Time Trial</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="q">Driver</label>
+          <input id="q" type="search" placeholder="Search handle" autocomplete="off" />
+        </div>
+        <div class="field" style="justify-content: end">
+          <label>&nbsp;</label>
+          <button class="btn btn-ghost" type="button" id="reset">Barcelona 296</button>
+        </div>
+      </form>
+
+      <div class="board-meta">
+        <div>
+          <h2 id="board-title">Circuit de Barcelona-Catalunya</h2>
+          <p id="board-sub">Grand Prix · Ferrari 296 GT3</p>
+        </div>
+        <span class="pill">iRacing</span>
+      </div>
+
+      <div class="wr" id="wr"></div>
+
+      <div class="table-wrap">
+        <table class="board">
+          <thead>
+            <tr>
+              <th>Pos</th>
+              <th>Driver</th>
+              <th>Lap</th>
+              <th>Gap</th>
+              <th>S1</th>
+              <th>S2</th>
+              <th>S3</th>
+              <th>Session</th>
+              <th>Wx</th>
+            </tr>
+          </thead>
+          <tbody id="board-body"></tbody>
+        </table>
+        <div class="empty" id="empty" hidden></div>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap footer-inner">
+        <div>
+          <div class="footer-brand">
+            <img src="./icon.png" width="32" height="32" alt="" />
+            <span class="brand-copy">
+              <span class="wordmark">LapSim<span class="ai">Pro</span></span>
+              <span class="domain">lapsimpro.com</span>
+            </span>
+          </div>
+          <p class="legal">
+            Sample leaderboards for product preview. Live overlay Track Titan lookup is public JSON only
+            (lap times, not brake telemetry). Garage 61 still owns markers and pedal traces.
+          </p>
+          <div class="pedal-rail" aria-hidden="true"><span class="b"></span><span class="t"></span></div>
+        </div>
+        <div class="footer-links">
+          <a href="./index.html">Home</a>
+          <a href="./aid.html">Aid</a>
+          <a href="./get-started.html">Get started</a>
+          <a href="https://github.com/immortalesrevinu-art/iracing-coach-overlay">GitHub</a>
+        </div>
+      </div>
+      <div class="wrap legal" style="margin-top: 18px">© <span id="year">2026</span> LapSimPro · lapsimpro.com</div>
+    </footer>
+  </body>
+</html>

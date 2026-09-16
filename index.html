@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#07080b" />
+    <title>LapSimPro — Live coach overlay &amp; leaderboards</title>
+    <meta
+      name="description"
+      content="LapSimPro (lapsimpro.com) is a dark racing product for iRacing: live brake-marker overlay, Garage 61 pedal targets, display-only bias prompts, Track Titan community bests, setup sync, and track/car leaderboards."
+    />
+    <meta property="og:title" content="LapSimPro — Live coach overlay & leaderboards" />
+    <meta
+      property="og:description"
+      content="Hit every brake mark. Then beat the board. Transparent HUD plus Track Titan–style leaderboards by track and car. lapsimpro.com"
+    />
+    <meta property="og:site_name" content="LapSimPro" />
+    <meta property="og:image" content="./og.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="LapSimPro — Live coach overlay & leaderboards" />
+    <meta name="twitter:description" content="Hit every brake mark. Then beat the board. Transparent HUD plus Track Titan–style leaderboards by track and car. lapsimpro.com" />
+    <link rel="icon" type="image/png" href="./favicon.png" />
+    <link rel="apple-touch-icon" href="./apple-touch-icon.png" />
+    <link rel="manifest" href="./site.webmanifest" />
+    <script type="module" crossorigin src="./assets/main-D1yVwrt7.js"></script>
+    <link rel="modulepreload" crossorigin href="./assets/main-DFTLKTCI.js">
+    <link rel="modulepreload" crossorigin href="./assets/hud-DLz1BGII.js">
+    <link rel="stylesheet" crossorigin href="./assets/main-5q73IhdI.css">
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="site-header">
+      <div class="wrap header-inner">
+        <a class="brand" href="./index.html">
+          <img src="./icon.png" width="40" height="40" alt="LapSimPro app icon" />
+          <span class="brand-copy">
+            <span class="wordmark">LapSim<span class="ai">Pro</span></span>
+            <span class="domain">lapsimpro.com</span>
+          </span>
+        </a>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+        <nav id="site-nav" class="site-nav">
+          <a href="./index.html" data-nav="home">Home</a>
+          <a href="./leaderboards.html" data-nav="boards">Leaderboards</a>
+          <a href="./aid.html" data-nav="aid">Aid</a>
+          <a href="./get-started.html" data-nav="start">Get started</a>
+          <a class="btn btn-ghost" href="https://github.com/immortalesrevinu-art/iracing-coach-overlay">GitHub</a>
+          <a class="btn btn-primary" href="./get-started.html">Launch overlay</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="hero">
+        <div class="wrap hero-grid">
+          <div>
+            <p class="kicker">lapsimpro.com · Live coach overlay for iRacing</p>
+            <h1>Hit every brake mark. Then beat the <span>board</span>.</h1>
+            <p class="lede">
+              A transparent, click-through HUD that calls the next marker, fills Garage 61 pedal targets
+              (brake left / throttle right), shows display-only bias prompts, and stamps Track Titan
+              community bests next to your catalog lap — plus leaderboards by track and car.
+            </p>
+            <div class="btn-row" style="margin-top: 22px">
+              <a class="btn btn-primary" href="./get-started.html">Get started</a>
+              <a class="btn btn-ghost" href="./leaderboards.html">View leaderboards</a>
+              <a class="btn btn-red" href="./aid.html">See the live aid</a>
+            </div>
+            <div class="stats">
+              <div class="stat"><strong>G61</strong><span>Reference laps &amp; pedal traces</span></div>
+              <div class="stat"><strong>TT</strong><span>Public community best times</span></div>
+              <div class="stat"><strong>B / T</strong><span>Red left, green right targets</span></div>
+              <div class="stat"><strong>.sto</strong><span>Open-setup My Setups sync</span></div>
+            </div>
+          </div>
+          <div class="hud-stage">
+            <article class="hud" data-hud>
+              <header class="hud-top">
+                <div>
+                  <p class="kicker">LapSimPro Coach</p>
+                  <h2 data-car>Lamborghini Huracán GT3 EVO</h2>
+                  <p class="track" data-track>WeatherTech Raceway at Laguna Seca</p>
+                </div>
+                <div class="meta">
+                  <span class="pill" data-mode>LIVE</span>
+                  <span class="lap" data-ref-lap>1:22.436</span>
+                  <span class="lap tt" data-tt>TT best 1:22.100</span>
+                </div>
+              </header>
+              <section class="next">
+                <div class="next-label">NEXT BRAKE</div>
+                <div class="next-name" data-marker>T1 Andretti</div>
+                <div class="countdown"><span data-countdown>164</span><span class="unit">m</span></div>
+              </section>
+              <section class="cue-wrap">
+                <div class="cue waiting" data-cue>WAIT</div>
+                <div class="bias" data-bias hidden></div>
+              </section>
+              <p class="bias-tip" data-bias-tip hidden></p>
+              <p class="tip" data-tip>Reference loaded from catalog · pedal fill is Garage 61, not your inputs.</p>
+              <section class="pedals" aria-label="Garage 61 reference pedals">
+                <div class="pedal brake">
+                  <span>B</span>
+                  <div class="pedal-track"><i data-brake-fill></i><b data-brake-live></b></div>
+                  <em data-brake-pct>0%</em>
+                </div>
+                <div class="pedal throttle">
+                  <span>T</span>
+                  <div class="pedal-track"><i data-throttle-fill></i><b data-throttle-live></b></div>
+                  <em data-throttle-pct>100%</em>
+                </div>
+                <p class="pedal-caption">Fill is Garage 61 reference · thin tick is you (display only)</p>
+              </section>
+            </article>
+            <p class="caption">Mock HUD · same red-left / green-right motif as the app icon</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="wrap">
+          <div class="section-head">
+            <p class="kicker">How it works</p>
+            <h2>Drive. Overlay calls the mark. Board shows the time.</h2>
+            <p class="lede">No exclusive fullscreen. No writing into the sim. The HUD sits on top of borderless iRacing and stays out of the way.</p>
+          </div>
+          <div class="steps">
+            <article class="step">
+              <div class="step-num">01</div>
+              <h3>Borderless windowed</h3>
+              <p>In iRacing: Options → Graphics → Display Mode → Windowed or Borderless Windowed. Exclusive fullscreen covers every overlay.</p>
+            </article>
+            <article class="step">
+              <div class="step-num">02</div>
+              <h3>Launch the HUD</h3>
+              <p>Run <code>python -m iracing_coach live --desktop</code>. Frameless, always-on-top, click-through. Ctrl+Shift+O to drag; Ctrl+Shift+Q to quit.</p>
+            </article>
+            <article class="step">
+              <div class="step-num">03</div>
+              <h3>Chase the catalog + TT</h3>
+              <p>Markers hot-reload for the session track. Pedal bars show the Garage 61 target. The status line stamps TT best when a public board matches.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" style="padding-top: 0">
+        <div class="wrap">
+          <div class="section-head">
+            <p class="kicker">Product</p>
+            <h2>Four surfaces. One racing stack.</h2>
+          </div>
+          <div class="feature-grid">
+            <article class="card feature" data-accent="boards">
+              <span class="pill">Leaderboards</span>
+              <h3>Track Titan–style boards</h3>
+              <p>Filter by track and car, then read ranked laps with sectors, gap, session, and weather. Barcelona Ferrari 296 is the featured sample combo.</p>
+              <a class="more" href="./leaderboards.html">Open leaderboards →</a>
+            </article>
+            <article class="card feature" data-accent="aid">
+              <span class="pill">Live Aid</span>
+              <h3>Next marker + BRAKE NOW</h3>
+              <p>Countdown in metres, PREPARE / BRAKE NOW cues, and short tips. Live mode reads iRacing session identity and never forces the Laguna sample onto the wrong circuit.</p>
+              <a class="more" href="./aid.html">Tour the overlay →</a>
+            </article>
+            <article class="card feature" data-accent="pedals">
+              <span class="pill">Pedal targets</span>
+              <h3>B left, T right</h3>
+              <p>Brake is red on the left; throttle is green on the right — the same motif as the icon. Fill is the reference trace; a thin white tick can show your live pedals for comparison.</p>
+              <a class="more" href="./aid.html">See pedal bars →</a>
+            </article>
+            <article class="card feature" data-accent="setups">
+              <span class="pill">Setups</span>
+              <h3>Open-setup .sto sync</h3>
+              <p>Copy a Garage 61 export into <em>your</em> My Setups folder as <code>G61_best_&lt;track&gt;.sto</code>. Refuses fixed-setup official series. Never impersonates another driver.</p>
+              <a class="more" href="./get-started.html">Setup commands →</a>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" style="padding-top: 0">
+        <div class="wrap split">
+          <div>
+            <p class="kicker">Leaderboard teaser</p>
+            <h2>Barcelona · Ferrari 296 GT3</h2>
+            <p class="lede">The same filter model as app.tracktitan.io: pick a circuit, pick a car, read the ranked table. This homepage strip is a preview of the sample board.</p>
+            <div class="btn-row" style="margin-top: 18px">
+              <a class="btn btn-primary" href="./leaderboards.html?track=barcelona&amp;car=ferrari-296-gt3">Open full board</a>
+              <a class="btn btn-ghost" href="./leaderboards.html?track=laguna&amp;car=huracan-gt3-evo">Laguna Huracán sample</a>
+            </div>
+          </div>
+          <div class="table-wrap teaser-table">
+            <table class="board">
+              <thead>
+                <tr>
+                  <th>Pos</th>
+                  <th>Driver</th>
+                  <th>Lap</th>
+                  <th>Gap</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td class="rank gold">1</td><td>NicoApex</td><td class="mono">1:41.218</td><td class="mono gap">—</td></tr>
+                <tr><td class="rank silver">2</td><td>LateApex_</td><td class="mono">1:41.340</td><td class="mono gap">+0.122</td></tr>
+                <tr><td class="rank bronze">3</td><td>GridWalk</td><td class="mono">1:41.512</td><td class="mono gap">+0.294</td></tr>
+                <tr><td class="rank">4</td><td>TrailBrake</td><td class="mono">1:41.688</td><td class="mono gap">+0.470</td></tr>
+                <tr><td class="rank">5</td><td>PedalLeft</td><td class="mono">1:41.901</td><td class="mono gap">+0.683</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="wrap cta-band">
+          <p class="kicker">Windows racing PC</p>
+          <h2>Ready when the session goes green.</h2>
+          <p class="lede">Python 3.11+, Garage 61 token for live catalog refresh, iRacing in borderless windowed. Demo mode works on any OS without the sim.</p>
+          <div class="btn-row" style="margin-top: 18px">
+            <a class="btn btn-primary" href="./get-started.html">Install &amp; run</a>
+            <a class="btn btn-green" href="https://github.com/immortalesrevinu-art/iracing-coach-overlay">github.com/immortalesrevinu-art/iracing-coach-overlay</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap footer-inner">
+        <div>
+          <div class="footer-brand">
+            <img src="./icon.png" width="32" height="32" alt="" />
+            <span class="brand-copy">
+              <span class="wordmark">LapSim<span class="ai">Pro</span></span>
+              <span class="domain">lapsimpro.com</span>
+            </span>
+          </div>
+          <p class="legal">
+            Unofficial iRacing coaching HUD. Not affiliated with iRacing.com, Garage 61, or Track Titan.
+            Overlay is display-only: it never injects throttle, brake, or brake-bias into the sim.
+            Leaderboard tables on this site are authored sample data unless a live public source is connected.
+          </p>
+          <div class="pedal-rail" aria-hidden="true"><span class="b"></span><span class="t"></span></div>
+        </div>
+        <div class="footer-links">
+          <a href="./leaderboards.html">Leaderboards</a>
+          <a href="./aid.html">Aid</a>
+          <a href="./get-started.html">Get started</a>
+          <a href="https://github.com/immortalesrevinu-art/iracing-coach-overlay">GitHub</a>
+        </div>
+      </div>
+      <div class="wrap legal" style="margin-top: 18px">© <span id="year">2026</span> LapSimPro · lapsimpro.com</div>
+    </footer>
+  </body>
+</html>
