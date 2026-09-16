@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#07080b" />
+    <title>Pricing — LapSimPro</title>
+    <meta
+      name="description"
+      content="LapSimPro monthly plans at lapsimpro.com: Starter $5.99, Pro $9.99, Elite $18.99. Pay with Visa and major credit cards via Stripe."
+    />
+    <meta property="og:title" content="LapSimPro pricing" />
+    <meta
+      property="og:description"
+      content="Choose Starter, Pro, or Elite. Monthly subscriptions billed through Stripe. Visa and major credit cards. lapsimpro.com"
+    />
+    <meta property="og:site_name" content="LapSimPro" />
+    <meta property="og:image" content="./og.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="LapSimPro pricing" />
+    <meta
+      name="twitter:description"
+      content="Choose Starter, Pro, or Elite. Monthly subscriptions billed through Stripe. Visa and major credit cards. lapsimpro.com"
+    />
+    <link rel="icon" type="image/png" href="./favicon.png" />
+    <link rel="apple-touch-icon" href="./apple-touch-icon.png" />
+    <link rel="manifest" href="./site.webmanifest" />
+    <script type="module" crossorigin src="./assets/main-DFTLKTCI.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/main-5q73IhdI.css" />
+    <style>
+      .plan-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+        align-items: stretch;
+      }
+      .plan {
+        display: flex;
+        flex-direction: column;
+        min-height: 100%;
+      }
+      .plan.featured {
+        border-color: var(--cyan);
+        box-shadow: 0 0 0 1px var(--cyan), var(--shadow);
+        transform: translateY(-8px);
+        background: linear-gradient(180deg, rgba(58, 215, 255, 0.1), var(--panel) 38%);
+      }
+      .plan .plan-tag {
+        min-height: 22px;
+        margin-bottom: 8px;
+      }
+      .plan .price {
+        font-family: var(--display);
+        font-size: 2.8rem;
+        margin: 10px 0 4px;
+        letter-spacing: -0.03em;
+      }
+      .plan .price span {
+        font-size: 1rem;
+        color: var(--muted);
+        font-family: var(--font);
+        font-weight: 500;
+        letter-spacing: 0;
+      }
+      .plan .bill {
+        color: var(--muted);
+        font-size: 0.88rem;
+        margin-bottom: 8px;
+      }
+      .plan ul {
+        margin: 12px 0 20px;
+        padding: 0;
+        list-style: none;
+        flex: 1;
+      }
+      .plan li {
+        color: var(--muted);
+        padding: 10px 0 10px 22px;
+        position: relative;
+        border-bottom: 1px solid var(--stroke);
+        font-size: 0.95rem;
+      }
+      .plan li:before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 16px;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--cyan);
+      }
+      .plan .btn {
+        width: 100%;
+        margin-top: auto;
+      }
+      @media (max-width: 980px) {
+        .plan-grid {
+          grid-template-columns: 1fr;
+        }
+        .plan.featured {
+          transform: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="site-header">
+      <div class="wrap header-inner">
+        <a class="brand" href="./index.html">
+          <img src="./icon.png" width="40" height="40" alt="LapSimPro app icon" />
+          <span class="brand-copy">
+            <span class="wordmark">LapSim<span class="ai">Pro</span></span>
+            <span class="domain">lapsimpro.com</span>
+          </span>
+        </a>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+        <nav id="site-nav" class="site-nav">
+          <a href="./index.html" data-nav="home">Home</a>
+          <a href="./leaderboards.html" data-nav="boards">Leaderboards</a>
+          <a href="./aid.html" data-nav="aid">Aid</a>
+          <a href="./pricing.html" data-nav="pricing">Pricing</a>
+          <a href="./get-started.html" data-nav="start">Get started</a>
+          <a class="btn btn-ghost" href="https://github.com/immortalesrevinu-art/iracing-coach-overlay">GitHub</a>
+          <a class="btn btn-primary" href="./get-started.html">Launch overlay</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <header class="page-hero wrap">
+        <p class="kicker">Pricing · lapsimpro.com</p>
+        <h1>Pick a monthly plan. Hit the marks.</h1>
+        <p class="lede">
+          Three LapSimPro subscriptions. Pay with Visa and major credit cards through Stripe.
+          After a successful checkout, Stripe sends you to
+          <a href="./get-started.html" style="color: var(--cyan); font-weight: 600">Get started</a>
+          so you can install the overlay.
+        </p>
+      </header>
+
+      <section class="section" style="padding-top: 18px">
+        <div class="wrap">
+          <div class="plan-grid">
+            <article class="card plan">
+              <div class="plan-tag"></div>
+              <span class="pill">Starter</span>
+              <h2 class="price">$5.99<span>/mo</span></h2>
+              <p class="bill">Billed monthly via Stripe</p>
+              <p>Core overlay coaching for the tracks you race most.</p>
+              <ul>
+                <li>Live coach overlay</li>
+                <li>Garage 61 brake markers</li>
+                <li>Reference pedal targets for core tracks</li>
+              </ul>
+              <a
+                class="btn btn-primary"
+                href="https://buy.stripe.com/28E6oJehoflQ0MU8K76EU00"
+                >Subscribe to Starter</a
+              >
+            </article>
+
+            <article class="card plan featured">
+              <div class="plan-tag"><span class="pill">Most popular</span></div>
+              <span class="pill">Pro</span>
+              <h2 class="price">$9.99<span>/mo</span></h2>
+              <p class="bill">Billed monthly via Stripe</p>
+              <p>Full catalog coaching plus community times on the HUD.</p>
+              <ul>
+                <li>Full track catalog</li>
+                <li>Garage 61 pedal + gear coaching</li>
+                <li>Shift cues</li>
+                <li>Track Titan community times</li>
+              </ul>
+              <a
+                class="btn btn-primary"
+                href="https://buy.stripe.com/eVq6oJc9gc9EeDK7G36EU02"
+                >Subscribe to Pro</a
+              >
+            </article>
+
+            <article class="card plan">
+              <div class="plan-tag"></div>
+              <span class="pill">Elite</span>
+              <h2 class="price">$18.99<span>/mo</span></h2>
+              <p class="bill">Billed monthly via Stripe</p>
+              <p>Everything in Pro, plus setup sync and faster coaching drops.</p>
+              <ul>
+                <li>Everything in Pro</li>
+                <li>Garage 61 open-setup sync</li>
+                <li>Priority coaching updates</li>
+              </ul>
+              <a
+                class="btn btn-primary"
+                href="https://buy.stripe.com/3cIbJ3c9g2z4cvC9Ob6EU01"
+                >Subscribe to Elite</a
+              >
+            </article>
+          </div>
+
+          <div class="note info" style="margin-top: 22px">
+            <strong>Visa and major credit cards.</strong>
+            Checkout is hosted by Stripe. Use Visa, Mastercard, American Express, and other major
+            cards Stripe supports. We never see or store your card number on lapsimpro.com.
+          </div>
+        </div>
+      </section>
+
+      <section class="section" style="padding-top: 0">
+        <div class="wrap cta-band">
+          <p class="kicker">After you subscribe</p>
+          <h2>Install the overlay on your racing PC.</h2>
+          <p class="lede">
+            Stripe already returns you to Get started. Clone the repo, run borderless iRacing, then
+            launch the HUD.
+          </p>
+          <div class="btn-row" style="margin-top: 18px">
+            <a class="btn btn-primary" href="./get-started.html">Get started</a>
+            <a class="btn btn-ghost" href="./aid.html">Preview the HUD</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap footer-inner">
+        <div>
+          <div class="footer-brand">
+            <img src="./icon.png" width="32" height="32" alt="" />
+            <span class="brand-copy">
+              <span class="wordmark">LapSim<span class="ai">Pro</span></span>
+              <span class="domain">lapsimpro.com</span>
+            </span>
+          </div>
+          <p class="legal">
+            Monthly subscriptions billed by Stripe. Unofficial iRacing coaching HUD. Not affiliated
+            with iRacing.com, Garage 61, or Track Titan.
+          </p>
+          <div class="pedal-rail" aria-hidden="true"><span class="b"></span><span class="t"></span></div>
+        </div>
+        <div class="footer-links">
+          <a href="./index.html">Home</a>
+          <a href="./leaderboards.html">Leaderboards</a>
+          <a href="./aid.html">Aid</a>
+          <a href="./pricing.html">Pricing</a>
+          <a href="./get-started.html">Get started</a>
+        </div>
+      </div>
+      <div class="wrap legal" style="margin-top: 18px">© <span id="year">2026</span> LapSimPro · lapsimpro.com</div>
+    </footer>
+  </body>
+</html>
