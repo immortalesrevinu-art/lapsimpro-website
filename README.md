@@ -30,6 +30,14 @@ The overlay turns off `LAPSIPRO_API_MOCK` when these routes exist. Base URL can 
 
 Overlay scoring (also re-checked on the server when samples are present): **+10** brake-hit within **12 m or 0.35 s** of a bound REF marker; **+50** personal best. **POST /sessions and /pbs require a signed-in overlay token, not a Stripe subscription.** Download still requires an active Starter/Pro/Elite entitlement.
 
+## House liveries (GT3)
+
+Public gallery: [`liveries.html`](./liveries.html) (`paints.html` redirects there). Overlay-consumable manifest: [`data/liveries.json`](./data/liveries.json).
+
+Download buttons use `lapsimpro://paint/install?...` so the overlay paint installer can copy wraps into `Documents/iRacing/paint/<car_path>/`. Customer-facing CTAs do not link to GitHub.
+
+TGA files are not in this repo yet. Drop them at `assets/liveries/<car_path>/` (see [`assets/liveries/README.md`](./assets/liveries/README.md)), then set `files.car` and `assets_ready` in the manifest. Priority cars: Ferrari 296 GT3 (`ferrari296gt3`), Ford Mustang GT3 (`fordmustanggt3`), BMW M4 GT3 EVO (`bmwm4gt3`).
+
 ## Local how-to
 
 ```bash

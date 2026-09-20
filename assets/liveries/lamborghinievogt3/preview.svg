@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" role="img" aria-label="LapSimPro house livery preview for Huracán GT3 EVO">
+  <defs>
+    <linearGradient id="bg-lamborghinievogt3" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#07080b"/>
+      <stop offset="1" stop-color="#121820"/>
+    </linearGradient>
+    <linearGradient id="body-lamborghinievogt3" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#151a22"/>
+      <stop offset="0.45" stop-color="#10141c"/>
+      <stop offset="1" stop-color="#0c1016"/>
+    </linearGradient>
+    <linearGradient id="glass-lamborghinievogt3" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#3ad7ff" stop-opacity=".35"/>
+      <stop offset="1" stop-color="#0b1218" stop-opacity=".9"/>
+    </linearGradient>
+    <pattern id="carbon-lamborghinievogt3" width="10" height="10" patternUnits="userSpaceOnUse">
+      <rect width="10" height="10" fill="#0b0d12"/>
+      <path d="M0 10 L10 0" stroke="#1a2230" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="640" height="360" fill="url(#bg-lamborghinievogt3)"/>
+  <rect width="640" height="360" fill="url(#carbon-lamborghinievogt3)" opacity=".55"/>
+  <rect x="0" y="0" width="8" height="360" fill="#ff2d3a"/>
+  <rect x="632" y="0" width="8" height="360" fill="#2ee86a"/>
+  <path d="M0 292 H640" stroke="#ffffff12" stroke-width="2"/>
+  <ellipse cx="320" cy="268" rx="250" ry="18" fill="#000" opacity=".35"/>
+  <path d="M86 248 L120 248 L118 258 L84 258 Z" fill="#2ee86a"/>
+  <path d="M92 228 L128 214 C150 168 210 148 268 146 L392 146 C448 146 498 162 528 188 L566 214 L578 228 L578 248 L92 248 Z" fill="url(#body-lamborghinievogt3)" stroke="#2ee86a" stroke-width="3"/>
+  <path d="M132 220 C210 206 300 200 390 200 L520 210" fill="none" stroke="#3ad7ff" stroke-width="8" stroke-linecap="round" opacity=".9"/>
+  <path d="M150 236 C240 228 340 224 470 230" fill="none" stroke="#3ad7ff" stroke-width="3" opacity=".7"/>
+  <path d="M248 146 L262 118 C274 104 302 98 338 98 L402 98 C430 98 452 108 462 122 L488 146 Z" fill="url(#glass-lamborghinievogt3)" stroke="#3ad7ff55" stroke-width="2"/>
+  <path d="M520 168 L582 154 L590 168 L590 186 L528 198 Z" fill="#0a0d12" stroke="#2ee86a" stroke-width="2"/>
+  <g transform="translate(168, 248)">
+    <circle r="28" fill="#0a0d12" stroke="#c9d0d8" stroke-width="3"/>
+    <circle r="12" fill="#2ee86a"/>
+  </g>
+  <g transform="translate(500, 248)">
+    <circle r="28" fill="#0a0d12" stroke="#c9d0d8" stroke-width="3"/>
+    <circle r="12" fill="#2ee86a"/>
+  </g>
+  <text x="156" y="196" fill="#f4f1ea" font-family="Rajdhani, Segoe UI, sans-serif" font-size="36" font-weight="700" letter-spacing="2">EVO</text>
+  <text x="36" y="44" fill="#3ad7ff" font-family="Inter, Segoe UI, sans-serif" font-size="11" font-weight="700" letter-spacing="3">LAPSIPRO HOUSE</text>
+  <text x="36" y="338" fill="#f4f1ea" font-family="Rajdhani, Segoe UI, sans-serif" font-size="22" font-weight="700">Huracán GT3 EVO</text>
+  <text x="604" y="338" text-anchor="end" fill="#9aa3ad" font-family="IBM Plex Mono, ui-monospace, monospace" font-size="12">lamborghinievogt3</text>
+</svg>

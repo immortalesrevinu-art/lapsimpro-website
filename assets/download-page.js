@@ -8,6 +8,10 @@ async function boot() {
   const gate = document.querySelector("[data-download-gate]");
   const links = document.querySelectorAll("[data-download-link]");
 
+  const paint = params.get("paint");
+  const paintNote = document.querySelector("[data-paint-note]");
+  if (paint && paintNote) paintNote.hidden = false;
+
   if (sessionId && user) {
     try {
       await api("/api/billing/claim", { method: "POST", body: JSON.stringify({ session_id: sessionId }) });

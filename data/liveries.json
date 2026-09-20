@@ -1,0 +1,266 @@
+{
+  "schema": "lapsimpro.liveries.v1",
+  "pack_id": "lapsimpro-house-gt3",
+  "pack_name": "LapSimPro House",
+  "name": "LapSimPro house liveries",
+  "tier": "pro",
+  "version": "0.1.0",
+  "updated": "2026-09-20",
+  "homepage": "./liveries.html",
+  "manifest_url": "./data/liveries.json",
+  "public_base": "https://lapsimpro.com",
+  "install": {
+    "protocol": "lapsimpro",
+    "action": "paint/install",
+    "pack_href": "lapsimpro://paint/install?pack=lapsimpro-house-gt3",
+    "fallback": "./download.html?paint=1",
+    "paint_root": "{Documents}/iRacing/paint",
+    "file_pattern": {
+      "car": "car_{customer_id}.tga",
+      "car_spec": "car_spec_{customer_id}.tga",
+      "car_num": "car_num_{customer_id}.tga",
+      "decal": "decal_{customer_id}.tga"
+    },
+    "notes": "Download buttons open the LapSimPro overlay paint installer. The overlay registers lapsimpro://paint/install and copies TGA files into Documents/iRacing/paint/<car_path>/."
+  },
+  "asset_drop": {
+    "root": "assets/liveries/{car_path}/",
+    "required": ["car.tga"],
+    "optional": ["car_spec.tga", "car_num.tga", "decal.tga", "preview.svg", "preview.png"],
+    "readme": "assets/liveries/README.md",
+    "notes": "Drop 24-bit RLE TGAs here. Overlay installer renames them to car_<customerId>.tga in the matching iRacing paint folder. Set files.car and assets_ready true after a drop."
+  },
+  "liveries": [
+    {
+      "id": "ferrari-296-gt3-house",
+      "slug": "ferrari-296-gt3",
+      "catalog_id": "ferrari-296-gt3",
+      "name": "Ferrari 296 GT3",
+      "short_name": "296 GT3",
+      "iracing_name": "Ferrari 296 GT3",
+      "class": "GT3",
+      "priority": true,
+      "car_path": "ferrari296gt3",
+      "car_path_aliases": [],
+      "install_dir": "Documents/iRacing/paint/ferrari296gt3",
+      "blurb": "Charcoal house wrap with a cyan 296 chevron. The Barcelona board car in LapSimPro night colors.",
+      "placeholder": true,
+      "assets_ready": false,
+      "preview": {
+        "src": "./assets/liveries/ferrari296gt3/preview.svg",
+        "alt": "LapSimPro house livery preview for Ferrari 296 GT3",
+        "placeholder": true
+      },
+      "files": {
+        "car": null,
+        "car_spec": null,
+        "car_num": null,
+        "decal": null
+      },
+      "source_dir": "assets/liveries/ferrari296gt3/",
+      "download": {
+        "kind": "overlay_install",
+        "href": "lapsimpro://paint/install?id=ferrari-296-gt3-house&car_path=ferrari296gt3&pack=lapsimpro-house-gt3",
+        "fallback": "./download.html?paint=ferrari-296-gt3-house"
+      }
+    },
+    {
+      "id": "mustang-gt3-house",
+      "slug": "mustang-gt3",
+      "catalog_id": "mustang-gt3",
+      "name": "Ford Mustang GT3",
+      "short_name": "Mustang GT3",
+      "iracing_name": "Ford Mustang GT3",
+      "class": "GT3",
+      "priority": true,
+      "car_path": "fordmustanggt3",
+      "car_path_aliases": [],
+      "install_dir": "Documents/iRacing/paint/fordmustanggt3",
+      "blurb": "Dark carbon Mustang with the red/green pedal rails. Same GT3 as the Watkins Glen sample board.",
+      "placeholder": true,
+      "assets_ready": false,
+      "preview": {
+        "src": "./assets/liveries/fordmustanggt3/preview.svg",
+        "alt": "LapSimPro house livery preview for Ford Mustang GT3",
+        "placeholder": true
+      },
+      "files": {
+        "car": null,
+        "car_spec": null,
+        "car_num": null,
+        "decal": null
+      },
+      "source_dir": "assets/liveries/fordmustanggt3/",
+      "download": {
+        "kind": "overlay_install",
+        "href": "lapsimpro://paint/install?id=mustang-gt3-house&car_path=fordmustanggt3&pack=lapsimpro-house-gt3",
+        "fallback": "./download.html?paint=mustang-gt3-house"
+      }
+    },
+    {
+      "id": "bmw-m4-gt3-house",
+      "slug": "bmw-m4-gt3",
+      "catalog_id": "bmw-m4-gt3",
+      "name": "BMW M4 GT3 EVO",
+      "short_name": "M4 GT3 EVO",
+      "iracing_name": "BMW M4 GT3 EVO",
+      "class": "GT3",
+      "priority": true,
+      "car_path": "bmwm4gt3",
+      "car_path_aliases": ["bmwm4gt3evo"],
+      "install_dir": "Documents/iRacing/paint/bmwm4gt3",
+      "blurb": "EVO-spec M4 in LapSimPro night blue. iRacing still paints this car in the bmwm4gt3 folder.",
+      "placeholder": true,
+      "assets_ready": false,
+      "preview": {
+        "src": "./assets/liveries/bmwm4gt3/preview.svg",
+        "alt": "LapSimPro house livery preview for BMW M4 GT3 EVO",
+        "placeholder": true
+      },
+      "files": {
+        "car": null,
+        "car_spec": null,
+        "car_num": null,
+        "decal": null
+      },
+      "source_dir": "assets/liveries/bmwm4gt3/",
+      "download": {
+        "kind": "overlay_install",
+        "href": "lapsimpro://paint/install?id=bmw-m4-gt3-house&car_path=bmwm4gt3&pack=lapsimpro-house-gt3",
+        "fallback": "./download.html?paint=bmw-m4-gt3-house"
+      }
+    },
+    {
+      "id": "huracan-gt3-evo-house",
+      "slug": "huracan-gt3-evo",
+      "catalog_id": "huracan-gt3-evo",
+      "name": "Lamborghini Huracán GT3 EVO",
+      "short_name": "Huracán GT3 EVO",
+      "iracing_name": "Lamborghini Huracán GT3 EVO",
+      "class": "GT3",
+      "priority": false,
+      "car_path": "lamborghinievogt3",
+      "car_path_aliases": [],
+      "install_dir": "Documents/iRacing/paint/lamborghinievogt3",
+      "blurb": "Laguna sample car in house charcoal and lime. The overlay's catalog_sample GT3.",
+      "placeholder": true,
+      "assets_ready": false,
+      "preview": {
+        "src": "./assets/liveries/lamborghinievogt3/preview.svg",
+        "alt": "LapSimPro house livery preview for Lamborghini Huracán GT3 EVO",
+        "placeholder": true
+      },
+      "files": {
+        "car": null,
+        "car_spec": null,
+        "car_num": null,
+        "decal": null
+      },
+      "source_dir": "assets/liveries/lamborghinievogt3/",
+      "download": {
+        "kind": "overlay_install",
+        "href": "lapsimpro://paint/install?id=huracan-gt3-evo-house&car_path=lamborghinievogt3&pack=lapsimpro-house-gt3",
+        "fallback": "./download.html?paint=huracan-gt3-evo-house"
+      }
+    },
+    {
+      "id": "porsche-992-gt3r-house",
+      "slug": "porsche-992-gt3r",
+      "catalog_id": "porsche-992-gt3r",
+      "name": "Porsche 911 GT3 R",
+      "short_name": "911 GT3 R",
+      "iracing_name": "Porsche 911 GT3 R (992)",
+      "class": "GT3",
+      "priority": false,
+      "car_path": "porsche992rgt3",
+      "car_path_aliases": [],
+      "install_dir": "Documents/iRacing/paint/porsche992rgt3",
+      "blurb": "992 R in house silver and cyan. Spa featured GT3 from the LapSimPro catalog.",
+      "placeholder": true,
+      "assets_ready": false,
+      "preview": {
+        "src": "./assets/liveries/porsche992rgt3/preview.svg",
+        "alt": "LapSimPro house livery preview for Porsche 911 GT3 R",
+        "placeholder": true
+      },
+      "files": {
+        "car": null,
+        "car_spec": null,
+        "car_num": null,
+        "decal": null
+      },
+      "source_dir": "assets/liveries/porsche992rgt3/",
+      "download": {
+        "kind": "overlay_install",
+        "href": "lapsimpro://paint/install?id=porsche-992-gt3r-house&car_path=porsche992rgt3&pack=lapsimpro-house-gt3",
+        "fallback": "./download.html?paint=porsche-992-gt3r-house"
+      }
+    },
+    {
+      "id": "mclaren-720s-house",
+      "slug": "mclaren-720s",
+      "catalog_id": "mclaren-720s",
+      "name": "McLaren 720S GT3 EVO",
+      "short_name": "720S GT3 EVO",
+      "iracing_name": "McLaren 720S GT3 EVO",
+      "class": "GT3",
+      "priority": false,
+      "car_path": "mclaren720sgt3",
+      "car_path_aliases": [],
+      "install_dir": "Documents/iRacing/paint/mclaren720sgt3",
+      "blurb": "720S EVO papaya-tint house scheme. Silverstone catalog pairing.",
+      "placeholder": true,
+      "assets_ready": false,
+      "preview": {
+        "src": "./assets/liveries/mclaren720sgt3/preview.svg",
+        "alt": "LapSimPro house livery preview for McLaren 720S GT3 EVO",
+        "placeholder": true
+      },
+      "files": {
+        "car": null,
+        "car_spec": null,
+        "car_num": null,
+        "decal": null
+      },
+      "source_dir": "assets/liveries/mclaren720sgt3/",
+      "download": {
+        "kind": "overlay_install",
+        "href": "lapsimpro://paint/install?id=mclaren-720s-house&car_path=mclaren720sgt3&pack=lapsimpro-house-gt3",
+        "fallback": "./download.html?paint=mclaren-720s-house"
+      }
+    },
+    {
+      "id": "amg-gt3-house",
+      "slug": "amg-gt3",
+      "catalog_id": "amg-gt3",
+      "name": "Mercedes-AMG GT3",
+      "short_name": "AMG GT3",
+      "iracing_name": "Mercedes-AMG GT3 2020",
+      "class": "GT3",
+      "priority": false,
+      "car_path": "mercedesamgevogt3",
+      "car_path_aliases": [],
+      "install_dir": "Documents/iRacing/paint/mercedesamgevogt3",
+      "blurb": "AMG GT3 2020 path, house silver and gold. Nürburgring board car.",
+      "placeholder": true,
+      "assets_ready": false,
+      "preview": {
+        "src": "./assets/liveries/mercedesamgevogt3/preview.svg",
+        "alt": "LapSimPro house livery preview for Mercedes-AMG GT3",
+        "placeholder": true
+      },
+      "files": {
+        "car": null,
+        "car_spec": null,
+        "car_num": null,
+        "decal": null
+      },
+      "source_dir": "assets/liveries/mercedesamgevogt3/",
+      "download": {
+        "kind": "overlay_install",
+        "href": "lapsimpro://paint/install?id=amg-gt3-house&car_path=mercedesamgevogt3&pack=lapsimpro-house-gt3",
+        "fallback": "./download.html?paint=amg-gt3-house"
+      }
+    }
+  ]
+}

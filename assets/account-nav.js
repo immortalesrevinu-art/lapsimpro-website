@@ -69,15 +69,17 @@ function markNav() {
       ? "account"
       : file.includes("leaderboard")
         ? "boards"
-        : file.includes("aid")
-          ? "aid"
-          : file.includes("pricing")
-            ? "pricing"
-            : file.includes("download") || file.includes("get-started")
-              ? "start"
-              : file.includes("404")
-                ? ""
-                : "home";
+        : file.includes("livery") || file.includes("paint")
+          ? "liveries"
+          : file.includes("aid")
+            ? "aid"
+            : file.includes("pricing")
+              ? "pricing"
+              : file.includes("download") || file.includes("get-started")
+                ? "start"
+                : file.includes("404")
+                  ? ""
+                  : "home";
   document.querySelectorAll("[data-nav]").forEach((el) => {
     if (el.getAttribute("data-nav") === key) el.classList.add("active");
   });
