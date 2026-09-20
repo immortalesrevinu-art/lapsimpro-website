@@ -25,6 +25,8 @@
     <link rel="icon" type="image/png" href="./favicon.png" />
     <link rel="apple-touch-icon" href="./apple-touch-icon.png" />
     <link rel="manifest" href="./site.webmanifest" />
+    <script type="module" src="./assets/account-nav.js"></script>
+    <script type="module" src="./assets/download-page.js"></script>
     <script type="module" crossorigin src="./assets/main-DFTLKTCI.js"></script>
     <link rel="stylesheet" crossorigin href="./assets/main-5q73IhdI.css" />
   </head>
@@ -44,8 +46,10 @@
           <a href="./index.html" data-nav="home">Home</a>
           <a href="./leaderboards.html" data-nav="boards">Leaderboards</a>
           <a href="./aid.html" data-nav="aid">Aid</a>
+          <a href="./dashboard.html" data-nav="dash">Dashboard</a>
           <a href="./pricing.html" data-nav="pricing">Pricing</a>
           <a href="./get-started.html" data-nav="start">Get started</a>
+          <a href="./login.html" data-nav="account" data-auth-link>Log in</a>
           <a class="btn btn-primary" href="./pricing.html">Subscribe</a>
         </nav>
       </div>
@@ -61,7 +65,7 @@
           tracks covered by Garage 61 and Track Titan.
         </p>
         <div class="btn-row" style="margin-top: 18px">
-          <a class="btn btn-primary" href="https://github.com/immortalesrevinu-art/iracing-coach-overlay/releases/download/v0.1.0/LapSimPro-Setup.zip">Download LapSimPro</a>
+          <a class="btn btn-primary" data-download-link href="./login.html">Download LapSimPro</a>
           <a class="btn btn-ghost" href="./pricing.html">Choose a plan</a>
         </div>
       </header>
@@ -72,12 +76,12 @@
         racing PC.
       </div>
 
-      <div class="note info" style="margin: 18px 0 28px">
+      <div class="note info" data-download-gate style="margin: 18px 0 28px">
         <strong>Subscribers only.</strong>
-        The installer is for active LapSimPro plans (Starter, Pro, or Elite). If you have not
+        Log in so we can check your Stripe subscription, then download. If you have not
         subscribed yet, start on
         <a href="./pricing.html" style="color: var(--cyan); font-weight: 600">Pricing</a>
-        — then Stripe returns you here to download.
+        — then Stripe returns you here.
       </div>
 
       <div class="steps-list">
@@ -109,7 +113,7 @@
               Coaching data for Garage 61 and Track Titan coverage ships in the package.
             </p>
             <div class="btn-row" style="margin-top: 14px">
-              <a class="btn btn-green" href="https://github.com/immortalesrevinu-art/iracing-coach-overlay/releases/download/v0.1.0/LapSimPro-Setup.zip">Download LapSimPro</a>
+              <a class="btn btn-green" data-download-link href="./login.html">Download LapSimPro</a>
             </div>
           </div>
         </article>

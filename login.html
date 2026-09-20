@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#07080b" />
+    <title>Log in — LapSimPro</title>
+    <meta name="description" content="Create or sign in to a LapSimPro account to see your laps, coaching, and training points." />
+    <link rel="icon" type="image/png" href="./favicon.png" />
+    <link rel="stylesheet" href="./assets/main-5q73IhdI.css" />
+    <link rel="stylesheet" href="./assets/account.css" />
+    <script type="module" src="./assets/account-nav.js"></script>
+    <script type="module" src="./assets/login.js"></script>
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="site-header">
+      <div class="wrap header-inner">
+        <a class="brand" href="./index.html">
+          <img src="./icon.png" width="40" height="40" alt="LapSimPro app icon" />
+          <span class="brand-copy">
+            <span class="wordmark">LapSim<span class="ai">Pro</span></span>
+            <span class="domain">lapsimpro.com</span>
+          </span>
+        </a>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+        <nav id="site-nav" class="site-nav">
+          <a href="./index.html" data-nav="home">Home</a>
+          <a href="./leaderboards.html" data-nav="boards">Leaderboards</a>
+          <a href="./aid.html" data-nav="aid">Aid</a>
+          <a href="./dashboard.html" data-nav="dash">Dashboard</a>
+          <a href="./pricing.html" data-nav="pricing">Pricing</a>
+          <a href="./get-started.html" data-nav="start">Get started</a>
+          <a href="./login.html" data-nav="account" data-auth-link>Log in</a>
+          <a class="btn btn-primary" href="./pricing.html">Subscribe</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main" class="wrap" style="padding-bottom: 72px">
+      <header class="page-hero">
+        <p class="kicker">Account</p>
+        <h1>Log in to see your data.</h1>
+        <p class="lede">
+          Email + password, or a magic link. The overlay uses the same account so brake-hit
+          points and faster laps sync to this dashboard.
+        </p>
+      </header>
+
+      <div id="auth-note" class="note" hidden></div>
+
+      <div class="auth-grid" style="margin-top: 22px">
+        <form id="login-form" class="card auth-card">
+          <span class="pill">Sign in</span>
+          <h2 style="margin: 10px 0 14px">Welcome back</h2>
+          <label class="field">
+            <span>Email</span>
+            <input id="login-email" type="email" autocomplete="username" required />
+          </label>
+          <label class="field">
+            <span>Password</span>
+            <input id="login-password" type="password" autocomplete="current-password" required />
+          </label>
+          <button class="btn btn-primary" type="submit">Log in</button>
+        </form>
+
+        <form id="register-form" class="card auth-card">
+          <span class="pill">Create account</span>
+          <h2 style="margin: 10px 0 14px">New to LapSimPro</h2>
+          <label class="field">
+            <span>Email</span>
+            <input id="reg-email" type="email" autocomplete="username" required />
+          </label>
+          <label class="field">
+            <span>Password (8+ characters)</span>
+            <input id="reg-password" type="password" autocomplete="new-password" minlength="8" required />
+          </label>
+          <button class="btn btn-green" type="submit">Create account</button>
+          <p class="lede" style="margin-top: 12px; font-size: 0.9rem">
+            Download and cloud sync still need an active Starter, Pro, or Elite subscription.
+          </p>
+        </form>
+      </div>
+
+      <form id="magic-form" class="card auth-card" style="margin-top: 16px; max-width: 520px">
+        <span class="pill">Magic link</span>
+        <h2 style="margin: 10px 0 8px">No password?</h2>
+        <p class="lede" style="margin-bottom: 12px">We’ll create the account if needed. Locally the link is returned so you can open it.</p>
+        <label class="field">
+          <span>Email</span>
+          <input id="magic-email" type="email" required />
+        </label>
+        <button class="btn btn-ghost" type="submit">Email me a sign-in link</button>
+        <div id="magic-note" class="note info" hidden></div>
+      </form>
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap footer-inner">
+        <div>
+          <div class="footer-brand">
+            <img src="./icon.png" width="32" height="32" alt="" />
+            <span class="brand-copy">
+              <span class="wordmark">LapSim<span class="ai">Pro</span></span>
+              <span class="domain">lapsimpro.com</span>
+            </span>
+          </div>
+          <p class="legal">Unofficial iRacing coaching HUD. Overlay is display-only.</p>
+        </div>
+        <div class="footer-links">
+          <a href="./dashboard.html">Dashboard</a>
+          <a href="./pricing.html">Pricing</a>
+          <a href="./download.html">Download</a>
+        </div>
+      </div>
+      <div class="wrap legal" style="margin-top: 18px">© <span id="year">2026</span> LapSimPro · lapsimpro.com</div>
+    </footer>
+  </body>
+</html>
