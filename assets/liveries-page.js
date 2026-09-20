@@ -4,13 +4,23 @@ function $(sel, root = document) {
   return root.querySelector(sel);
 }
 
+function showInstallHandoff(fallback) {
+  const note = document.querySelector("[data-install-handoff]");
+  if (!note) return;
+  note.hidden = false;
+  const link = note.querySelector("[data-install-fallback]");
+  if (link) link.setAttribute("href", fallback);
+  note.scrollIntoView({ block: "nearest", behavior: "smooth" });
+}
+
 function protocolFallback(href, fallback) {
+  showInstallHandoff(fallback);
   const start = Date.now();
   const timer = window.setTimeout(() => {
-    if (document.visibilityState === "visible" && Date.now() - start < 2200) {
+    if (document.visibilityState === "visible" && Date.now() - start < 2800) {
       window.location.href = fallback;
     }
-  }, 900);
+  }, 1600);
   const cancel = () => window.clearTimeout(timer);
   window.addEventListener("blur", cancel, { once: true });
   document.addEventListener("visibilitychange", () => {
