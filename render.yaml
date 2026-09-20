@@ -1,0 +1,37 @@
+# Render Blueprint: free Python web service for the account / training API.
+# Apply at https://dashboard.render.com/blueprints?repo=https://github.com/immortalesrevinu-art/lapsimpro-website
+# or: New → Blueprint → this repo. No credit card required for the free plan.
+services:
+  - type: web
+    name: lapsimpro-api
+    runtime: python
+    plan: free
+    region: oregon
+    buildCommand: pip install -r requirements.txt
+    startCommand: python -m server
+    healthCheckPath: /api/health
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.12.3"
+      - key: LAPSIMPRO_HOST
+        value: 0.0.0.0
+      - key: LAPSIMPRO_PUBLIC_URL
+        value: https://lapsimpro.com
+      - key: LAPSIMPRO_API_URL
+        value: https://lapsimpro-api.onrender.com
+      - key: LAPSIMPRO_CORS_ORIGINS
+        value: https://lapsimpro.com,https://www.lapsimpro.com,http://lapsimpro.com,http://www.lapsimpro.com
+      - key: LAPSIMPRO_DEV_ENTITLEMENT
+        value: "1"
+      - key: LAPSIMPRO_SECRET
+        generateValue: true
+      - key: STRIPE_SECRET_KEY
+        sync: false
+      - key: STRIPE_WEBHOOK_SECRET
+        sync: false
+      - key: STRIPE_PRICE_STARTER
+        value: price_1UGOsMPVazkD4GpuxvLFjoCJ
+      - key: STRIPE_PRICE_PRO
+        value: price_1UGOsNPVazkD4GpuP7jWZuax
+      - key: STRIPE_PRICE_ELITE
+        value: price_1UGOsMPVazkD4GpuqAtr8Muv

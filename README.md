@@ -1,3 +1,13 @@
+---
+title: LapSimPro API
+emoji: 🏁
+colorFrom: slate
+colorTo: yellow
+sdk: docker
+app_port: 8787
+pinned: false
+---
+
 # LapSimPro (lapsimpro.com)
 
 Marketing site plus a local **account / training API**. Drivers log in, the overlay scores brake-marker hits and faster laps, and the dashboard shows their data with “how to get faster” cards.
@@ -101,4 +111,6 @@ See `.env.example`. Nothing secret belongs in git.
 | `BRAKE_HIT_WINDOW_M` / `BRAKE_CLOSE_WINDOW_M` | Marker timing/distance tolerance |
 | `BRAKE_HIT_POINTS` / `LAP_PB_POINTS` / `LAP_IMPROVE_POINTS` | Training aid scoring |
 
-GitHub Pages can keep serving the static marketing pages. Point `window.LAPSIMPRO_API` at a hosted API (Fly/Render/etc.) when you deploy beyond localhost.
+GitHub Pages keeps serving the static marketing pages. Production API hosting, env vars, and GoDaddy DNS for `api.lapsimpro.com` are in [`docs/production.md`](docs/production.md). The Pages frontend uses one API base in [`assets/api-config.js`](assets/api-config.js). Overlay: `LAPSIPRO_API_URL=https://lapsimpro-api.onrender.com` and `LAPSIPRO_API_MOCK=0`.
+
+The README YAML header is for an optional Hugging Face Docker Space (`app_port` 8787). GitHub ignores it.
