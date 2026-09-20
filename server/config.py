@@ -3,6 +3,7 @@ from __future__ import annotations
 import os
 from dataclasses import dataclass
 from pathlib import Path
+from urllib.parse import urlparse
 
 ROOT = Path(__file__).resolve().parent.parent
 
@@ -44,6 +45,7 @@ class Settings:
     secret: str
     db_path: Path
     public_url: str
+    api_url: str
     download_url: str
     dev_entitlement: bool
     stripe_secret_key: str
@@ -61,19 +63,28 @@ class Settings:
     lap_pb_points: int
     lap_improve_points: int
 
+    @property
+    def cross_site_cookies(self) -> bool:
+        public_host = urlparse(self.public_url).netloc
+        api_host = urlparse(self.api_url).netloc
+        return bool(public_host and api_host and public_host != api_host)
+
 
 def load_settings() -> Settings:
     db = Path(os.environ.get("LAPSIMPRO_DB") or ROOT / "data" / "lapsimpro.db")
     if not db.is_absolute():
         db = ROOT / db
+    public_url = (os.environ.get("LAPSIMPRO_PUBLIC_URL") or "http://127.0.0.1:8787").rstrip("/")
+    api_url = (os.environ.get("LAPSIMPRO_API_URL") or public_url).rstrip("/")
     origins = os.environ.get(
         "LAPSIMPRO_CORS_ORIGINS",
-        "https://lapsimpro.com,https://www.lapsimpro.com,http://127.0.0.1:8787,http://localhost:8787",
+        "https://lapsimpro.com,https://www.lapsimpro.com,http://lapsimpro.com,http://www.lapsimpro.com,http://127.0.0.1:8787,http://localhost:8787",
     )
     return Settings(
         secret=os.environ.get("LAPSIMPRO_SECRET") or "dev-only-change-me",
         db_path=db,
-        public_url=(os.environ.get("LAPSIMPRO_PUBLIC_URL") or "http://127.0.0.1:8787").rstrip("/"),
+        public_url=public_url,
+        api_url=api_url,
         download_url=os.environ.get("LAPSIMPRO_DOWNLOAD_URL")
         or "https://github.com/immortalesrevinu-art/iracing-coach-overlay/releases/download/v0.1.0/LapSimPro-Setup.zip",
         dev_entitlement=_bool("LAPSIMPRO_DEV_ENTITLEMENT"),

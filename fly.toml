@@ -1,0 +1,34 @@
+# Optional Fly.io alternative. Render is the no-card production host.
+# fly launch --no-deploy && fly secrets set LAPSIMPRO_SECRET=... && fly deploy
+app = "lapsimpro-api"
+primary_region = "sjc"
+
+[build]
+  dockerfile = "Dockerfile"
+
+[env]
+  LAPSIMPRO_HOST = "0.0.0.0"
+  LAPSIMPRO_PUBLIC_URL = "https://lapsimpro.com"
+  LAPSIMPRO_API_URL = "https://lapsimpro-api.fly.dev"
+  LAPSIMPRO_CORS_ORIGINS = "https://lapsimpro.com,https://www.lapsimpro.com,http://lapsimpro.com,http://www.lapsimpro.com"
+  LAPSIMPRO_DEV_ENTITLEMENT = "1"
+
+[http_service]
+  internal_port = 8787
+  force_https = true
+  auto_stop_machines = "stop"
+  auto_start_machines = true
+  min_machines_running = 0
+  processes = ["app"]
+
+  [[http_service.checks]]
+    interval = "30s"
+    timeout = "5s"
+    grace_period = "10s"
+    method = "GET"
+    path = "/api/health"
+
+[[vm]]
+  cpu_kind = "shared"
+  cpus = 1
+  memory = "512mb"

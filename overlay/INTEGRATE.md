@@ -43,6 +43,15 @@ python -m iracing_coach login --magic-token <token>
 
 This package also still supports `python -m lapsimpro_sync login`. The token is stored at `~/.lapsimpro/session.json` with `0600` permissions.
 
+Production API (after deploy):
+
+```bash
+export LAPSIPRO_API_URL=https://lapsimpro-api.onrender.com
+export LAPSIPRO_API_MOCK=0
+```
+
+`python -m lapsimpro_sync` also reads `LAPSIMPRO_API_URL`. See `docs/production.md`.
+
 Contract the overlay expects (so `LAPSIPRO_API_MOCK` can stay off):
 
 - `POST /api/v1/auth/device` `{ "device_code": "LSP-XXXXXX" }`

@@ -1,9 +1,13 @@
+import { LAPSIMPRO_API_BASE } from "./api-config.js";
+
 const TOKEN_KEY = "lsp_token";
 
 export function apiBase() {
   if (window.LAPSIMPRO_API) return String(window.LAPSIMPRO_API).replace(/\/$/, "");
   if (location.port === "8787" || location.pathname.startsWith("/api")) return "";
-  return "http://127.0.0.1:8787";
+  const host = location.hostname;
+  if (host === "127.0.0.1" || host === "localhost") return "http://127.0.0.1:8787";
+  return String(LAPSIMPRO_API_BASE || "").replace(/\/$/, "");
 }
 
 export function storedToken() {
@@ -79,7 +83,22 @@ function markNav() {
   });
 }
 
+function captureQueryToken() {
+  try {
+    const params = new URLSearchParams(location.search);
+    const token = params.get("token");
+    if (!token) return;
+    setToken(token);
+    params.delete("token");
+    const next = `${location.pathname}${params.toString() ? `?${params}` : ""}${location.hash}`;
+    history.replaceState({}, "", next);
+  } catch {
+    /* ignore */
+  }
+}
+
 async function boot() {
+  captureQueryToken();
   wireNav();
   markNav();
   const year = document.getElementById("year");

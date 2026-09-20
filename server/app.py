@@ -126,12 +126,13 @@ def current_user(request: Request, authorization: str | None) -> dict[str, Any]:
 
 
 def set_session_cookie(response: Response, token: str) -> None:
+    cross = settings.cross_site_cookies
     response.set_cookie(
         COOKIE,
         token,
         httponly=True,
-        samesite="lax",
-        secure=settings.public_url.startswith("https://"),
+        samesite="none" if cross else "lax",
+        secure=cross or settings.public_url.startswith("https://") or settings.api_url.startswith("https://"),
         max_age=60 * 60 * 24 * 30,
         path="/",
     )
@@ -251,7 +252,7 @@ def magic_link(body: MagicBody) -> dict[str, Any]:
         else:
             user_id = row["id"]
         token = issue_token(conn, user_id, "magic", "magic-link", 0.25)
-    url = f"{settings.public_url}/api/auth/magic?token={token}"
+    url = f"{settings.api_url}/api/auth/magic?token={token}"
     # Production should email this. Local/dev returns the URL so the flow is testable.
     return {"ok": True, "dev_url": url}
 
@@ -269,7 +270,8 @@ def consume_magic(token: str, response: Response) -> Response:
         conn.execute("DELETE FROM auth_tokens WHERE token_hash = ?", (token_hash,))
         session_token = issue_token(conn, row["user_id"], "web", "browser", 24 * 30)
     redirect = Response(status_code=303)
-    redirect.headers["Location"] = "/dashboard.html"
+    # Pages cannot read the API cookie; pass the session on the query string once.
+    redirect.headers["Location"] = f"{settings.public_url}/dashboard.html?token={session_token}"
     set_session_cookie(redirect, session_token)
     return redirect
 

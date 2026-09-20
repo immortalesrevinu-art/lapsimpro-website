@@ -21,7 +21,13 @@ from .store import clear_session, load_session
 
 
 def _api_url(args: argparse.Namespace) -> str:
-    return (args.api or os.environ.get("LAPSIMPRO_PUBLIC_URL") or "http://127.0.0.1:8787").rstrip("/")
+    return (
+        args.api
+        or os.environ.get("LAPSIPRO_API_URL")
+        or os.environ.get("LAPSIMPRO_API_URL")
+        or os.environ.get("LAPSIMPRO_PUBLIC_URL")
+        or "http://127.0.0.1:8787"
+    ).rstrip("/")
 
 
 def cmd_login(args: argparse.Namespace) -> int:

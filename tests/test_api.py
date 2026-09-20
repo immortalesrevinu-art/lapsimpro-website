@@ -70,3 +70,25 @@ def test_demo_session_endpoint(client):
     assert res.json()["points_awarded"] > 0
     dash = client.get("/api/dashboard").json()
     assert dash["points_total"] > 0
+
+
+def test_health_and_v1_contract_listing(client):
+    health = client.get("/api/health")
+    assert health.status_code == 200
+    assert health.json()["ok"] is True
+    listing = client.get("/api/v1")
+    assert listing.status_code == 200
+    body = listing.json()
+    assert body["contract"] == "lapsimpro.session.v1"
+    assert "device" in body["auth"]
+
+
+def test_magic_link_lands_on_public_dashboard(client):
+    link = client.post("/api/auth/magic-link", json={"email": "magic.redirect@example.com"})
+    assert link.status_code == 200
+    url = link.json()["dev_url"]
+    token = url.split("token=")[1]
+    res = client.get(f"/api/auth/magic?token={token}", follow_redirects=False)
+    assert res.status_code == 303
+    location = res.headers["location"]
+    assert location.startswith("http://testserver/dashboard.html?token=")
