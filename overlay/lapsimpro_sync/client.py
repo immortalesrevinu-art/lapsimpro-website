@@ -40,18 +40,19 @@ class AccountClient:
             "/api/auth/login",
             json={"email": email, "password": password, "device_name": device_name},
         )
-        self.token = data["token"]
+        self.token = data.get("token") or data.get("access_token")
         save_session(self.token, self.api_url, email)
         return data
 
     def me(self) -> dict[str, Any]:
-        return self._request("GET", "/api/me")
+        return self._request("GET", "/me")
 
     def entitlement(self) -> dict[str, Any]:
         return self._request("GET", "/api/entitlement")
 
     def sync(self, payload: dict[str, Any]) -> dict[str, Any]:
-        return self._request("POST", "/api/overlay/sync", json=payload)
+        body = {"schema": "lapsimpro.session.v1", **payload}
+        return self._request("POST", "/sessions", json=body)
 
     def dashboard(self) -> dict[str, Any]:
         return self._request("GET", "/api/dashboard")

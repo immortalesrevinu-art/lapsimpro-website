@@ -18,7 +18,7 @@ The overlay turns off `LAPSIPRO_API_MOCK` when these routes exist. Base URL can 
 | POST | `/sessions` or `/api/v1/sessions` | `lapsimpro.session.v1` upsert by `client_session_id` |
 | GET/PUT | `/pbs` or `/api/v1/pbs` | Personal bests per track+car |
 
-Overlay scoring (also re-checked on the server when samples are present): **+10** brake-hit within **12 m or 0.35 s** of a bound REF marker; **+50** personal best. Uploads only when signed in.
+Overlay scoring (also re-checked on the server when samples are present): **+10** brake-hit within **12 m or 0.35 s** of a bound REF marker; **+50** personal best. **POST /sessions and /pbs require a signed-in overlay token, not a Stripe subscription.** Download still requires an active Starter/Pro/Elite entitlement.
 
 ## Local how-to
 

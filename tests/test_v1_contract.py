@@ -7,7 +7,7 @@ def test_v1_device_code_session_and_pbs(client):
 
     auth = client.post("/api/v1/auth/device", json={"device_code": code})
     assert auth.status_code == 200, auth.text
-    token = auth.json()["token"]
+    token = auth.json()["access_token"]
     headers = {"Authorization": f"Bearer {token}"}
 
     me = client.get("/me", headers=headers)
@@ -55,6 +55,25 @@ def test_v1_device_code_session_and_pbs(client):
     assert put.status_code == 200
     tracks = {row["track"] for row in put.json()["pbs"]}
     assert "Barcelona" in tracks
+
+
+def test_v1_sessions_require_login_not_stripe(gated_client):
+    gated_client.post("/api/auth/register", json={"email": "free.overlay@example.com", "password": "password1"})
+    assert gated_client.get("/api/download").status_code == 402
+    res = gated_client.post(
+        "/sessions",
+        json={
+            "schema": "lapsimpro.session.v1",
+            "client_session_id": "free-1",
+            "track": "Laguna",
+            "car": "Huracan",
+            "reference_source": "catalog",
+            "point_events": [{"kind": "brake_hit", "points": 10, "detail": "T1", "marker": "T1"}],
+            "laps": [{"lap_time_s": 90.0, "valid": True, "samples": []}],
+        },
+    )
+    assert res.status_code == 200, res.text
+    assert res.json()["points_awarded"] >= 10
 
 
 def test_v1_magic_token_login(client):

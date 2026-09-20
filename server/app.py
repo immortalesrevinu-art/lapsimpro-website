@@ -89,12 +89,20 @@ def persist_entitlement(conn, user_id: str, result: dict[str, Any]) -> None:
     )
 
 
+def _bearer_token(request: Request, authorization: str | None) -> str | None:
+    if authorization:
+        if authorization.lower().startswith("bearer "):
+            return authorization.split(" ", 1)[1].strip()
+        return authorization.strip()
+    for header in ("x-lapsimpro-token", "x-device-token", "x-auth-token"):
+        value = request.headers.get(header)
+        if value:
+            return value.strip()
+    return request.cookies.get(COOKIE)
+
+
 def current_user(request: Request, authorization: str | None) -> dict[str, Any]:
-    token = None
-    if authorization and authorization.lower().startswith("bearer "):
-        token = authorization.split(" ", 1)[1].strip()
-    if not token:
-        token = request.cookies.get(COOKIE)
+    token = _bearer_token(request, authorization)
     if not token:
         raise HTTPException(status_code=401, detail="Sign in required")
     token_hash = hash_token(token, settings.secret)
@@ -440,12 +448,7 @@ def _best_lap(conn, user_id: str, track: str, car: str) -> float | None:
     return float(row["lap_time_s"]) if row else None
 
 
-@app.post("/api/overlay/sync")
-def overlay_sync(
-    body: SyncBody, request: Request, authorization: str | None = Header(default=None)
-) -> dict[str, Any]:
-    user = current_user(request, authorization)
-    require_entitlement(user)
+def persist_session(user: dict[str, Any], body: SyncBody) -> dict[str, Any]:
     session_meta = body.session
     reference = body.reference
     track = session_meta.get("track") or ""
@@ -611,10 +614,20 @@ def overlay_sync(
 
     return {
         "session_id": session_id,
+        "client_session_id": session_meta.get("client_session_id"),
         "points_awarded": sum(e["points"] for e in events),
         "events": events,
         "coaching": cards,
     }
+
+
+@app.post("/api/overlay/sync")
+def overlay_sync(
+    body: SyncBody, request: Request, authorization: str | None = Header(default=None)
+) -> dict[str, Any]:
+    user = current_user(request, authorization)
+    require_entitlement(user)
+    return persist_session(user, body)
 
 
 @app.get("/api/dashboard")
@@ -747,7 +760,14 @@ def _normalize_session_v1(payload: dict[str, Any]) -> SyncBody:
     reference = payload.get("reference") if isinstance(payload.get("reference"), dict) else {}
     track = payload.get("track") or session.get("track") or ""
     car = payload.get("car") or session.get("car") or ""
-    client_sid = payload.get("client_session_id") or session.get("client_session_id")
+    client_sid = (
+        payload.get("client_session_id")
+        or session.get("client_session_id")
+        or payload.get("id")
+        or payload.get("session_id")
+    )
+    track = track or payload.get("track_name") or session.get("track_name") or ""
+    car = car or payload.get("car_name") or session.get("car_name") or ""
     merged_session = {
         **session,
         "track": track,
@@ -773,9 +793,23 @@ def _normalize_session_v1(payload: dict[str, Any]) -> SyncBody:
     )
 
 
+def _auth_payload(token: str, user: dict[str, Any]) -> dict[str, Any]:
+    return {
+        "token": token,
+        "access_token": token,
+        "token_type": "bearer",
+        "user": public_user(user),
+    }
+
+
 @app.post("/api/v1/auth/device")
-def v1_auth_device(body: DeviceAuthBody, response: Response) -> dict[str, Any]:
-    code = (body.device_code or body.code or "").strip().upper()
+def v1_auth_device(
+    response: Response,
+    body: DeviceAuthBody | None = None,
+    device_code: str | None = None,
+) -> dict[str, Any]:
+    raw = (body.device_code if body else None) or (body.code if body else None) or device_code or ""
+    code = raw.strip().upper()
     if not code:
         raise HTTPException(status_code=400, detail="device_code required")
     with db_session(settings.db_path) as conn:
@@ -786,12 +820,17 @@ def v1_auth_device(body: DeviceAuthBody, response: Response) -> dict[str, Any]:
         token = issue_token(conn, row["user_id"], "device", "overlay", 24 * 90)
         user = row_user(conn.execute("SELECT * FROM users WHERE id = ?", (row["user_id"],)).fetchone())
     set_session_cookie(response, token)
-    return {"token": token, "user": public_user(user)}
+    return _auth_payload(token, user)
 
 
 @app.post("/api/v1/auth/magic")
-def v1_auth_magic(body: MagicAuthBody, response: Response) -> dict[str, Any]:
-    raw = body.token or body.magic_token
+def v1_auth_magic(
+    response: Response,
+    body: MagicAuthBody | None = None,
+    magic_token: str | None = None,
+    token: str | None = None,
+) -> dict[str, Any]:
+    raw = (body.token if body else None) or (body.magic_token if body else None) or magic_token or token
     if raw:
         token_hash = hash_token(raw, settings.secret)
         with db_session(settings.db_path) as conn:
@@ -805,9 +844,10 @@ def v1_auth_magic(body: MagicAuthBody, response: Response) -> dict[str, Any]:
             session_token = issue_token(conn, row["user_id"], "device", "overlay", 24 * 90)
             user = row_user(conn.execute("SELECT * FROM users WHERE id = ?", (row["user_id"],)).fetchone())
         set_session_cookie(response, session_token)
-        return {"token": session_token, "user": public_user(user)}
-    if body.email:
-        return magic_link(MagicBody(email=body.email))
+        return _auth_payload(session_token, user)
+    email = body.email if body else None
+    if email:
+        return magic_link(MagicBody(email=email))
     raise HTTPException(status_code=400, detail="token or email required")
 
 
@@ -817,20 +857,33 @@ def v1_me(request: Request, authorization: str | None = Header(default=None)) ->
     return public_user(current_user(request, authorization))
 
 
+@app.get("/api/v1")
+def v1_index() -> dict[str, Any]:
+    return {
+        "contract": "lapsimpro.session.v1",
+        "auth": {
+            "device": "POST /api/v1/auth/device",
+            "magic": "POST /api/v1/auth/magic",
+            "cli": [
+                "python -m iracing_coach login --device-code LSP-XXXXXX",
+                "python -m iracing_coach login --magic-token <token>",
+            ],
+        },
+        "me": "GET /me",
+        "sessions": "POST /sessions",
+        "pbs": ["GET /pbs", "PUT /pbs"],
+        "scoring": {"brake_hit": 10, "window_m": 12, "window_s": 0.35, "lap_pb": 50},
+    }
+
+
 @app.post("/api/v1/sessions")
 @app.post("/sessions")
 def v1_sessions(payload: dict[str, Any], request: Request, authorization: str | None = Header(default=None)) -> dict[str, Any]:
     schema = payload.get("schema") or payload.get("type")
     if schema and schema not in {"lapsimpro.session.v1", "session.v1"}:
         raise HTTPException(status_code=400, detail="Expected schema lapsimpro.session.v1")
-    return overlay_sync(_normalize_session_v1(payload), request, authorization)
-
-
-class PbBody(BaseModel):
-    track: str | None = None
-    car: str | None = None
-    lap_time_s: float | None = None
-    pbs: list[dict[str, Any]] | None = None
+    user = current_user(request, authorization)
+    return persist_session(user, _normalize_session_v1(payload))
 
 
 @app.get("/api/v1/pbs")
@@ -850,11 +903,22 @@ def v1_get_pbs(request: Request, authorization: str | None = Header(default=None
 
 @app.put("/api/v1/pbs")
 @app.put("/pbs")
-def v1_put_pbs(body: PbBody, request: Request, authorization: str | None = Header(default=None)) -> dict[str, Any]:
+async def v1_put_pbs(request: Request, authorization: str | None = Header(default=None)) -> dict[str, Any]:
     user = current_user(request, authorization)
-    items = list(body.pbs or [])
-    if body.track and body.car and body.lap_time_s:
-        items.append({"track": body.track, "car": body.car, "lap_time_s": body.lap_time_s})
+    try:
+        payload = await request.json()
+    except Exception as exc:  # noqa: BLE001
+        raise HTTPException(status_code=400, detail="JSON body required") from exc
+    if isinstance(payload, list):
+        items = [row for row in payload if isinstance(row, dict)]
+    elif isinstance(payload, dict):
+        items = list(payload.get("pbs") or [])
+        if payload.get("track") and payload.get("car") and payload.get("lap_time_s") is not None:
+            items.append(
+                {"track": payload["track"], "car": payload["car"], "lap_time_s": payload["lap_time_s"]}
+            )
+    else:
+        items = []
     if not items:
         raise HTTPException(status_code=400, detail="Provide track, car, lap_time_s")
     now = iso()
