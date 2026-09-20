@@ -1,0 +1,185 @@
+/* Nav + hub styles kept unhashed so Pages can ship News / Coaching without a Vite rebuild. */
+.site-nav a {
+  padding: 8px 10px;
+  font-size: 0.88rem;
+}
+
+@media (max-width: 1280px) {
+  .nav-toggle {
+    display: inline-flex;
+  }
+  .site-nav {
+    display: none;
+    position: absolute;
+    top: var(--header);
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 12px 20px 18px;
+    background: #07080bf5;
+    border-bottom: 1px solid var(--stroke);
+  }
+  .site-nav.open {
+    display: flex;
+  }
+}
+
+.hub-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 18px 0 8px;
+}
+
+.hub-legal {
+  margin: 16px 0 0;
+  max-width: 72ch;
+}
+
+.news-toolbar,
+.coach-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0 0 20px;
+}
+
+.news-toolbar button,
+.coach-toolbar button {
+  background: #151a22;
+  border: 1px solid var(--stroke);
+  border-radius: 999px;
+  padding: 6px 12px;
+  color: var(--muted);
+  cursor: pointer;
+}
+
+.news-toolbar button[aria-pressed="true"],
+.coach-toolbar button[aria-pressed="true"] {
+  color: #041016;
+  background: var(--cyan);
+  border-color: var(--cyan);
+}
+
+.news-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.news-card {
+  display: flex;
+  flex-direction: column;
+  min-height: 220px;
+}
+
+.news-card .meta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.news-card time {
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+
+.news-card h3 {
+  font-size: 1.25rem;
+  margin: 0 0 10px;
+}
+
+.news-card p {
+  flex: 1;
+}
+
+.embed-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #0a0d12;
+  border: 1px solid var(--stroke);
+}
+
+.embed-frame iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.featured-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+
+.featured-card .creator {
+  margin-top: 12px;
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+.featured-card h3 {
+  margin: 8px 0 10px;
+  font-size: 1.35rem;
+}
+
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.video-card .creator {
+  color: var(--muted);
+  font-size: 0.88rem;
+  margin: 4px 0 8px;
+}
+
+.video-card .chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 10px 0 0;
+}
+
+.video-card .chip-row .pill {
+  letter-spacing: 0.08em;
+}
+
+.attr-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  margin-top: 12px;
+}
+
+.tie-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.hub-status {
+  color: var(--muted);
+  font-size: 0.92rem;
+  margin: 0 0 16px;
+}
+
+@media (max-width: 980px) {
+  .news-grid,
+  .featured-grid,
+  .video-grid,
+  .tie-grid {
+    grid-template-columns: 1fr;
+  }
+}
