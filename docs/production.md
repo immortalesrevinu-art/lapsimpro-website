@@ -1,14 +1,16 @@
-# Production API (Render)
+# Production API
 
-GitHub Pages serves the static site at [lapsimpro.com](https://lapsimpro.com). Pages cannot serve `/api/...`, so the FastAPI process (`python -m server`) runs on **Render** (free web service, GitHub public repo, no credit card).
+GitHub Pages serves the static site at [lapsimpro.com](https://lapsimpro.com). Pages cannot serve `/api/...`, so the FastAPI process (`python -m server`) needs a public HTTPS host.
+
+**Chosen host:** Render free web service `lapsimpro-api`. A Render account for `theuniversecontractor@gmail.com` is already verified. New Render workspaces require a card on file even for the **Free** ($0) instance — that is the only remaining click. Fly, Railway, Alwaysdata, and Hugging Face either require a card or blocked automated signup.
 
 | Role | URL |
 | --- | --- |
 | Marketing / login / dashboard | `https://lapsimpro.com` (GitHub Pages, `main`) |
-| Account / training API | `https://lapsimpro-api.onrender.com` |
+| Account / training API | `https://lapsimpro-api.onrender.com` (after the Free service is deployed) |
 | Preferred custom API host | `https://api.lapsimpro.com` (CNAME below; optional) |
 
-The Pages frontend reads the API host from one file: [`assets/api-config.js`](../assets/api-config.js) (`LAPSIMPRO_API_BASE`). After the `api` CNAME is live, change that value to `https://api.lapsimpro.com` and set `LAPSIMPRO_API_URL` on Render to match.
+The Pages frontend reads the API host from one file: [`assets/api-config.js`](../assets/api-config.js) (`LAPSIMPRO_API_BASE`). After a custom domain is live, change that value and set `LAPSIMPRO_API_URL` on the host to match.
 
 Overlay (repo `iracing-coach-overlay`):
 
@@ -19,18 +21,20 @@ export LAPSIPRO_API_MOCK=0
 
 `LAPSIPRO_API_URL` and `LAPSIMPRO_API_URL` are both accepted by `python -m lapsimpro_sync`.
 
-## One-click deploy
+## Finish deploy (one card-on-file click)
 
-1. Open [Deploy to Render](https://render.com/deploy?repo=https://github.com/immortalesrevinu-art/lapsimpro-website) (sign in with GitHub or email; choose the **Free** instance).
-2. Or: Render Dashboard → **New** → **Blueprint** → this repo (`render.yaml`).
-3. Or: **New** → **Web Service** → **Public Git Repository** → `https://github.com/immortalesrevinu-art/lapsimpro-website`
+1. Open [dashboard.render.com](https://dashboard.render.com) and sign in as `theuniversecontractor@gmail.com` (use **Forgot password** if needed).
+2. Add a payment method when Render asks. The Free instance is $0/month; the card is only for abuse checks.
+3. Deploy this repo as a Free Python web service:
+   - [Deploy to Render](https://render.com/deploy?repo=https://github.com/immortalesrevinu-art/lapsimpro-website), or Dashboard → **New** → **Blueprint** / **Web Service** → public git `https://github.com/immortalesrevinu-art/lapsimpro-website`
+   - Branch: `main` (after this PR merges) or `cursor/deploy-training-api-d58d` before merge
    - Runtime: Python
    - Build: `pip install -r requirements.txt`
    - Start: `python -m server`
    - Health check: `/api/health`
-   - Instance: Free
+   - Instance: **Free**
 
-`Dockerfile` and `Procfile` are in the repo root for Docker-based hosts (Fly, Railway) and Render’s Docker runtime.
+`Dockerfile` (uid 1000, `PORT`/`0.0.0.0`) and `Procfile` also work on Fly, Railway, or a Hugging Face Docker Space if you later move hosts. Stripe Projects can provision the same Render `web-service` (free instance) after `stripe login` + `stripe projects init` on your machine.
 
 ## Environment
 
