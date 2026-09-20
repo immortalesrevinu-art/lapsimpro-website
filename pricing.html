@@ -25,6 +25,8 @@
     <link rel="icon" type="image/png" href="./favicon.png" />
     <link rel="apple-touch-icon" href="./apple-touch-icon.png" />
     <link rel="manifest" href="./site.webmanifest" />
+    <script type="module" src="./assets/account-nav.js"></script>
+    <script type="module" src="./assets/pricing-page.js"></script>
     <script type="module" crossorigin src="./assets/main-DFTLKTCI.js"></script>
     <link rel="stylesheet" crossorigin href="./assets/main-5q73IhdI.css" />
     <style>
@@ -120,8 +122,10 @@
           <a href="./index.html" data-nav="home">Home</a>
           <a href="./leaderboards.html" data-nav="boards">Leaderboards</a>
           <a href="./aid.html" data-nav="aid">Aid</a>
+          <a href="./dashboard.html" data-nav="dash">Dashboard</a>
           <a href="./pricing.html" data-nav="pricing">Pricing</a>
           <a href="./get-started.html" data-nav="start">Get started</a>
+          <a href="./login.html" data-nav="account" data-auth-link>Log in</a>
           <a class="btn btn-primary" href="./pricing.html">Subscribe</a>
         </nav>
       </div>
@@ -155,6 +159,7 @@
               </ul>
               <a
                 class="btn btn-primary"
+                data-plan="starter"
                 href="https://buy.stripe.com/28E6oJehoflQ0MU8K76EU00"
                 >Subscribe to Starter</a
               >
@@ -174,6 +179,7 @@
               </ul>
               <a
                 class="btn btn-primary"
+                data-plan="pro"
                 href="https://buy.stripe.com/eVq6oJc9gc9EeDK7G36EU02"
                 >Subscribe to Pro</a
               >
@@ -192,12 +198,14 @@
               </ul>
               <a
                 class="btn btn-primary"
+                data-plan="elite"
                 href="https://buy.stripe.com/3cIbJ3c9g2z4cvC9Ob6EU01"
                 >Subscribe to Elite</a
               >
             </article>
           </div>
 
+          <div class="note" data-pricing-note hidden style="margin-top: 22px"></div>
           <div class="note info" style="margin-top: 22px">
             <strong>Visa and major credit cards.</strong>
             Checkout is hosted by Stripe. Use Visa, Mastercard, American Express, and other major
