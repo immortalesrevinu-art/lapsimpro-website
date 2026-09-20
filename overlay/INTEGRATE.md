@@ -60,6 +60,24 @@ Contract the overlay expects (so `LAPSIPRO_API_MOCK` can stay off):
 - `POST /sessions` body `schema: lapsimpro.session.v1`, upsert on `client_session_id`
 - `GET` / `PUT /pbs`
 
+## House liveries (paint installer)
+
+The marketing site publishes a Pages-ready pack at `https://lapsimpro.com/data/liveries.json` (`lapsimpro.liveries.v1`). Gallery: `/liveries.html`. Customer Download buttons use:
+
+```text
+lapsimpro://paint/install?id=<livery_id>&car_path=<car_path>&pack=lapsimpro-house-gt3
+```
+
+When the overlay paint-installer PR lands:
+
+1. Register the `lapsimpro://` protocol (Windows) and handle `paint/install`.
+2. Fetch the manifest (or a bundled copy) and resolve `car_path` — these folder names match iRacing (`ferrari296gt3`, `fordmustanggt3`, `bmwm4gt3`, …). BMW M4 GT3 EVO stays in `bmwm4gt3` with alias `bmwm4gt3evo`.
+3. Copy TGA files from the pack into `{Documents}/iRacing/paint/{car_path}/car_{customerId}.tga`.
+4. If `assets_ready` is false, show the preview and skip the copy — do not invent paint pixels.
+5. Never send drivers to a public GitHub URL. Fallback CTA is `https://lapsimpro.com/download.html?paint=<id>`.
+
+Asset drop path on the website repo: `assets/liveries/{car_path}/car.tga`. Helper: `from lapsimpro_sync.paints import protocol_url, install_files, validate_manifest`.
+
 ## HUD rules
 
 - Points chip is display-only.
