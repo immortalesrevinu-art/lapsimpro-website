@@ -1,0 +1,116 @@
+{
+  "updated": "2026-09-20",
+  "note": "Curated static desk. Replace or prepend items here; the news page fetches this file. All links are outbound to the publisher. Not affiliated with iRacing.com.",
+  "schema": {
+    "id": "Stable slug for the card",
+    "title": "Headline as published",
+    "source": "Publisher name",
+    "sourceUrl": "Publisher homepage or section",
+    "url": "Canonical article URL",
+    "date": "ISO date YYYY-MM-DD",
+    "summary": "One or two sentences from the public article",
+    "tags": "Optional chips"
+  },
+  "items": [
+    {
+      "id": "pesc-spa-2026-preview",
+      "title": "2026 Porsche Esports Supercup World Championship Series | Race #1 | Circuit de Spa-Francorchamps | Preview",
+      "source": "iRacing",
+      "sourceUrl": "https://www.iracing.com/news/",
+      "url": "https://www.iracing.com/2026-porsche-esports-supercup-world-championship-series-race-1-circuit-de-spa-francorchamps-preview/",
+      "date": "2026-09-18",
+      "summary": "32 regional graduates — including Job, Pinto, Webster, and 19 world-championship rookies — head to Spa, with live coverage Saturday at 19:00 GMT on Porsche’s YouTube and Twitch.",
+      "tags": ["eSports", "Porsche"]
+    },
+    {
+      "id": "warman-texas-2026",
+      "title": "Quentin Warman plays postseason spoiler, earns first-career eNASCAR Coca-Cola iRacing Championship Series win at Texas",
+      "source": "iRacing",
+      "sourceUrl": "https://www.iracing.com/news/",
+      "url": "https://www.iracing.com/quentin-warman-plays-postseason-spoiler-earns-first-career-enascar-coca-cola-iracing-championship-series-win-at-texas/",
+      "date": "2026-09-16",
+      "summary": "Warman three-wides Steven Wilson and Seth DeMerchant in overtime at Texas Motor Speedway for a first career eNASCAR win, with three Championship 4 tickets still open.",
+      "tags": ["eNASCAR", "eSports"]
+    },
+    {
+      "id": "nascar-26-launch",
+      "title": "Start Your Engines! NASCAR 26 Launches Today on PC, PlayStation 5 & Xbox Series X|S",
+      "source": "iRacing",
+      "sourceUrl": "https://www.iracing.com/news/",
+      "url": "https://www.iracing.com/start-your-engines-nascar-26-launches-today-on-pc-playstation-5-xbox-series-xs/",
+      "date": "2026-09-15",
+      "summary": "iRacing Studios and NASCAR open Gold Edition early access for NASCAR 26 on consoles and Steam, with Standard Edition following September 18.",
+      "tags": ["iRacing Studios", "NASCAR"]
+    },
+    {
+      "id": "s4-hotfix-1",
+      "title": "2026 Season 4 Hotfix 1 Release Notes [2026.09.11.01]",
+      "source": "iRacing Support",
+      "sourceUrl": "https://support.iracing.com/support/solutions/folders/31000122612",
+      "url": "https://support.iracing.com/support/solutions/articles/31000179637-2026-season-4-hotfix-1-release-notes-2026-09-11-01-",
+      "date": "2026-09-11",
+      "summary": "Official patch: Caterham 420R and Academy rear-axle damage so cars can leave pit stalls, plus crashes when minimizing the sim or using replay VCR controls.",
+      "tags": ["Release notes", "Season 4"]
+    },
+    {
+      "id": "traxion-caterham-hotfix",
+      "title": "iRacing hotfix to “fundamentally improve” Caterham handling",
+      "source": "Traxion",
+      "sourceUrl": "https://traxion.gg/",
+      "url": "https://traxion.gg/iracing-hotfix-to-fundamentally-improve-caterham-handling/",
+      "date": "2026-09-10",
+      "summary": "Thomas Harrison-Lord on the day-after Caterham pass: rear axles that ‘translate fully,’ better handling on both models, and the pit-lane stuck-car bug.",
+      "tags": ["Season 4", "Cars"]
+    },
+    {
+      "id": "s4-ai-racing",
+      "title": "iRacing’s AI Racing Adds Eight Cars, 19 Track Configurations for 2026 Season 4",
+      "source": "iRacing",
+      "sourceUrl": "https://www.iracing.com/news/",
+      "url": "https://www.iracing.com/iracings-ai-racing-adds-eight-cars-19-track-configurations-for-2026-season-4/",
+      "date": "2026-09-09",
+      "summary": "Valkyrie AMR-LMH, both Caterhams, and Gen 4 Grand National launch AI-ready, plus Daytona Prototypes, Formula Renault 2.0, and new scans at Road America, Mid-Ohio, and Milwaukee.",
+      "tags": ["Season 4", "AI racing"]
+    },
+    {
+      "id": "traxion-s4-release",
+      "title": "iRacing Season 4 2026 released with key track updates, UI changes and car upgrades",
+      "source": "Traxion",
+      "sourceUrl": "https://traxion.gg/",
+      "url": "https://traxion.gg/iracing-season-4-2026-released-with-key-track-updates-ui-changes-and-car-upgrades/",
+      "date": "2026-09-09",
+      "summary": "Traxion’s desk recap of the September 9 build: laser-scans, Road America East/West, Milwaukee roval, MX-5 overhaul, Pit Summary widget, and multiclass pace cars.",
+      "tags": ["Season 4", "Tracks"]
+    },
+    {
+      "id": "iracing-s4-hub",
+      "title": "iRacing 2026 Season 4 is live",
+      "source": "iRacing",
+      "sourceUrl": "https://www.iracing.com/news/",
+      "url": "https://www.iracing.com/seasons/2026-s4/",
+      "date": "2026-09-09",
+      "summary": "Official Season 4 feature page: four new cars, multi-threaded physics, Minimal UI Mode, F9 Quick Access, Fuel Calculator, and rain-enabled Valkyrie and Caterhams.",
+      "tags": ["Season 4"]
+    },
+    {
+      "id": "traxion-career-mode",
+      "title": "All iRacing content will be available in career mode at ‘zero extra cost’",
+      "source": "Traxion",
+      "sourceUrl": "https://traxion.gg/",
+      "url": "https://traxion.gg/all-iracing-content-will-be-available-in-career-mode-at-zero-extra-cost/",
+      "date": "2026-08-29",
+      "summary": "Greg Hill says the in-progress single-player career will unlock the full car and track pool inside career without extra purchases — still without a ship date.",
+      "tags": ["Career mode"]
+    },
+    {
+      "id": "iracing-dev-update-aug-2026",
+      "title": "iRacing Development Update: August 2026",
+      "source": "iRacing",
+      "sourceUrl": "https://www.iracing.com/news/",
+      "url": "https://www.iracing.com/iracing-development-update-august-2026/",
+      "date": "2026-08-29",
+      "summary": "Season 4 preview from the production team: Gen 4 Grand National, rebuilt pavement Sprint Car, multi-threaded physics milestone, and a soft launch of multi-class pace cars.",
+      "tags": ["Development", "Season 4"]
+    }
+  ]
+}

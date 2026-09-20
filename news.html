@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#07080b" />
+    <title>Sim racing news — LapSimPro</title>
+    <meta
+      name="description"
+      content="iRacing and sim-racing news desk at lapsimpro.com: Season 4 release notes, eSports, and outbound headlines. Curated JSON, not a scrape."
+    />
+    <meta property="og:title" content="LapSimPro sim racing news" />
+    <meta
+      property="og:description"
+      content="A maintainable iRacing news desk: official release notes, Traxion recaps, eSports. lapsimpro.com"
+    />
+    <meta property="og:site_name" content="LapSimPro" />
+    <meta property="og:image" content="./og.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="LapSimPro sim racing news" />
+    <meta
+      name="twitter:description"
+      content="A maintainable iRacing news desk: official release notes, Traxion recaps, eSports. lapsimpro.com"
+    />
+    <link rel="icon" type="image/png" href="./favicon.png" />
+    <link rel="apple-touch-icon" href="./apple-touch-icon.png" />
+    <link rel="manifest" href="./site.webmanifest" />
+    <link rel="stylesheet" href="./assets/main-5q73IhdI.css" />
+    <link rel="stylesheet" href="./assets/site-extra.css" />
+    <script type="module" src="./assets/account-nav.js"></script>
+    <script type="module" src="./assets/hub.js"></script>
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="site-header">
+      <div class="wrap header-inner">
+        <a class="brand" href="./index.html">
+          <img src="./icon.png" width="40" height="40" alt="LapSimPro app icon" />
+          <span class="brand-copy">
+            <span class="wordmark">LapSim<span class="ai">Pro</span></span>
+            <span class="domain">lapsimpro.com</span>
+          </span>
+        </a>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+        <nav id="site-nav" class="site-nav">
+          <a href="./index.html" data-nav="home">Home</a>
+          <a href="./news.html" data-nav="news">News</a>
+          <a href="./coaching.html" data-nav="coaching">Coaching</a>
+          <a href="./leaderboards.html" data-nav="boards">Leaderboards</a>
+          <a href="./aid.html" data-nav="aid">Aid</a>
+          <a href="./liveries.html" data-nav="liveries">Liveries</a>
+          <a href="./dashboard.html" data-nav="dash">Dashboard</a>
+          <a href="./pricing.html" data-nav="pricing">Pricing</a>
+          <a href="./get-started.html" data-nav="start">Get started</a>
+          <a href="./login.html" data-nav="account" data-auth-link>Log in</a>
+          <a class="btn btn-primary" href="./pricing.html">Subscribe</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="page-hero wrap">
+        <p class="kicker">News desk · iRacing / sim racing</p>
+        <h1>Headlines from the sim paddock.</h1>
+        <p class="lede">
+          A curated desk of public iRacing and sim-racing stories — official release notes, Traxion recaps,
+          eSports. Cards link out to the publisher. Edit <code>data/news.json</code> to refresh the grid.
+        </p>
+        <div class="hub-tabs">
+          <a class="btn btn-primary" href="./news.html">News</a>
+          <a class="btn btn-ghost" href="./coaching.html">Coaching library</a>
+        </div>
+        <p class="legal hub-legal">
+          Unofficial desk. Not affiliated with iRacing.com, Motorsport Network, Traxion, Garage 61, or Track Titan.
+          We summarize and link; we do not republish full articles.
+        </p>
+      </section>
+
+      <section class="section" style="padding-top: 12px">
+        <div class="wrap">
+          <div class="section-head">
+            <p class="kicker">Headlines</p>
+            <h2>Season 4, eSports, and the build notes that matter on track.</h2>
+          </div>
+          <p class="hub-status" data-hub-status>Loading news…</p>
+          <div class="news-toolbar" data-news-filters role="toolbar" aria-label="Filter by publisher"></div>
+          <div class="news-grid" data-news-grid></div>
+        </div>
+      </section>
+
+      <section class="section" style="padding-top: 0">
+        <div class="wrap">
+          <div class="section-head">
+            <p class="kicker">LapSimPro</p>
+            <h2>After you read the notes, hit the marks.</h2>
+          </div>
+          <div class="tie-grid">
+            <article class="card feature" data-accent="aid">
+              <span class="pill">Overlay</span>
+              <h3>Live brake-marker HUD</h3>
+              <p>Season 4 tracks still need a next-marker countdown. The overlay sits on borderless iRacing and stays click-through.</p>
+              <a class="more" href="./aid.html">Tour the overlay →</a>
+            </article>
+            <article class="card feature" data-accent="setups">
+              <span class="pill">Liveries</span>
+              <h3>House colors for the GT3 catalog</h3>
+              <p>Ferrari 296, Mustang GT3, BMW M4 GT3 EVO, and the rest of the LapSimPro wraps — install through the overlay paint pack.</p>
+              <a class="more" href="./liveries.html">Browse liveries →</a>
+            </article>
+            <article class="card feature" data-accent="pedals">
+              <span class="pill">Dashboard</span>
+              <h3>Sessions and training points</h3>
+              <p>Log in to see bound-reference coaching cards from your own laps — not invented Garage 61 traces.</p>
+              <a class="more" href="./dashboard.html">Open dashboard →</a>
+            </article>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap footer-inner">
+        <div>
+          <div class="footer-brand">
+            <img src="./icon.png" width="32" height="32" alt="" />
+            <span class="brand-copy">
+              <span class="wordmark">LapSim<span class="ai">Pro</span></span>
+              <span class="domain">lapsimpro.com</span>
+            </span>
+          </div>
+          <p class="legal">
+            Unofficial iRacing coaching HUD. Not affiliated with iRacing.com, Garage 61, or Track Titan.
+            News cards are curated outbound links.
+          </p>
+          <div class="pedal-rail" aria-hidden="true"><span class="b"></span><span class="t"></span></div>
+        </div>
+        <div class="footer-links">
+          <a href="./news.html">News</a>
+          <a href="./coaching.html">Coaching</a>
+          <a href="./liveries.html">Liveries</a>
+          <a href="./aid.html">Aid</a>
+          <a href="./dashboard.html">Dashboard</a>
+          <a href="./pricing.html">Pricing</a>
+          <a href="./download.html">Download</a>
+        </div>
+      </div>
+      <div class="wrap legal" style="margin-top: 18px">© <span id="year">2026</span> LapSimPro · lapsimpro.com</div>
+    </footer>
+  </body>
+</html>

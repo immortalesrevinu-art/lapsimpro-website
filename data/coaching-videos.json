@@ -1,0 +1,130 @@
+{
+  "updated": "2026-09-20",
+  "note": "Official YouTube embeds only. Do not download, re-encode, or host third-party video files. Titles and creators were verified via YouTube oEmbed on 2026-09-20. Duration is included only when confirmed from the YouTube watch page.",
+  "schema": {
+    "id": "YouTube video id",
+    "title": "Exact public title from YouTube",
+    "creator": "Channel name from oEmbed author_name",
+    "creatorUrl": "YouTube channel URL",
+    "watchUrl": "Canonical watch link",
+    "embedUrl": "youtube-nocookie.com iframe src",
+    "duration": "Optional mm:ss when verified",
+    "topics": "Filter chips",
+    "featured": "Show in the large featured player(s)",
+    "summary": "Short editorial blurb, not a transcript"
+  },
+  "videos": [
+    {
+      "id": "8OtYGr5zLkg",
+      "title": "EXACTLY How To Master Braking in GT3 Cars with @LaurenceDusoswa",
+      "creator": "Coach Dave Academy",
+      "creatorUrl": "https://www.youtube.com/@CoachDaveAcademy",
+      "watchUrl": "https://www.youtube.com/watch?v=8OtYGr5zLkg",
+      "embedUrl": "https://www.youtube-nocookie.com/embed/8OtYGr5zLkg",
+      "duration": "24:13",
+      "topics": ["Braking", "GT3", "Telemetry"],
+      "featured": true,
+      "summary": "Coach Dave uses Delta traces to coach Laurence Dusoswa on GT3 brake shape, consistency, and earlier throttle — the same pedal-target idea LapSimPro shows in the overlay."
+    },
+    {
+      "id": "dVfCvMcdMxU",
+      "title": "THIS HIGH-LEVEL STUDENT FOUND 1 SECOND PER LAP! - Sim Racing Coaching",
+      "creator": "Suellio Almeida",
+      "creatorUrl": "https://www.youtube.com/@SuellioAlmeida",
+      "watchUrl": "https://www.youtube.com/watch?v=dVfCvMcdMxU",
+      "embedUrl": "https://www.youtube-nocookie.com/embed/dVfCvMcdMxU",
+      "topics": ["Trail braking", "Rotation", "Coaching"],
+      "featured": true,
+      "summary": "Often cited in iRacing trail-braking threads. Suellio coaches a high-iRating driver to rotate with brake release instead of extra steering — not a generic 'how to trail brake' title, despite how the clip is shared."
+    },
+    {
+      "id": "9nVjqlWUal0",
+      "title": "5 Reasons You Need to Trail Brake in Sim Racing",
+      "creator": "Driver61 Sim Racing",
+      "creatorUrl": "https://www.youtube.com/@driver61simracing10",
+      "watchUrl": "https://www.youtube.com/watch?v=9nVjqlWUal0",
+      "embedUrl": "https://www.youtube-nocookie.com/embed/9nVjqlWUal0",
+      "topics": ["Trail braking", "iRacing"],
+      "featured": false,
+      "summary": "Scott Mansell walks iRacing brake traces at Silverstone and the Nürburgring: max straight-line pressure, then a smooth release so the front stays loaded into the apex."
+    },
+    {
+      "id": "tvcuGoVhpxw",
+      "title": "How to Trail Brake: A Step-by-Step Guide",
+      "creator": "Driver61",
+      "creatorUrl": "https://www.youtube.com/@Driver61",
+      "watchUrl": "https://www.youtube.com/watch?v=tvcuGoVhpxw",
+      "embedUrl": "https://www.youtube-nocookie.com/embed/tvcuGoVhpxw",
+      "duration": "11:40",
+      "topics": ["Trail braking"],
+      "featured": false,
+      "summary": "Driver61's technique lesson on blending brake and steer, when to trail more in slow corners, and when to release earlier in high-speed ones."
+    },
+    {
+      "id": "kEQRSKkLVbk",
+      "title": "What Does Brake Bias Do? iRacing Tutorial with @davecamyt",
+      "creator": "TraxionGG",
+      "creatorUrl": "https://www.youtube.com/@TraxionGG",
+      "watchUrl": "https://www.youtube.com/watch?v=kEQRSKkLVbk",
+      "embedUrl": "https://www.youtube-nocookie.com/embed/kEQRSKkLVbk",
+      "topics": ["Brake bias", "iRacing"],
+      "featured": false,
+      "summary": "Dave Cam in the Ferrari 488 GT3 at the Red Bull Ring: front vs rear bias, trail-brake corners vs straight-line stops, and why fixed-series cars still let you move the percentage."
+    },
+    {
+      "id": "vME8LLbXRxs",
+      "title": "How To Use Brake Bias - Sim Racing's Secret Switch",
+      "creator": "Danny Lee",
+      "creatorUrl": "https://www.youtube.com/@dannyleeracing",
+      "watchUrl": "https://www.youtube.com/watch?v=vME8LLbXRxs",
+      "embedUrl": "https://www.youtube-nocookie.com/embed/vME8LLbXRxs",
+      "topics": ["Brake bias"],
+      "featured": false,
+      "summary": "Practical bias rules: more front for stability and confidence, less front for rotation and shorter stops — including iRacing F8 adjustments and fixed-setup series."
+    },
+    {
+      "id": "nVDfSDfVn18",
+      "title": "Trailbraking In Sim Racing - How Slowing Down the Right Way Makes You Faster",
+      "creator": "Danny Lee",
+      "creatorUrl": "https://www.youtube.com/@dannyleeracing",
+      "watchUrl": "https://www.youtube.com/watch?v=nVDfSDfVn18",
+      "embedUrl": "https://www.youtube-nocookie.com/embed/nVDfSDfVn18",
+      "topics": ["Trail braking", "iRacing"],
+      "featured": false,
+      "summary": "Clear visual of trail vs dump-the-brake, with an iRacing Ferrari fixed-setup example at Summit Point showing later marks and higher average entry speed."
+    },
+    {
+      "id": "iDjXlhhSbRY",
+      "title": "9 Things No One Tells You About iRacing When You Start Sim Racing",
+      "creator": "VRS Sim Racing",
+      "creatorUrl": "https://www.youtube.com/@realVRS",
+      "watchUrl": "https://www.youtube.com/watch?v=iDjXlhhSbRY",
+      "embedUrl": "https://www.youtube-nocookie.com/embed/iDjXlhhSbRY",
+      "topics": ["iRacing", "Telemetry"],
+      "featured": false,
+      "summary": "VRS ambassador Trebol on consistency, braking first, replays, telemetry vs a coach reference, iRating/safety rating, and why default open setups are built to be safe."
+    },
+    {
+      "id": "Q-oXBCJHUHs",
+      "title": "Sim Racing Coach Part 1 - Braking Tutorial Motec i2 Pro. How to improve by 1+ seconds a lap.",
+      "creator": "GP Race Simulation",
+      "creatorUrl": "https://www.youtube.com/@GPRaceSimulation",
+      "watchUrl": "https://www.youtube.com/watch?v=Q-oXBCJHUHs",
+      "embedUrl": "https://www.youtube-nocookie.com/embed/Q-oXBCJHUHs",
+      "topics": ["Braking", "Telemetry"],
+      "featured": false,
+      "summary": "MoTeC i2 walkthrough of a common amateur trace: not reaching 100% brake, slow application, and dumping the pedal instead of a trail release — often worth more than a second."
+    },
+    {
+      "id": "X0WuN3poyVs",
+      "title": "Biggest Sim Racing Tips (sim driver analysis)",
+      "creator": "Driver61",
+      "creatorUrl": "https://www.youtube.com/@Driver61",
+      "watchUrl": "https://www.youtube.com/watch?v=X0WuN3poyVs",
+      "embedUrl": "https://www.youtube-nocookie.com/embed/X0WuN3poyVs",
+      "topics": ["Coaching", "Trail braking"],
+      "featured": false,
+      "summary": "Scott Mansell coaches an onboard: vision to the apex, earlier turn-in, a breath of trail into the apex, and smooth throttle so technique is fixed before setup."
+    }
+  ]
+}

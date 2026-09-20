@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#07080b" />
+    <title>iRacing coaching library — LapSimPro</title>
+    <meta
+      name="description"
+      content="Curated public iRacing coaching on lapsimpro.com: official YouTube embeds from Coach Dave Academy, Driver61, VRS, and Traxion. Watch on YouTube — we do not host the files."
+    />
+    <meta property="og:title" content="LapSimPro iRacing coaching library" />
+    <meta
+      property="og:description"
+      content="Official YouTube embeds for GT3 braking, trail braking, and brake bias. Titles and creators verified. lapsimpro.com"
+    />
+    <meta property="og:site_name" content="LapSimPro" />
+    <meta property="og:image" content="./og.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="LapSimPro iRacing coaching library" />
+    <meta
+      name="twitter:description"
+      content="Official YouTube embeds for GT3 braking, trail braking, and brake bias. Titles and creators verified. lapsimpro.com"
+    />
+    <link rel="icon" type="image/png" href="./favicon.png" />
+    <link rel="apple-touch-icon" href="./apple-touch-icon.png" />
+    <link rel="manifest" href="./site.webmanifest" />
+    <link rel="stylesheet" href="./assets/main-5q73IhdI.css" />
+    <link rel="stylesheet" href="./assets/site-extra.css" />
+    <script type="module" src="./assets/account-nav.js"></script>
+    <script type="module" src="./assets/hub.js"></script>
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="site-header">
+      <div class="wrap header-inner">
+        <a class="brand" href="./index.html">
+          <img src="./icon.png" width="40" height="40" alt="LapSimPro app icon" />
+          <span class="brand-copy">
+            <span class="wordmark">LapSim<span class="ai">Pro</span></span>
+            <span class="domain">lapsimpro.com</span>
+          </span>
+        </a>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+        <nav id="site-nav" class="site-nav">
+          <a href="./index.html" data-nav="home">Home</a>
+          <a href="./news.html" data-nav="news">News</a>
+          <a href="./coaching.html" data-nav="coaching">Coaching</a>
+          <a href="./leaderboards.html" data-nav="boards">Leaderboards</a>
+          <a href="./aid.html" data-nav="aid">Aid</a>
+          <a href="./liveries.html" data-nav="liveries">Liveries</a>
+          <a href="./dashboard.html" data-nav="dash">Dashboard</a>
+          <a href="./pricing.html" data-nav="pricing">Pricing</a>
+          <a href="./get-started.html" data-nav="start">Get started</a>
+          <a href="./login.html" data-nav="account" data-auth-link>Log in</a>
+          <a class="btn btn-primary" href="./pricing.html">Subscribe</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="page-hero wrap">
+        <p class="kicker">Coaching library · public YouTube embeds</p>
+        <h1>Technique from coaches. Overlay from LapSimPro.</h1>
+        <p class="lede">
+          Featured players plus a grid of public iRacing coaching. Every clip is an official YouTube embed
+          (<code>youtube-nocookie.com</code>) with the creator’s title, channel, and a Watch on YouTube link.
+          We do not download, clip, re-encode, or re-upload anyone’s video.
+        </p>
+        <div class="hub-tabs">
+          <a class="btn btn-ghost" href="./news.html">News</a>
+          <a class="btn btn-primary" href="./coaching.html">Coaching</a>
+          <a class="btn btn-green" href="./aid.html">See the live aid</a>
+        </div>
+        <p class="legal hub-legal">
+          Attribution stays with the original channels (Coach Dave Academy, Suellio Almeida, Driver61, TraxionGG,
+          Danny Lee, VRS Sim Racing, GP Race Simulation). Videos remain on YouTube. Edit
+          <code>data/coaching-videos.json</code> to add a public, embeddable clip.
+        </p>
+      </section>
+
+      <section class="section" style="padding-top: 12px">
+        <div class="wrap">
+          <div class="section-head">
+            <p class="kicker">Featured</p>
+            <h2>GT3 braking with Coach Dave, then a high-level trail-brake session.</h2>
+            <p class="lede">
+              Seeded with the Laurence Dusoswa / Coach Dave Delta GT3 braking session and the Suellio Almeida
+              clip that iRacing threads often share as trail-braking help — verified title is a 1-second-per-lap
+              coaching session, not a generic tutorial name.
+            </p>
+          </div>
+          <p class="hub-status" data-hub-status>Loading coaching library…</p>
+          <div class="featured-grid" data-featured-grid></div>
+        </div>
+      </section>
+
+      <section class="section" style="padding-top: 0">
+        <div class="wrap">
+          <div class="section-head">
+            <p class="kicker">Library</p>
+            <h2>Trail braking, bias, telemetry — public and embeddable.</h2>
+          </div>
+          <div class="coach-toolbar" data-coach-filters role="toolbar" aria-label="Filter by topic"></div>
+          <div class="video-grid" data-video-grid></div>
+        </div>
+      </section>
+
+      <section class="section" style="padding-top: 0">
+        <div class="wrap">
+          <div class="section-head">
+            <p class="kicker">Practice it in the car</p>
+            <h2>Marks, pedals, and your own sessions.</h2>
+          </div>
+          <div class="tie-grid">
+            <article class="card feature" data-accent="aid">
+              <span class="pill">Overlay</span>
+              <h3>Brake markers on the sim</h3>
+              <p>After you watch a trace lesson, the HUD calls the next mark in metres with PREPARE / BRAKE NOW — display-only, never injected into iRacing.</p>
+              <a class="more" href="./aid.html">Tour the overlay →</a>
+            </article>
+            <article class="card feature" data-accent="setups">
+              <span class="pill">Liveries</span>
+              <h3>Look the part in GT3</h3>
+              <p>House wraps for the same catalog cars the overlay coaches. Download installs through LapSimPro’s paint pack — no sim injection.</p>
+              <a class="more" href="./liveries.html">Browse liveries →</a>
+            </article>
+            <article class="card feature" data-accent="boards">
+              <span class="pill">Dashboard</span>
+              <h3>Your laps, scored</h3>
+              <p>Subscriber dashboard shows sessions, personal bests, and coaching cards when a catalog reference is bound to the track and car.</p>
+              <a class="more" href="./dashboard.html">Open dashboard →</a>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" style="padding-top: 0">
+        <div class="wrap cta-band">
+          <p class="kicker">Windows overlay</p>
+          <h2>Watch the lesson. Then chase the mark live.</h2>
+          <p class="lede">Subscribe, install the click-through HUD, and run iRacing borderless. Coaching data covers cars and tracks in the Garage 61 / Track Titan catalog.</p>
+          <div class="btn-row" style="margin-top: 18px">
+            <a class="btn btn-primary" href="./pricing.html">View pricing</a>
+            <a class="btn btn-ghost" href="./download.html">Download installer</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap footer-inner">
+        <div>
+          <div class="footer-brand">
+            <img src="./icon.png" width="32" height="32" alt="" />
+            <span class="brand-copy">
+              <span class="wordmark">LapSim<span class="ai">Pro</span></span>
+              <span class="domain">lapsimpro.com</span>
+            </span>
+          </div>
+          <p class="legal">
+            Unofficial iRacing coaching HUD. Not affiliated with iRacing.com, Coach Dave Academy, Driver61,
+            VRS, Traxion, Garage 61, or Track Titan. Embedded players are YouTube’s. Overlay is display-only.
+          </p>
+          <div class="pedal-rail" aria-hidden="true"><span class="b"></span><span class="t"></span></div>
+        </div>
+        <div class="footer-links">
+          <a href="./news.html">News</a>
+          <a href="./coaching.html">Coaching</a>
+          <a href="./liveries.html">Liveries</a>
+          <a href="./aid.html">Aid</a>
+          <a href="./dashboard.html">Dashboard</a>
+          <a href="./pricing.html">Pricing</a>
+          <a href="./download.html">Download</a>
+        </div>
+      </div>
+      <div class="wrap legal" style="margin-top: 18px">© <span id="year">2026</span> LapSimPro · lapsimpro.com</div>
+    </footer>
+  </body>
+</html>
