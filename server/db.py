@@ -29,6 +29,7 @@ CREATE TABLE IF NOT EXISTS auth_tokens (
 CREATE TABLE IF NOT EXISTS training_sessions (
     id TEXT PRIMARY KEY,
     user_id TEXT NOT NULL,
+    client_session_id TEXT,
     track TEXT NOT NULL,
     car TEXT NOT NULL,
     started_at TEXT NOT NULL,
@@ -37,6 +38,15 @@ CREATE TABLE IF NOT EXISTS training_sessions (
     reference_source TEXT,
     bind_ok INTEGER NOT NULL DEFAULT 0,
     summary_json TEXT,
+    FOREIGN KEY (user_id) REFERENCES users(id)
+);
+
+CREATE TABLE IF NOT EXISTS device_codes (
+    code TEXT PRIMARY KEY,
+    user_id TEXT NOT NULL,
+    created_at TEXT NOT NULL,
+    expires_at TEXT NOT NULL,
+    consumed INTEGER NOT NULL DEFAULT 0,
     FOREIGN KEY (user_id) REFERENCES users(id)
 );
 
@@ -72,12 +82,26 @@ CREATE TABLE IF NOT EXISTS coaching_cards (
 """
 
 
+def _migrate(conn: sqlite3.Connection) -> None:
+    cols = {row[1] for row in conn.execute("PRAGMA table_info(training_sessions)").fetchall()}
+    if cols and "client_session_id" not in cols:
+        conn.execute("ALTER TABLE training_sessions ADD COLUMN client_session_id TEXT")
+    conn.execute(
+        """
+        CREATE UNIQUE INDEX IF NOT EXISTS idx_training_client
+        ON training_sessions(user_id, client_session_id)
+        WHERE client_session_id IS NOT NULL
+        """
+    )
+
+
 def connect(path: Path) -> sqlite3.Connection:
     path.parent.mkdir(parents=True, exist_ok=True)
     conn = sqlite3.connect(path)
     conn.row_factory = sqlite3.Row
     conn.execute("PRAGMA foreign_keys = ON")
     conn.executescript(SCHEMA)
+    _migrate(conn)
     return conn
 
 

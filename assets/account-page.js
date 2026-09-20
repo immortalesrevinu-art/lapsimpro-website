@@ -17,8 +17,16 @@ async function boot() {
 
 async function mintDevice() {
   const data = await api("/api/devices", { method: "POST", body: JSON.stringify({ name: "overlay" }) });
-  $("#device-token").textContent = data.token;
-  $("#device-box").hidden = false;
+  const box = $("#device-token");
+  box.textContent = data.token;
+  box.hidden = false;
+}
+
+async function mintDeviceCode() {
+  const data = await api("/api/devices/code", { method: "POST", body: "{}" });
+  const box = $("#device-code");
+  box.textContent = `${data.device_code}\n${data.cli}`;
+  box.hidden = false;
 }
 
 async function logout() {
@@ -47,6 +55,13 @@ document.addEventListener("DOMContentLoaded", () => {
   $("#mint-device")?.addEventListener("click", (event) => {
     event.preventDefault();
     mintDevice().catch((err) => {
+      $("#device-note").hidden = false;
+      $("#device-note").textContent = err.message;
+    });
+  });
+  $("#mint-device-code")?.addEventListener("click", (event) => {
+    event.preventDefault();
+    mintDeviceCode().catch((err) => {
       $("#device-note").hidden = false;
       $("#device-note").textContent = err.message;
     });

@@ -53,6 +53,7 @@ class Settings:
     price_elite: str
     cors_origins: tuple[str, ...]
     brake_hit_window_m: float
+    brake_time_window_s: float
     brake_close_window_m: float
     brake_threshold: float
     brake_hit_points: int
@@ -82,8 +83,9 @@ def load_settings() -> Settings:
         price_pro=os.environ.get("STRIPE_PRICE_PRO") or "price_1UGOsNPVazkD4GpuP7jWZuax",
         price_elite=os.environ.get("STRIPE_PRICE_ELITE") or "price_1UGOsMPVazkD4GpuqAtr8Muv",
         cors_origins=tuple(o.strip() for o in origins.split(",") if o.strip()),
-        brake_hit_window_m=_float("BRAKE_HIT_WINDOW_M", 8.0),
-        brake_close_window_m=_float("BRAKE_CLOSE_WINDOW_M", 16.0),
+        brake_hit_window_m=_float("BRAKE_HIT_WINDOW_M", 12.0),
+        brake_time_window_s=_float("BRAKE_TIME_WINDOW_S", 0.35),
+        brake_close_window_m=_float("BRAKE_CLOSE_WINDOW_M", 20.0),
         brake_threshold=_float("BRAKE_THRESHOLD", 0.2),
         brake_hit_points=_int("BRAKE_HIT_POINTS", 10),
         brake_close_points=_int("BRAKE_CLOSE_POINTS", 5),

@@ -59,12 +59,16 @@
         </article>
         <article class="card">
           <span class="pill">Overlay</span>
-          <h3>Mint a device token</h3>
-          <p>Paste it into the overlay or run <code>python -m lapsimpro_sync login</code>.</p>
+          <h3>Sign the overlay in</h3>
+          <p>
+            Overlay CLI: <code>python -m iracing_coach login --device-code</code>
+            or <code>--magic-token</code>. Token file stays at <code>~/.lapsimpro/session.json</code>.
+          </p>
           <div class="btn-row" style="margin-top: 16px">
-            <button class="btn btn-green" id="mint-device" type="button">Create device token</button>
+            <button class="btn btn-green" id="mint-device-code" type="button">Create device code</button>
+            <button class="btn btn-ghost" id="mint-device" type="button">Create device token</button>
           </div>
-          <div id="device-box" class="token-box" hidden style="margin-top: 14px"></div>
+          <p id="device-code" class="token-box" hidden style="margin-top: 14px"></p>
           <p id="device-token" class="token-box" hidden style="margin-top: 14px"></p>
           <div id="device-note" class="note" hidden></div>
         </article>

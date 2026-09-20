@@ -34,13 +34,22 @@ AccountClient.from_saved().sync(aid.flush_payload())
 
 ## Device login
 
-Before the race HUD (a separate window is fine):
+Website Account page mints a device code. Overlay (merged #36):
 
 ```text
-python -m lapsimpro_sync login --api https://api.lapsimpro.com
+python -m iracing_coach login --device-code LSP-XXXXXX
+python -m iracing_coach login --magic-token <token>
 ```
 
-Or paste a device token from the website Account page. The token is stored at `~/.lapsimpro/session.json` with `0600` permissions.
+This package also still supports `python -m lapsimpro_sync login`. The token is stored at `~/.lapsimpro/session.json` with `0600` permissions.
+
+Contract the overlay expects (so `LAPSIPRO_API_MOCK` can stay off):
+
+- `POST /api/v1/auth/device` `{ "device_code": "LSP-XXXXXX" }`
+- `POST /api/v1/auth/magic` `{ "magic_token": "..." }`
+- `GET /me`
+- `POST /sessions` body `schema: lapsimpro.session.v1`, upsert on `client_session_id`
+- `GET` / `PUT /pbs`
 
 ## HUD rules
 

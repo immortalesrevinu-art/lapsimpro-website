@@ -47,6 +47,7 @@ app.add_middleware(
 def score_config() -> ScoreConfig:
     return ScoreConfig(
         brake_hit_window_m=settings.brake_hit_window_m,
+        brake_time_window_s=settings.brake_time_window_s,
         brake_close_window_m=settings.brake_close_window_m,
         brake_threshold=settings.brake_threshold,
         brake_hit_points=settings.brake_hit_points,
@@ -292,10 +293,15 @@ def public_user(user: dict[str, Any]) -> dict[str, Any]:
     entitlement = entitlements.entitlement_for_user(settings, user)
     with db_session(settings.db_path) as conn:
         persist_entitlement(conn, user["id"], entitlement)
+        points = conn.execute(
+            "SELECT COALESCE(SUM(points), 0) AS total FROM point_events WHERE user_id = ?",
+            (user["id"],),
+        ).fetchone()
     return {
         "id": user["id"],
         "email": user["email"],
         "entitlement": entitlement,
+        "points_total": int(points["total"]),
     }
 
 
@@ -495,26 +501,90 @@ def overlay_sync(
                     seen_titles.add(payload["title"])
                     cards.append(payload)
 
+        seen_events = {(e.get("kind"), e.get("marker") or e.get("detail")) for e in events}
+        for raw in body.point_events:
+            kind = str(raw.get("kind") or "")
+            points = int(raw.get("points") or 0)
+            if kind == "brake_hit":
+                points = min(max(points, 0), settings.brake_hit_points)
+            elif kind == "lap_pb":
+                points = min(max(points, 0), settings.lap_pb_points)
+            elif kind == "lap_improve":
+                points = min(max(points, 0), settings.lap_improve_points)
+            elif kind == "brake_close":
+                points = min(max(points, 0), settings.brake_close_points)
+            else:
+                continue
+            if points <= 0:
+                continue
+            key = (kind, raw.get("marker") or raw.get("detail") or kind)
+            if key in seen_events:
+                continue
+            seen_events.add(key)
+            events.append(
+                {
+                    "kind": kind,
+                    "points": points,
+                    "detail": raw.get("detail") or kind,
+                    "marker": raw.get("marker"),
+                    "delta_m": raw.get("delta_m"),
+                    "lap_time_s": raw.get("lap_time_s"),
+                }
+            )
+
         now = iso()
-        conn.execute(
-            """
-            INSERT INTO training_sessions
-            (id, user_id, track, car, started_at, ended_at, best_lap_s, reference_source, bind_ok, summary_json)
-            VALUES (?,?,?,?,?,?,?,?,?,?)
-            """,
-            (
-                session_id,
-                user["id"],
-                track,
-                car,
-                session_meta.get("started_at") or now,
-                now,
-                best_this,
-                reference.get("source"),
-                1 if events else 0,
-                json.dumps({"laps": len(body.laps), "points": sum(e["points"] for e in events)}),
-            ),
-        )
+        client_sid = session_meta.get("client_session_id")
+        if client_sid:
+            existing = conn.execute(
+                "SELECT id FROM training_sessions WHERE user_id = ? AND client_session_id = ?",
+                (user["id"], client_sid),
+            ).fetchone()
+            if existing:
+                session_id = existing["id"]
+                conn.execute("DELETE FROM point_events WHERE session_id = ?", (session_id,))
+                conn.execute("DELETE FROM coaching_cards WHERE session_id = ?", (session_id,))
+                conn.execute(
+                    """
+                    UPDATE training_sessions
+                    SET track=?, car=?, started_at=?, ended_at=?, best_lap_s=?,
+                        reference_source=?, bind_ok=?, summary_json=?
+                    WHERE id=?
+                    """,
+                    (
+                        track,
+                        car,
+                        session_meta.get("started_at") or now,
+                        now,
+                        best_this,
+                        reference.get("source"),
+                        1 if events else 0,
+                        json.dumps({"laps": len(body.laps), "points": sum(e["points"] for e in events)}),
+                        session_id,
+                    ),
+                )
+        if not client_sid or not conn.execute(
+            "SELECT 1 FROM training_sessions WHERE id = ?", (session_id,)
+        ).fetchone():
+            conn.execute(
+                """
+                INSERT INTO training_sessions
+                (id, user_id, client_session_id, track, car, started_at, ended_at, best_lap_s, reference_source, bind_ok, summary_json)
+                VALUES (?,?,?,?,?,?,?,?,?,?,?)
+                """,
+                (
+                    session_id,
+                    user["id"],
+                    client_sid,
+                    track,
+                    car,
+                    session_meta.get("started_at") or now,
+                    now,
+                    best_this,
+                    reference.get("source"),
+                    1 if events else 0,
+                    json.dumps({"laps": len(body.laps), "points": sum(e["points"] for e in events)}),
+                ),
+            )
         if running_best is not None:
             conn.execute(
                 """
@@ -638,6 +708,170 @@ def public_config() -> dict[str, Any]:
             "elite": {"price": "$18.99", "price_id_set": bool(settings.price_elite)},
         },
     }
+
+
+def _mint_device_code(user_id: str) -> str:
+    alphabet = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789"
+    code = "LSP-" + "".join(secrets.choice(alphabet) for _ in range(6))
+    with db_session(settings.db_path) as conn:
+        conn.execute(
+            "INSERT INTO device_codes (code, user_id, created_at, expires_at, consumed) VALUES (?,?,?,?,0)",
+            (code, user_id, iso(), expires_in(24)),
+        )
+    return code
+
+
+@app.post("/api/devices/code")
+def create_device_code(request: Request, authorization: str | None = Header(default=None)) -> dict[str, str]:
+    user = current_user(request, authorization)
+    code = _mint_device_code(user["id"])
+    return {
+        "device_code": code,
+        "cli": f"python -m iracing_coach login --device-code {code}",
+    }
+
+
+class DeviceAuthBody(BaseModel):
+    device_code: str | None = None
+    code: str | None = None
+
+
+class MagicAuthBody(BaseModel):
+    token: str | None = None
+    magic_token: str | None = None
+    email: str | None = None
+
+
+def _normalize_session_v1(payload: dict[str, Any]) -> SyncBody:
+    session = payload.get("session") if isinstance(payload.get("session"), dict) else {}
+    reference = payload.get("reference") if isinstance(payload.get("reference"), dict) else {}
+    track = payload.get("track") or session.get("track") or ""
+    car = payload.get("car") or session.get("car") or ""
+    client_sid = payload.get("client_session_id") or session.get("client_session_id")
+    merged_session = {
+        **session,
+        "track": track,
+        "car": car,
+        "client_session_id": client_sid,
+        "started_at": payload.get("started_at") or session.get("started_at"),
+        "reference_source": payload.get("reference_source") or session.get("reference_source") or reference.get("source"),
+    }
+    merged_ref = {
+        **reference,
+        "track": reference.get("track") or payload.get("ref_track") or track,
+        "car": reference.get("car") or payload.get("ref_car") or car,
+        "source": reference.get("source") or payload.get("reference_source") or "catalog",
+        "markers": reference.get("markers") or payload.get("markers") or [],
+        "samples": reference.get("samples") or payload.get("ref_samples") or [],
+    }
+    return SyncBody(
+        session=merged_session,
+        reference=merged_ref,
+        laps=payload.get("laps") or session.get("laps") or [],
+        point_events=payload.get("point_events") or payload.get("events") or [],
+        coaching=payload.get("coaching") or [],
+    )
+
+
+@app.post("/api/v1/auth/device")
+def v1_auth_device(body: DeviceAuthBody, response: Response) -> dict[str, Any]:
+    code = (body.device_code or body.code or "").strip().upper()
+    if not code:
+        raise HTTPException(status_code=400, detail="device_code required")
+    with db_session(settings.db_path) as conn:
+        row = conn.execute("SELECT * FROM device_codes WHERE code = ?", (code,)).fetchone()
+        if not row or row["consumed"] or row["expires_at"] < iso():
+            raise HTTPException(status_code=401, detail="Device code invalid or expired")
+        conn.execute("UPDATE device_codes SET consumed = 1 WHERE code = ?", (code,))
+        token = issue_token(conn, row["user_id"], "device", "overlay", 24 * 90)
+        user = row_user(conn.execute("SELECT * FROM users WHERE id = ?", (row["user_id"],)).fetchone())
+    set_session_cookie(response, token)
+    return {"token": token, "user": public_user(user)}
+
+
+@app.post("/api/v1/auth/magic")
+def v1_auth_magic(body: MagicAuthBody, response: Response) -> dict[str, Any]:
+    raw = body.token or body.magic_token
+    if raw:
+        token_hash = hash_token(raw, settings.secret)
+        with db_session(settings.db_path) as conn:
+            row = conn.execute(
+                "SELECT * FROM auth_tokens WHERE token_hash = ? AND kind = 'magic'",
+                (token_hash,),
+            ).fetchone()
+            if not row or (row["expires_at"] and row["expires_at"] < iso()):
+                raise HTTPException(status_code=401, detail="Magic token expired")
+            conn.execute("DELETE FROM auth_tokens WHERE token_hash = ?", (token_hash,))
+            session_token = issue_token(conn, row["user_id"], "device", "overlay", 24 * 90)
+            user = row_user(conn.execute("SELECT * FROM users WHERE id = ?", (row["user_id"],)).fetchone())
+        set_session_cookie(response, session_token)
+        return {"token": session_token, "user": public_user(user)}
+    if body.email:
+        return magic_link(MagicBody(email=body.email))
+    raise HTTPException(status_code=400, detail="token or email required")
+
+
+@app.get("/api/v1/me")
+@app.get("/me")
+def v1_me(request: Request, authorization: str | None = Header(default=None)) -> dict[str, Any]:
+    return public_user(current_user(request, authorization))
+
+
+@app.post("/api/v1/sessions")
+@app.post("/sessions")
+def v1_sessions(payload: dict[str, Any], request: Request, authorization: str | None = Header(default=None)) -> dict[str, Any]:
+    schema = payload.get("schema") or payload.get("type")
+    if schema and schema not in {"lapsimpro.session.v1", "session.v1"}:
+        raise HTTPException(status_code=400, detail="Expected schema lapsimpro.session.v1")
+    return overlay_sync(_normalize_session_v1(payload), request, authorization)
+
+
+class PbBody(BaseModel):
+    track: str | None = None
+    car: str | None = None
+    lap_time_s: float | None = None
+    pbs: list[dict[str, Any]] | None = None
+
+
+@app.get("/api/v1/pbs")
+@app.get("/pbs")
+def v1_get_pbs(request: Request, authorization: str | None = Header(default=None)) -> dict[str, Any]:
+    user = current_user(request, authorization)
+    with db_session(settings.db_path) as conn:
+        rows = [
+            dict(r)
+            for r in conn.execute(
+                "SELECT track, car, lap_time_s, updated_at FROM best_laps WHERE user_id = ? ORDER BY updated_at DESC",
+                (user["id"],),
+            ).fetchall()
+        ]
+    return {"pbs": rows}
+
+
+@app.put("/api/v1/pbs")
+@app.put("/pbs")
+def v1_put_pbs(body: PbBody, request: Request, authorization: str | None = Header(default=None)) -> dict[str, Any]:
+    user = current_user(request, authorization)
+    items = list(body.pbs or [])
+    if body.track and body.car and body.lap_time_s:
+        items.append({"track": body.track, "car": body.car, "lap_time_s": body.lap_time_s})
+    if not items:
+        raise HTTPException(status_code=400, detail="Provide track, car, lap_time_s")
+    now = iso()
+    with db_session(settings.db_path) as conn:
+        for item in items:
+            conn.execute(
+                """
+                INSERT INTO best_laps (user_id, track, car, lap_time_s, session_id, updated_at)
+                VALUES (?,?,?,?,?,?)
+                ON CONFLICT(user_id, track, car) DO UPDATE SET
+                    lap_time_s = excluded.lap_time_s,
+                    updated_at = excluded.updated_at
+                WHERE excluded.lap_time_s < best_laps.lap_time_s
+                """,
+                (user["id"], item["track"], item["car"], float(item["lap_time_s"]), None, now),
+            )
+    return v1_get_pbs(request, authorization)
 
 
 app.mount("/", StaticFiles(directory=str(ROOT), html=True), name="site")

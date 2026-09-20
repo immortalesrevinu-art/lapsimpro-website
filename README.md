@@ -6,6 +6,20 @@ The public site remains static HTML (GitHub Pages). The API is Python so it matc
 
 The overlay application repo is private and was not checked out in this workspace. Live scoring + upload live in `overlay/lapsimpro_sync/` (copy that package into [iracing-coach-overlay](https://github.com/immortalesrevinu-art/iracing-coach-overlay)). See `overlay/INTEGRATE.md`.
 
+## Overlay API contract (merged overlay #36)
+
+The overlay turns off `LAPSIPRO_API_MOCK` when these routes exist. Base URL can be `http://127.0.0.1:8787` or `http://127.0.0.1:8787/api/v1`.
+
+| Method | Path | Purpose |
+| --- | --- | --- |
+| POST | `/api/v1/auth/device` | Exchange a website device code (`python -m iracing_coach login --device-code`) |
+| POST | `/api/v1/auth/magic` | Exchange a magic token (`--magic-token`) or request a link with `{email}` |
+| GET | `/me` or `/api/v1/me` | Account + entitlement + points |
+| POST | `/sessions` or `/api/v1/sessions` | `lapsimpro.session.v1` upsert by `client_session_id` |
+| GET/PUT | `/pbs` or `/api/v1/pbs` | Personal bests per track+car |
+
+Overlay scoring (also re-checked on the server when samples are present): **+10** brake-hit within **12 m or 0.35 s** of a bound REF marker; **+50** personal best. Uploads only when signed in.
+
 ## Local how-to
 
 ```bash

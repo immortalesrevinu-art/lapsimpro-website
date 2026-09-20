@@ -10,8 +10,10 @@ from .honesty import bind_gates
 
 @dataclass(frozen=True)
 class ScoreConfig:
-    brake_hit_window_m: float = 8.0
-    brake_close_window_m: float = 16.0
+    # Overlay contract: +10 if the hit is within 12 m or 0.35 s of the REF marker.
+    brake_hit_window_m: float = 12.0
+    brake_time_window_s: float = 0.35
+    brake_close_window_m: float = 20.0
     brake_threshold: float = 0.2
     brake_hit_points: int = 10
     brake_close_points: int = 5
@@ -116,10 +118,11 @@ def score_brake_hits(
     for marker in markers:
         if marker.name in seen:
             continue
+        search = max(cfg.brake_close_window_m, cfg.brake_hit_window_m + 8.0)
         hit_d = first_threshold(
             samples,
-            marker.dist_m - cfg.brake_close_window_m,
-            marker.dist_m + cfg.brake_close_window_m,
+            marker.dist_m - search,
+            marker.dist_m + search,
             "b",
             cfg.brake_threshold,
         )
@@ -127,7 +130,14 @@ def score_brake_hits(
             continue
         delta = hit_d - marker.dist_m
         abs_delta = abs(delta)
-        if abs_delta <= cfg.brake_hit_window_m:
+        speed = 0.0
+        for sample in samples:
+            if abs(sample.d - marker.dist_m) < 8:
+                raw = sample.v
+                speed = raw / 3.6 if raw > 120 else raw
+                break
+        time_ok = bool(speed > 1 and (abs_delta / speed) <= cfg.brake_time_window_s)
+        if abs_delta <= cfg.brake_hit_window_m or time_ok:
             events.append(
                 PointEvent(
                     kind="brake_hit",
