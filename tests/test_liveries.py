@@ -80,7 +80,8 @@ def test_install_filenames_use_customer_id(tmp_path):
 def test_liveries_page_has_no_github_cta():
     html = (ROOT / "liveries.html").read_text(encoding="utf-8")
     assert "github.com" not in html.lower()
-    assert 'data-nav="liveries"' in html
+    assert 'data-nav="liveries"' not in html
+    assert 'href="./news.html"' not in html
     assert "data-install-handoff" in html
     assert "./data/liveries.json" in (ROOT / "assets/liveries-page.js").read_text(encoding="utf-8")
 

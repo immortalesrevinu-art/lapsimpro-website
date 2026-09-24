@@ -68,6 +68,29 @@ def test_home_footer_links_support():
     assert "data-nav=\"support\"" in home
 
 
+def test_public_pages_do_not_feature_news_or_liveries():
+    pages = [
+        "index.html",
+        "download.html",
+        "support.html",
+        "get-started.html",
+        "pricing.html",
+        "404.html",
+        "login.html",
+        "account.html",
+        "dashboard.html",
+        "aid.html",
+        "leaderboards.html",
+        "coaching.html",
+    ]
+    for name in pages:
+        html = (ROOT / name).read_text(encoding="utf-8")
+        assert "news.html" not in html, name
+        assert "liveries.html" not in html, name
+        assert 'data-nav="news"' not in html, name
+        assert 'data-nav="liveries"' not in html, name
+
+
 def test_support_page_is_served(client):
     page = client.get("/support.html")
     assert page.status_code == 200
