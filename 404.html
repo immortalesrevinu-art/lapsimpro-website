@@ -39,6 +39,7 @@
           <a href="./pricing.html">Pricing</a>
           <a href="./login.html">Log in</a>
           <a href="./get-started.html">Get started</a>
+          <a href="./support.html" data-nav="support">Support</a>
         </nav>
       </div>
     </header>
@@ -46,10 +47,16 @@
       <p class="kicker">404</p>
       <h1>Off track.</h1>
       <p class="lede">That page is not on this circuit. Head back to the grid.</p>
+      <p class="lede" id="recovery-note">
+        If a download failed,
+        <a href="./releases/" style="color: var(--cyan); font-weight: 600">/releases/</a>
+        forwards to the installer. Steps for a 404, SmartScreen, or a missing subscription are on
+        <a href="./support.html" style="color: var(--cyan); font-weight: 600">Support</a>.
+      </p>
       <div class="btn-row" style="margin-top: 18px">
         <a class="btn btn-primary" href="./index.html">Home</a>
-        <a class="btn btn-ghost" href="./news.html">News</a>
-        <a class="btn btn-ghost" href="./coaching.html">Coaching</a>
+        <a class="btn btn-ghost" href="./support.html">Support</a>
+        <a class="btn btn-ghost" href="./download.html">Download</a>
         <a class="btn btn-ghost" href="./pricing.html">Pricing</a>
       </div>
     </main>
@@ -69,6 +76,11 @@
           lede.textContent =
             "GitHub Pages cannot host LapSimPro-Setup.zip (it is about 280 MB). Download the public GitHub Release asset instead.";
         }
+        var note = document.getElementById("recovery-note");
+        if (note) {
+          note.innerHTML =
+            'Open <a href="./releases/" style="color: var(--cyan); font-weight: 600">/releases/</a> if this page does not start the file. Installer warnings and login issues are on <a href="./support.html" style="color: var(--cyan); font-weight: 600">Support</a>.';
+        }
         var row = document.querySelector(".btn-row");
         if (row) {
           row.innerHTML = "";
@@ -77,6 +89,16 @@
           link.href = asset;
           link.textContent = "Download LapSimPro-Setup.zip";
           row.appendChild(link);
+          var help = document.createElement("a");
+          help.className = "btn btn-ghost";
+          help.href = "./support.html";
+          help.textContent = "Download help";
+          row.appendChild(help);
+          var releases = document.createElement("a");
+          releases.className = "btn btn-ghost";
+          releases.href = "./releases/";
+          releases.textContent = "Releases page";
+          row.appendChild(releases);
         }
       })();
     </script>
