@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#07080b" />
+    <title>Support — LapSimPro</title>
+    <meta
+      name="description"
+      content="LapSimPro support: download after purchase, fix a 404 on the installer, login and subscription checks, Windows SmartScreen, and overlay startup. lapsimpro.com"
+    />
+    <meta property="og:title" content="LapSimPro support" />
+    <meta
+      property="og:description"
+      content="Recover a failed LapSimPro download, check your subscription, and get the overlay running. lapsimpro.com"
+    />
+    <meta property="og:site_name" content="LapSimPro" />
+    <meta property="og:image" content="./og.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="LapSimPro support" />
+    <meta
+      name="twitter:description"
+      content="Recover a failed LapSimPro download, check your subscription, and get the overlay running. lapsimpro.com"
+    />
+    <link rel="icon" type="image/png" href="./favicon.png" />
+    <link rel="apple-touch-icon" href="./apple-touch-icon.png" />
+    <link rel="manifest" href="./site.webmanifest" />
+    <script type="module" src="./assets/account-nav.js"></script>
+    <script type="module" crossorigin src="./assets/main-DFTLKTCI.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/main-5q73IhdI.css" />
+    <link rel="stylesheet" href="./assets/site-extra.css" />
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="site-header">
+      <div class="wrap header-inner">
+        <a class="brand" href="./index.html">
+          <img src="./icon.png" width="40" height="40" alt="LapSimPro app icon" />
+          <span class="brand-copy">
+            <span class="wordmark">LapSim<span class="ai">Pro</span></span>
+            <span class="domain">lapsimpro.com</span>
+          </span>
+        </a>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+        <nav id="site-nav" class="site-nav">
+          <a href="./index.html" data-nav="home">Home</a>
+          <a href="./coaching.html" data-nav="coaching">Coaching</a>
+          <a href="./leaderboards.html" data-nav="boards">Leaderboards</a>
+          <a href="./aid.html" data-nav="aid">Aid</a>
+          <a href="./dashboard.html" data-nav="dash">Dashboard</a>
+          <a href="./pricing.html" data-nav="pricing">Pricing</a>
+          <a href="./get-started.html" data-nav="start">Get started</a>
+          <a href="./support.html" data-nav="support">Support</a>
+          <a href="./login.html" data-nav="account" data-auth-link>Log in</a>
+          <a class="btn btn-primary" href="./pricing.html">Subscribe</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main" class="wrap" style="padding-bottom: 72px">
+      <header class="page-hero">
+        <p class="kicker">Support · FAQ</p>
+        <h1>Download failed? Start here.</h1>
+        <p class="lede">
+          Paying subscribers install from
+          <a href="./download.html">Download</a>
+          after login. That page checks your Stripe subscription, then points at
+          <code>LapSimPro-Setup.zip</code>. If the website path for the zip 404s, use the
+          <a href="./releases/">releases page</a>
+          — it forwards to the installer file.
+        </p>
+        <div class="btn-row" style="margin-top: 18px">
+          <a class="btn btn-primary" href="./download.html">Open download</a>
+          <a class="btn btn-green" href="./releases/">Open releases page</a>
+          <a class="btn btn-ghost" href="#contact">Email support</a>
+        </div>
+        <nav class="faq-jump" aria-label="On this page">
+          <a href="#after-purchase">After purchase</a>
+          <a href="#download-404">Download 404</a>
+          <a href="#login">Login &amp; subscription</a>
+          <a href="#smartscreen">SmartScreen</a>
+          <a href="#overlay">Overlay won't start</a>
+          <a href="#fps">FPS</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </header>
+
+      <div class="note" style="margin: 8px 0 28px">
+        <strong>The zip is not stored on lapsimpro.com.</strong>
+        <code>https://lapsimpro.com/releases/LapSimPro-Setup.zip</code> returns 404 on purpose
+        (the file is about 280 MB, which GitHub Pages will not host). The working copy is the
+        public Release asset, linked from
+        <a href="./releases/" style="color: var(--cyan); font-weight: 600">/releases/</a>.
+      </div>
+
+      <div class="faq-list">
+        <details class="faq-item" id="after-purchase" open>
+          <summary>How do I download after I purchase?</summary>
+          <ol>
+            <li>
+              Pick Starter, Pro, or Elite on
+              <a href="./pricing.html">Pricing</a>
+              and finish Stripe checkout. Visa and major credit cards. We never see your card number.
+            </li>
+            <li>
+              Stripe sends you back to
+              <a href="./download.html">Download</a>.
+              Log in if the page asks. The download button stays locked until this account has an
+              active subscription.
+            </li>
+            <li>
+              Click <strong>Download LapSimPro</strong>. That request goes through the subscriber
+              check, then gives you <code>LapSimPro-Setup.zip</code>.
+            </li>
+            <li>On the Windows racing PC, extract the zip and run the installer.</li>
+            <li>
+              In iRacing, set Display Mode to Windowed or Borderless Windowed, then launch LapSimPro.
+            </li>
+          </ol>
+          <p>
+            Same steps are on
+            <a href="./get-started.html">Get started</a>.
+            The subscription check itself is unchanged: a logged-in Download still confirms the plan
+            before the installer link.
+          </p>
+        </details>
+
+        <details class="faq-item" id="download-404" open>
+          <summary>The download 404s. Where is the installer?</summary>
+          <p>
+            A 404 on <code>lapsimpro.com/releases/LapSimPro-Setup.zip</code> means the browser asked
+            the website for a file it does not keep. Use either of these:
+          </p>
+          <ol>
+            <li>
+              Open
+              <a href="./releases/">https://lapsimpro.com/releases/</a>.
+              That page forwards you to the installer.
+            </li>
+            <li>
+              Or save the Release asset directly:
+              <a
+                href="https://github.com/immortalesrevinu-art/lapsimpro-website/releases/download/v0.1.0/LapSimPro-Setup.zip"
+                >LapSimPro-Setup.zip</a
+              >.
+            </li>
+          </ol>
+          <p>
+            If you are a subscriber, start from
+            <a href="./download.html">Download</a>
+            while logged in so the subscription check runs first. The file you receive is the same
+            zip. If the browser says the download failed, blocked it, or saved an HTML page named
+            like the zip, delete that file and use the releases page again.
+          </p>
+        </details>
+
+        <details class="faq-item" id="login">
+          <summary>I paid, but login or download still says I'm not subscribed.</summary>
+          <ol>
+            <li>
+              Log in on
+              <a href="./login.html">Log in</a>
+              with the email for this LapSimPro account. Email and password, or the magic link.
+            </li>
+            <li>
+              Open
+              <a href="./download.html">Download</a>
+              again. Logged out, the button says <strong>Log in to download</strong>. Logged in
+              without an active Starter, Pro, or Elite plan, it says
+              <strong>Subscribe to download</strong>.
+            </li>
+            <li>
+              If Stripe just returned you here with <code>session_id</code> in the address bar, stay
+              logged in and reload Download. The page attaches that checkout to the account.
+            </li>
+            <li>
+              Open
+              <a href="./account.html">Account</a>.
+              An active plan shows the plan name and a link to Download. “No active subscription”
+              means this login is not entitled yet.
+            </li>
+          </ol>
+          <p>
+            Checkout while logged in is the reliable path. If you paid and Account still shows no
+            subscription, email support with the account email and the approximate time of payment.
+            Do not send the card number, CVC, or full card details.
+          </p>
+        </details>
+
+        <details class="faq-item" id="smartscreen">
+          <summary>Windows SmartScreen warns that the installer is unsigned.</summary>
+          <p>
+            This build is not signed with a public code-signing certificate. Windows may show
+            “Windows protected your PC” and say Microsoft Defender SmartScreen prevented an
+            unrecognized app from starting. That dialog is expected for this installer.
+          </p>
+          <ol>
+            <li>
+              Confirm the file is <code>LapSimPro-Setup.zip</code> from
+              <a href="./download.html">Download</a>
+              or
+              <a href="./releases/">/releases/</a>.
+            </li>
+            <li>Extract the zip, then start the installer from that folder.</li>
+            <li>On the SmartScreen dialog, choose <strong>More info</strong>, then <strong>Run anyway</strong>.</li>
+          </ol>
+          <p>
+            Only do that for the LapSimPro installer you just downloaded from lapsimpro.com. Leave
+            SmartScreen on for the rest of the PC. If Windows or the browser offers a different file
+            name, or the zip will not extract, stop and email support.
+          </p>
+        </details>
+
+        <details class="faq-item" id="overlay">
+          <summary>The overlay won't start, or I can't see the HUD.</summary>
+          <ol>
+            <li>Finish the installer, then launch LapSimPro on the same PC as iRacing.</li>
+            <li>
+              In iRacing: Options → Graphics → Display Mode → <strong>Windowed</strong> or
+              <strong>Borderless Windowed</strong>. Exclusive fullscreen covers every overlay, so the
+              HUD can be running and still be invisible.
+            </li>
+            <li>
+              Until the sim connects, the HUD stays up and reads <strong>WAITING FOR IRACING</strong>.
+              Start a session, then look again.
+            </li>
+            <li>
+              <code>Ctrl+Shift+O</code> toggles click-through so you can drag the HUD.
+              <code>Ctrl+Shift+Q</code> or Esc quits.
+            </li>
+          </ol>
+          <p>
+            In the pits the cue goes to <strong>STANDBY</strong> once a reference is loaded.
+            <strong>NO REFERENCE FOR THIS TRACK</strong> means this track and car have no catalog lap
+            yet — it retries, and it will not paste another track’s markers onto this one.
+            <strong>NO TRACK TITAN DATA</strong> only means the community time is missing. Brake
+            markers still run from the package.
+          </p>
+          <p>
+            Cloud sync uses a LapSimPro device token from
+            <a href="./account.html">Account</a>, stored at
+            <code>~/.lapsimpro/session.json</code>. The HUD can still draw without that file. Download
+            itself stays tied to the subscription, not to the device token.
+          </p>
+        </details>
+
+        <details class="faq-item" id="fps">
+          <summary>The sim stutters after I turn the overlay on.</summary>
+          <p>
+            LapSimPro is a separate display-only window. It does not inject throttle, brake, or
+            brake bias, and it does not change iRacing’s frame limiter.
+          </p>
+          <ul>
+            <li>Keep iRacing in windowed or borderless, not exclusive fullscreen.</li>
+            <li>Close other overlays you are not using.</li>
+            <li>If the PC is already near its limit, lower iRacing graphics quality.</li>
+            <li>Leave the HUD click-through (<code>Ctrl+Shift+O</code>) while you are driving so it does not take clicks.</li>
+          </ul>
+        </details>
+
+        <details class="faq-item" id="contact">
+          <summary>How do I contact support?</summary>
+          <p>
+            Email
+            <a href="mailto:theuniversecontractor@gmail.com?subject=LapSimPro%20support">theuniversecontractor@gmail.com</a>.
+            Include the email on your LapSimPro account, what you clicked (Download or the releases
+            page), and the exact message (404, SmartScreen, or “no active subscription”).
+          </p>
+          <p>
+            There is no phone line and no chat widget. Do not send card numbers or passwords.
+          </p>
+        </details>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap footer-inner">
+        <div>
+          <div class="footer-brand">
+            <img src="./icon.png" width="32" height="32" alt="" />
+            <span class="brand-copy">
+              <span class="wordmark">LapSim<span class="ai">Pro</span></span>
+              <span class="domain">lapsimpro.com</span>
+            </span>
+          </div>
+          <p class="legal">
+            Unofficial iRacing coaching HUD. Not affiliated with iRacing.com, Garage 61, or Track Titan.
+            Overlay is display-only: it never injects throttle, brake, or brake-bias into the sim.
+          </p>
+          <div class="pedal-rail" aria-hidden="true"><span class="b"></span><span class="t"></span></div>
+        </div>
+        <div class="footer-links">
+          <a href="./support.html">Support</a>
+          <a href="./download.html">Download</a>
+          <a href="./pricing.html">Pricing</a>
+          <a href="./get-started.html">Get started</a>
+          <a href="./index.html">Home</a>
+          <a href="./account.html">Account</a>
+        </div>
+      </div>
+      <div class="wrap legal" style="margin-top: 18px">© <span id="year">2026</span> LapSimPro · lapsimpro.com</div>
+    </footer>
+    <script>
+      (function () {
+        function openFromHash() {
+          var id = location.hash.replace("#", "");
+          if (!id) return;
+          var el = document.getElementById(id);
+          if (el && el.tagName === "DETAILS") el.open = true;
+        }
+        openFromHash();
+        window.addEventListener("hashchange", openFromHash);
+      })();
+    </script>
+  </body>
+</html>
