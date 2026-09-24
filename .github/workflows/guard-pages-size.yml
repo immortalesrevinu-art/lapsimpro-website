@@ -1,0 +1,37 @@
+# GitHub Pages rejects files over 100MB. The Windows installer must stay a
+# Release asset (see publish-installer.yml), never a file in this tree.
+name: Keep Pages free of the installer
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  no-installer-in-site:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Reject LapSimPro-Setup.zip and files over 100MB
+        run: |
+          set -euo pipefail
+          limit=104857600
+          failed=0
+          while IFS= read -r -d '' file; do
+            case "$file" in
+              */LapSimPro-Setup.zip|LapSimPro-Setup.zip)
+                echo "::error file=${file}::Do not commit the installer. Publish it with scripts/publish-installer.sh"
+                failed=1
+                ;;
+            esac
+            size=$(wc -c < "$file" | tr -d ' ')
+            if [[ "$size" -gt "$limit" ]]; then
+              echo "::error file=${file}::${size} bytes exceeds the 100MB GitHub Pages file limit"
+              failed=1
+            fi
+          done < <(git ls-files -z)
+          exit "$failed"

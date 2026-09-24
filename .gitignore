@@ -11,4 +11,6 @@ data/*.db-journal
 *.egg-info/
 dist/
 build/
+# Windows installer belongs on a GitHub Release, not in the Pages tree.
+LapSimPro-Setup.zip
 .DS_Store

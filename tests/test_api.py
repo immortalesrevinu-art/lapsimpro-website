@@ -26,6 +26,18 @@ def test_register_login_and_me(client):
     assert login.status_code == 200
 
 
+def test_default_download_url_is_public_release_asset(monkeypatch):
+    monkeypatch.delenv("LAPSIMPRO_DOWNLOAD_URL", raising=False)
+    from server.config import DEFAULT_DOWNLOAD_URL, load_settings
+
+    url = load_settings().download_url
+    assert url == DEFAULT_DOWNLOAD_URL
+    assert url.startswith("https://github.com/immortalesrevinu-art/lapsimpro-website/releases/download/")
+    assert url.endswith("/LapSimPro-Setup.zip")
+    assert "iracing-coach-overlay" not in url
+    assert "/actions/artifacts/" not in url
+
+
 def test_download_requires_entitlement(gated_client):
     gated_client.post("/api/auth/register", json={"email": "free@example.com", "password": "password1"})
     res = gated_client.get("/api/download")
