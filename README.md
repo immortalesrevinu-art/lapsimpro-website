@@ -102,6 +102,12 @@ Use a [restricted API key](https://docs.stripe.com/keys/restricted-api-keys.md) 
 - No invented G61 pedal traces. Local replay is labeled `catalog_sample`.
 - Overlay HUD points chip is display-only and must not steal focus or change borderless click-through.
 
+## Windows installer
+
+Paying subscribers receive `LapSimPro-Setup.zip` from `GET /api/download` after the Stripe entitlement check. The file is a [GitHub Release asset](https://github.com/immortalesrevinu-art/lapsimpro-website/releases/download/v0.1.0/LapSimPro-Setup.zip) on this repo (`v0.1.0`, about 282MB). GitHub Pages serves `download.html` and a thin [`releases/`](./releases/index.html) redirect. It does not host the zip. `/releases/LapSimPro-Setup.zip` stays a 404 that links to the same Release asset.
+
+Do not upload the installer with `actions/upload-artifact`. That storage is quota-limited and is what blocked Windows release builds. Publish with `scripts/publish-installer.sh` or the **Publish Windows installer** workflow. Full steps: [`docs/publish-installer.md`](docs/publish-installer.md).
+
 ## Env vars
 
 See `.env.example`. Nothing secret belongs in git.
@@ -112,7 +118,7 @@ See `.env.example`. Nothing secret belongs in git.
 | `LAPSIMPRO_DB` | SQLite path |
 | `LAPSIMPRO_PUBLIC_URL` | Redirects and magic-link host |
 | `LAPSIMPRO_DEV_ENTITLEMENT` | Local bypass of Stripe (Starter) |
-| `LAPSIMPRO_DOWNLOAD_URL` | Installer returned after entitlement. Default: `https://github.com/immortalesrevinu-art/lapsimpro-website/releases/download/v0.1.0/LapSimPro-Setup.zip` |
+| `LAPSIMPRO_DOWNLOAD_URL` | Installer returned after entitlement. Default: `https://github.com/immortalesrevinu-art/lapsimpro-website/releases/download/v0.1.0/LapSimPro-Setup.zip`. See [docs/publish-installer.md](docs/publish-installer.md). |
 | `STRIPE_SECRET_KEY` | Restricted key for customer / subscription reads |
 | `STRIPE_WEBHOOK_SECRET` | Webhook signature |
 | `STRIPE_PRICE_*` | Checkout line items |

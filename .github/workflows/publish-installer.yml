@@ -1,0 +1,115 @@
+# Attach LapSimPro-Setup.zip to a GitHub Release.
+#
+# Do not switch this job to actions/upload-artifact. A ~282MB installer retained
+# as an Actions artifact exhausts account storage quota (the Windows release
+# failure). GitHub Pages also rejects files over 100MB, so this workflow never
+# commits the zip or deploys it with the site.
+name: Publish Windows installer
+
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Release tag that should receive LapSimPro-Setup.zip
+        required: true
+        default: v0.1.0
+        type: string
+      source_url:
+        description: HTTPS URL of the zip. Not an Actions artifact URL.
+        required: true
+        type: string
+      replace_same_name:
+        description: Replace LapSimPro-Setup.zip on this tag. Other assets stay.
+        required: true
+        default: false
+        type: boolean
+      create_release:
+        description: Create the release when the tag is missing. Never deletes v0.1.0.
+        required: true
+        default: false
+        type: boolean
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Validate inputs
+        env:
+          SOURCE_URL: ${{ inputs.source_url }}
+          TAG: ${{ inputs.tag }}
+        run: |
+          set -euo pipefail
+          case "$SOURCE_URL" in
+            https://*) ;;
+            *)
+              echo "source_url must start with https://"
+              exit 1
+              ;;
+          esac
+          case "$SOURCE_URL" in
+            *"/actions/artifacts/"*|*"api.github.com/repos/"*"/actions/artifacts"*)
+              echo "Refusing an Actions artifact URL. Upload the zip with gh release upload instead."
+              exit 1
+              ;;
+          esac
+          if ! printf '%s' "$TAG" | grep -Eq '^v[0-9][0-9A-Za-z._+-]*$'; then
+            echo "tag must look like v0.1.0"
+            exit 1
+          fi
+
+      - name: Download installer onto the runner disk
+        env:
+          SOURCE_URL: ${{ inputs.source_url }}
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/installer"
+          curl --fail --location --retry 3 --retry-delay 2 \
+            --output "$RUNNER_TEMP/installer/LapSimPro-Setup.zip" \
+            "$SOURCE_URL"
+          python3 - "$RUNNER_TEMP/installer/LapSimPro-Setup.zip" <<'PY'
+          import sys
+          import zipfile
+
+          path = sys.argv[1]
+          size = __import__("os").path.getsize(path)
+          print(f"downloaded {size} bytes")
+          if not zipfile.is_zipfile(path):
+              raise SystemExit("download is not a zip file")
+          if size < 1_000_000:
+              raise SystemExit("file is under 1MB; refusing to publish it as the installer")
+          if size > 2_000_000_000:
+              raise SystemExit("file exceeds the 2GB GitHub Release asset limit")
+          PY
+
+      - name: Attach zip to the GitHub Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ inputs.tag }}
+          REPLACE: ${{ inputs.replace_same_name }}
+          CREATE: ${{ inputs.create_release }}
+          REPO: ${{ github.repository }}
+        run: |
+          set -euo pipefail
+          file="$RUNNER_TEMP/installer/LapSimPro-Setup.zip"
+          if ! gh release view "$TAG" --repo "$REPO" >/dev/null 2>&1; then
+            if [[ "$CREATE" == "true" ]]; then
+              gh release create "$TAG" \
+                --repo "$REPO" \
+                --title "LapSimPro ${TAG#v}" \
+                --notes "Windows installer LapSimPro-Setup.zip. Hosted as a Release asset so Pages and Actions artifact storage are not used."
+            else
+              echo "Release $TAG does not exist. Re-run with create_release enabled, or create the release first."
+              exit 1
+            fi
+          fi
+          if [[ "$REPLACE" == "true" ]]; then
+            echo "Replacing LapSimPro-Setup.zip on $TAG. Other assets on this release are not deleted."
+            gh release upload "$TAG" "$file#LapSimPro-Setup.zip" --repo "$REPO" --clobber
+          else
+            echo "Uploading LapSimPro-Setup.zip. An existing asset with this name will fail the job and will not be deleted."
+            gh release upload "$TAG" "$file#LapSimPro-Setup.zip" --repo "$REPO"
+          fi
+          gh release view "$TAG" --repo "$REPO"
