@@ -112,7 +112,7 @@ See `.env.example`. Nothing secret belongs in git.
 | `LAPSIMPRO_DB` | SQLite path |
 | `LAPSIMPRO_PUBLIC_URL` | Redirects and magic-link host |
 | `LAPSIMPRO_DEV_ENTITLEMENT` | Local bypass of Stripe (Starter) |
-| `LAPSIMPRO_DOWNLOAD_URL` | Installer returned after entitlement |
+| `LAPSIMPRO_DOWNLOAD_URL` | Installer returned after entitlement. Default: `https://github.com/immortalesrevinu-art/lapsimpro-website/releases/download/v0.1.0/LapSimPro-Setup.zip` |
 | `STRIPE_SECRET_KEY` | Restricted key for customer / subscription reads |
 | `STRIPE_WEBHOOK_SECRET` | Webhook signature |
 | `STRIPE_PRICE_*` | Checkout line items |

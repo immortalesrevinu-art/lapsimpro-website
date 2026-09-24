@@ -23,6 +23,8 @@ services:
         value: https://lapsimpro.com,https://www.lapsimpro.com,http://lapsimpro.com,http://www.lapsimpro.com
       - key: LAPSIMPRO_DEV_ENTITLEMENT
         value: "1"
+      - key: LAPSIMPRO_DOWNLOAD_URL
+        value: "https://github.com/immortalesrevinu-art/lapsimpro-website/releases/download/v0.1.0/LapSimPro-Setup.zip"
       - key: LAPSIMPRO_SECRET
         generateValue: true
       - key: STRIPE_SECRET_KEY

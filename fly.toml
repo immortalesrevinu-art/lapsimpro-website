@@ -12,6 +12,7 @@ primary_region = "sjc"
   LAPSIMPRO_API_URL = "https://lapsimpro-api.fly.dev"
   LAPSIMPRO_CORS_ORIGINS = "https://lapsimpro.com,https://www.lapsimpro.com,http://lapsimpro.com,http://www.lapsimpro.com"
   LAPSIMPRO_DEV_ENTITLEMENT = "1"
+  LAPSIMPRO_DOWNLOAD_URL = "https://github.com/immortalesrevinu-art/lapsimpro-website/releases/download/v0.1.0/LapSimPro-Setup.zip"
 
 [http_service]
   internal_port = 8787
