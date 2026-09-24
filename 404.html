@@ -2,6 +2,12 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
+    <script>
+      (function () {
+        var parts = location.pathname.split("/").filter(Boolean);
+        if (parts.length > 1) document.write('<base href="/">');
+      })();
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#07080b" />
     <title>Not found — LapSimPro</title>
@@ -47,5 +53,32 @@
         <a class="btn btn-ghost" href="./pricing.html">Pricing</a>
       </div>
     </main>
+    <script>
+      (function () {
+        var path = location.pathname.replace(/\/+$/, "");
+        if (!/\/releases\/LapSimPro-Setup\.zip$/i.test(path)) return;
+        var asset =
+          "https://github.com/immortalesrevinu-art/lapsimpro-website/releases/download/v0.1.0/LapSimPro-Setup.zip";
+        document.title = "Download installer — LapSimPro";
+        var kicker = document.querySelector(".kicker");
+        var heading = document.querySelector("h1");
+        var lede = document.querySelector(".lede");
+        if (kicker) kicker.textContent = "Installer";
+        if (heading) heading.textContent = "This zip is not stored on the website.";
+        if (lede) {
+          lede.textContent =
+            "GitHub Pages cannot host LapSimPro-Setup.zip (it is about 280 MB). Download the public GitHub Release asset instead.";
+        }
+        var row = document.querySelector(".btn-row");
+        if (row) {
+          row.innerHTML = "";
+          var link = document.createElement("a");
+          link.className = "btn btn-primary";
+          link.href = asset;
+          link.textContent = "Download LapSimPro-Setup.zip";
+          row.appendChild(link);
+        }
+      })();
+    </script>
   </body>
 </html>

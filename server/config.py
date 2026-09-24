@@ -7,6 +7,13 @@ from urllib.parse import urlparse
 
 ROOT = Path(__file__).resolve().parent.parent
 
+# Public GitHub Release on this website repo. The zip is not committed (GitHub
+# rejects files over 100 MB, and Pages must not serve it). Do not default this
+# to the private overlay release — that asset 404s without authentication.
+DEFAULT_DOWNLOAD_URL = (
+    "https://github.com/immortalesrevinu-art/lapsimpro-website/releases/download/v0.1.0/LapSimPro-Setup.zip"
+)
+
 
 def _load_dotenv() -> None:
     path = ROOT / ".env"
@@ -85,8 +92,7 @@ def load_settings() -> Settings:
         db_path=db,
         public_url=public_url,
         api_url=api_url,
-        download_url=os.environ.get("LAPSIMPRO_DOWNLOAD_URL")
-        or "https://github.com/immortalesrevinu-art/iracing-coach-overlay/releases/download/v0.1.0/LapSimPro-Setup.zip",
+        download_url=os.environ.get("LAPSIMPRO_DOWNLOAD_URL") or DEFAULT_DOWNLOAD_URL,
         dev_entitlement=_bool("LAPSIMPRO_DEV_ENTITLEMENT"),
         stripe_secret_key=os.environ.get("STRIPE_SECRET_KEY") or "",
         stripe_webhook_secret=os.environ.get("STRIPE_WEBHOOK_SECRET") or "",

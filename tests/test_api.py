@@ -32,6 +32,17 @@ def test_download_requires_entitlement(gated_client):
     assert res.status_code == 402
 
 
+def test_download_returns_public_release_url(client):
+    from server.config import DEFAULT_DOWNLOAD_URL
+
+    _register(client)
+    res = client.get("/api/download")
+    assert res.status_code == 200, res.text
+    assert res.json()["url"] == DEFAULT_DOWNLOAD_URL
+    assert "iracing-coach-overlay" not in res.json()["url"]
+    assert res.json()["url"].endswith("/releases/download/v0.1.0/LapSimPro-Setup.zip")
+
+
 def test_overlay_sync_awards_points_and_coaching(client):
     _register(client)
     aid = TrainingAid()

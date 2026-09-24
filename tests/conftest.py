@@ -18,6 +18,7 @@ def client(tmp_path, monkeypatch):
     monkeypatch.setenv("LAPSIMPRO_DB", str(tmp_path / "lapsimpro.db"))
     monkeypatch.setenv("LAPSIMPRO_DEV_ENTITLEMENT", "1")
     monkeypatch.setenv("LAPSIMPRO_PUBLIC_URL", "http://testserver")
+    monkeypatch.delenv("LAPSIMPRO_DOWNLOAD_URL", raising=False)
     monkeypatch.delenv("STRIPE_SECRET_KEY", raising=False)
 
     from server import app as appmod

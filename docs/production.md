@@ -47,6 +47,7 @@ Set these on the Render service (Blueprint already seeds them). **Never commit s
 | `LAPSIMPRO_API_URL` | `https://lapsimpro-api.onrender.com` | Magic-link consume URL (API host) |
 | `LAPSIMPRO_CORS_ORIGINS` | `https://lapsimpro.com,https://www.lapsimpro.com,http://lapsimpro.com,http://www.lapsimpro.com` | Include `http://` until GitHub finishes the Pages TLS cert |
 | `LAPSIMPRO_DEV_ENTITLEMENT` | `1` for bring-up | Set `0` when live Stripe keys are installed |
+| `LAPSIMPRO_DOWNLOAD_URL` | `https://github.com/immortalesrevinu-art/lapsimpro-website/releases/download/v0.1.0/LapSimPro-Setup.zip` | Public Release asset on `lapsimpro-website` tag `v0.1.0`. Replace any previously saved private overlay release URL on the host. `GET /api/download` returns this only after an active Starter/Pro/Elite entitlement. |
 | `LAPSIMPRO_HOST` | `0.0.0.0` | Required in the container |
 | `STRIPE_SECRET_KEY` | `rk_live_...` restricted key | Placeholder empty on first deploy |
 | `STRIPE_WEBHOOK_SECRET` | `whsec_...` | Endpoint: `https://lapsimpro-api.onrender.com/api/webhooks/stripe` |
@@ -85,6 +86,18 @@ Then in Render → lapsimpro-api → **Custom Domains** → add `api.lapsimpro.c
 3. Point the Stripe webhook at `https://api.lapsimpro.com/api/webhooks/stripe`.
 
 Do **not** add an `api` record in GitHub Pages; Pages only maps the apex/`www` site.
+
+## Installer file
+
+`LapSimPro-Setup.zip` (~270–282 MB) is a **public GitHub Release asset**, not a file in this git repo and not a GitHub Pages object. Pages rejects files over 100 MB.
+
+| URL | Behavior |
+| --- | --- |
+| `https://github.com/immortalesrevinu-art/lapsimpro-website/releases/download/v0.1.0/LapSimPro-Setup.zip` | The file. This is `LAPSIMPRO_DOWNLOAD_URL`. |
+| `https://lapsimpro.com/releases/` | Static page (`releases/index.html`) with a meta refresh to that asset. |
+| `https://lapsimpro.com/releases/LapSimPro-Setup.zip` | Pages 404. `404.html` explains that and links to the Release asset. Do not commit the zip to satisfy this path. |
+
+Stripe gating is unchanged: anonymous and unpaid `GET /api/download` stays 401/402. The URL itself is public so a subscriber's browser can fetch it without a GitHub login.
 
 ## Smoke test
 
