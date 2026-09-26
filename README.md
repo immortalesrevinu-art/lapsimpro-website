@@ -14,6 +14,50 @@ Marketing site plus a local **account / training API**. Drivers log in, the over
 
 The public site remains static HTML (GitHub Pages). The API is Python so it matches the overlay stack. There was no existing auth library on this site — this repo adds a small email + password (or magic-link) service rather than Clerk/Auth.js.
 
+## In-sim marketing images
+
+The homepage hero, each overlay card, and the gallery strip load from one folder: [`assets/img/sim/`](assets/img/sim/). [`assets/img/sim/manifest.json`](assets/img/sim/manifest.json) is the index. Swapping in a screenshot you own does not require an HTML or CSS edit.
+
+The WebP and SVG files in that folder today are **original placeholder art** (a dark gradient, a racing line, and simple motion marks). They are not photographs. Do not download or hotlink images from iRacing.com, RaceLab, Google Images, or anywhere else, and do not add the iRacing logo or other trademarked artwork.
+
+### Replace a frame
+
+1. Export your screenshot as WebP. A JPEG beside it is optional.
+2. Overwrite the WebP for that slot. Keep the filename.
+3. In `manifest.json`, set `"placeholder": false` and write a real `alt` description.
+4. Optional: add `"jpeg": "hero.jpg"` (or the matching relative path) if you want a JPEG fallback. The page already prefers WebP and falls back to the SVG.
+
+Reload. [`assets/sim-images.js`](assets/sim-images.js) copies the new alt text onto the image and removes the “Placeholder art” badge.
+
+| Slot | Replace this file |
+| --- | --- |
+| Hero | `assets/img/sim/hero.webp` |
+| Coach overlay | `assets/img/sim/overlays/coach.webp` |
+| REF vs YOU pedals | `assets/img/sim/overlays/pedals.webp` |
+| Live speed | `assets/img/sim/overlays/speed.webp` |
+| Brake bias | `assets/img/sim/overlays/bias.webp` |
+| Auto reference | `assets/img/sim/overlays/reference.webp` |
+| Standings (coming soon) | `assets/img/sim/overlays/standings.webp` |
+| Relative (coming soon) | `assets/img/sim/overlays/relative.webp` |
+| Delta (coming soon) | `assets/img/sim/overlays/delta.webp` |
+| Track Map (coming soon) | `assets/img/sim/overlays/track-map.webp` |
+| Fuel Calculator (coming soon) | `assets/img/sim/overlays/fuel.webp` |
+| Gallery | `assets/img/sim/gallery/01.webp` through `06.webp` |
+
+Images use `<picture>` with an explicit width and height. Hero art is eager. Overlay and gallery frames are lazy-loaded.
+
+### Add another gallery frame
+
+1. Add `assets/img/sim/gallery/07.webp` (and a fallback SVG or JPEG if you want one).
+2. Append an object to the `gallery` array in `manifest.json` with a new `id`, `alt`, `width`, `height`, `placeholder`, `webp`, and `fallback`.
+3. Reload. The gallery script appends any manifest id that is not already in the HTML.
+
+Hero and overlay slots are fixed on the homepage. Replacing those files is enough. A brand-new overlay tab is product copy, so that still means editing `index.html`.
+
+`python3 scripts/render_sim_placeholders.py` rebuilds the placeholder WebP, SVG, and manifest (Pillow required). Do not run it after real screenshots are in the folder. It overwrites them.
+
+Do not put `LapSimPro-Setup.zip` or any file over 100 MB in this folder. GitHub Pages will reject it. The installer stays a Release asset.
+
 The overlay application repo is private and was not checked out in this workspace. Live scoring + upload live in `overlay/lapsimpro_sync/` (copy that package into [iracing-coach-overlay](https://github.com/immortalesrevinu-art/iracing-coach-overlay)). See `overlay/INTEGRATE.md`.
 
 ## Overlay API contract (merged overlay #36)

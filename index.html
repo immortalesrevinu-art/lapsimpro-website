@@ -3,31 +3,34 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#07080b" />
-    <title>LapSimPro — Live coach overlay &amp; leaderboards</title>
+    <meta name="theme-color" content="#060708" />
+    <title>LapSimPro — Live coach overlay for iRacing</title>
     <meta
       name="description"
-      content="LapSimPro (lapsimpro.com) is a dark racing product for iRacing: live brake-marker overlay, Garage 61 pedal targets, display-only bias prompts, Track Titan community bests, setup sync, and track/car leaderboards."
+      content="LapSimPro is a live coach overlay for iRacing. Get faster with pro reference laps: brake and throttle markers, a REF vs YOU pedal graph, live speed, and brake-bias cues when the track and car match."
     />
-    <meta property="og:title" content="LapSimPro — Live coach overlay & leaderboards" />
+    <meta property="og:title" content="LapSimPro — Live coach overlay for iRacing" />
     <meta
       property="og:description"
-      content="Hit every brake mark. Then beat the board. Transparent HUD plus Track Titan–style leaderboards by track and car. lapsimpro.com"
+      content="A live coach overlay for iRacing. Pro reference laps, pedal comparison, and display-only cues when the track and car match. lapsimpro.com"
     />
     <meta property="og:site_name" content="LapSimPro" />
     <meta property="og:image" content="./og.png" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="LapSimPro — Live coach overlay & leaderboards" />
-    <meta name="twitter:description" content="Hit every brake mark. Then beat the board. Transparent HUD plus Track Titan–style leaderboards by track and car. lapsimpro.com" />
+    <meta name="twitter:title" content="LapSimPro — Live coach overlay for iRacing" />
+    <meta
+      name="twitter:description"
+      content="A live coach overlay for iRacing. Pro reference laps, pedal comparison, and display-only cues when the track and car match. lapsimpro.com"
+    />
     <link rel="icon" type="image/png" href="./favicon.png" />
     <link rel="apple-touch-icon" href="./apple-touch-icon.png" />
     <link rel="manifest" href="./site.webmanifest" />
+    <link rel="stylesheet" href="./assets/main-5q73IhdI.css" />
+    <link rel="stylesheet" href="./assets/site-extra.css" />
+    <link rel="stylesheet" href="./assets/marketing.css" />
     <script type="module" src="./assets/account-nav.js"></script>
-    <script type="module" crossorigin src="./assets/main-D1yVwrt7.js"></script>
-    <link rel="modulepreload" crossorigin href="./assets/main-DFTLKTCI.js">
-    <link rel="modulepreload" crossorigin href="./assets/hud-DLz1BGII.js">
-    <link rel="stylesheet" crossorigin href="./assets/main-5q73IhdI.css">
-    <link rel="stylesheet" href="./assets/site-extra.css">
+    <script type="module" src="./assets/sim-images.js"></script>
+    <script type="module" src="./assets/overlays.js"></script>
   </head>
   <body>
     <a class="skip" href="#main">Skip to content</a>
@@ -43,6 +46,7 @@
         <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
         <nav id="site-nav" class="site-nav">
           <a href="./index.html" data-nav="home">Home</a>
+          <a href="#overlays">Overlays</a>
           <a href="./coaching.html" data-nav="coaching">Coaching</a>
           <a href="./leaderboards.html" data-nav="boards">Leaderboards</a>
           <a href="./aid.html" data-nav="aid">Aid</a>
@@ -57,220 +61,372 @@
     </header>
 
     <main id="main">
-      <section class="hero">
-        <div class="wrap hero-grid">
-          <div>
-            <p class="kicker">lapsimpro.com · Live coach overlay for iRacing</p>
-            <h1>Hit every brake mark. Then beat the <span>board</span>.</h1>
+      <section class="bleed-hero">
+        <figure class="sim-frame bleed-media is-placeholder" data-sim-id="hero" data-sim-eager="true">
+          <picture>
+            <source type="image/webp" srcset="./assets/img/sim/hero.webp" sizes="100vw" />
+            <img
+              src="./assets/img/sim/hero.svg"
+              alt="Placeholder art of a dark circuit and a single racing line."
+              width="2560"
+              height="1440"
+              loading="eager"
+              fetchpriority="high"
+              decoding="async"
+            />
+          </picture>
+          <span class="sim-badge" aria-hidden="true">Placeholder art</span>
+        </figure>
+        <div class="bleed-shade" aria-hidden="true"></div>
+        <div class="wrap bleed-copy">
+          <p class="kicker">Live coach overlay for iRacing</p>
+          <h1>Get faster with pro reference laps.</h1>
+          <p class="lede">
+            LapSimPro sits on top of iRacing and calls the lap the way a matched pro reference drove it.
+            Brake and throttle markers, pedal comparison, speed, and bias cues load only for the same
+            track and car.
+          </p>
+          <div class="btn-row" style="margin-top: 22px">
+            <a class="btn btn-primary" href="./pricing.html">View pricing</a>
+            <a class="btn btn-ghost" href="./get-started.html">Get started</a>
+            <a class="btn btn-ghost" href="./download.html">Download</a>
+          </div>
+          <ul class="sim-row">
+            <li><span class="sim-dot on" aria-hidden="true"></span> iRacing <em>Supported</em></li>
+            <li><span class="sim-dot" aria-hidden="true"></span> Assetto Corsa Competizione <em>Coming later</em></li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="market-section" id="overlays">
+        <div class="wrap">
+          <div class="section-head">
+            <p class="kicker">Overlays</p>
+            <h2>What the coach draws while you drive.</h2>
             <p class="lede">
-              A transparent, click-through HUD that calls the next marker, fills Garage 61 pedal targets
-              (brake left / throttle right), shows display-only bias prompts, and stamps Track Titan
-              community bests next to your catalog lap — plus leaderboards by track and car.
-            </p>
-            <div class="btn-row" style="margin-top: 22px">
-              <a class="btn btn-primary" href="./pricing.html">View pricing</a>
-              <a class="btn btn-ghost" href="./get-started.html">Get started</a>
-              <a class="btn btn-red" href="./aid.html">See the live aid</a>
-            </div>
-            <div class="stats">
-              <div class="stat"><strong>G61</strong><span>Reference laps &amp; pedal traces</span></div>
-              <div class="stat"><strong>TT</strong><span>Public community best times</span></div>
-              <div class="stat"><strong>B / T</strong><span>Red left, green right targets</span></div>
-              <div class="stat"><strong>.sto</strong><span>Open-setup My Setups sync</span></div>
-            </div>
-          </div>
-          <div class="hud-stage">
-            <article class="hud" data-hud>
-              <header class="hud-top">
-                <div>
-                  <p class="kicker">LapSimPro Coach</p>
-                  <h2 data-car>Lamborghini Huracán GT3 EVO</h2>
-                  <p class="track" data-track>WeatherTech Raceway at Laguna Seca</p>
-                </div>
-                <div class="meta">
-                  <span class="pill" data-mode>LIVE</span>
-                  <span class="lap" data-ref-lap>1:22.436</span>
-                  <span class="lap tt" data-tt>TT best 1:22.100</span>
-                </div>
-              </header>
-              <section class="next">
-                <div class="next-label">NEXT BRAKE</div>
-                <div class="next-name" data-marker>T1 Andretti</div>
-                <div class="countdown"><span data-countdown>164</span><span class="unit">m</span></div>
-              </section>
-              <section class="cue-wrap">
-                <div class="cue waiting" data-cue>WAIT</div>
-                <div class="bias" data-bias hidden></div>
-              </section>
-              <p class="bias-tip" data-bias-tip hidden></p>
-              <p class="tip" data-tip>Reference loaded from catalog · pedal fill is Garage 61, not your inputs.</p>
-              <section class="pedals" aria-label="Garage 61 reference pedals">
-                <div class="pedal brake">
-                  <span>B</span>
-                  <div class="pedal-track"><i data-brake-fill></i><b data-brake-live></b></div>
-                  <em data-brake-pct>0%</em>
-                </div>
-                <div class="pedal throttle">
-                  <span>T</span>
-                  <div class="pedal-track"><i data-throttle-fill></i><b data-throttle-live></b></div>
-                  <em data-throttle-pct>100%</em>
-                </div>
-                <p class="pedal-caption">Fill is Garage 61 reference · thin tick is you (display only)</p>
-              </section>
-            </article>
-            <p class="caption">Mock HUD · same red-left / green-right motif as the app icon</p>
-          </div>
-        </div>
-      </section>
-
-      <section class="section">
-        <div class="wrap">
-          <div class="section-head">
-            <p class="kicker">How it works</p>
-            <h2>Drive. Overlay calls the mark. Board shows the time.</h2>
-            <p class="lede">No exclusive fullscreen. No writing into the sim. The HUD sits on top of borderless iRacing and stays out of the way.</p>
-          </div>
-          <div class="steps">
-            <article class="step">
-              <div class="step-num">01</div>
-              <h3>Borderless windowed</h3>
-              <p>In iRacing: Options → Graphics → Display Mode → Windowed or Borderless Windowed. Exclusive fullscreen covers every overlay.</p>
-            </article>
-            <article class="step">
-              <div class="step-num">02</div>
-              <h3>Launch the HUD</h3>
-              <p>Run <code>python -m iracing_coach live --desktop</code>. Frameless, always-on-top, click-through. Ctrl+Shift+O to drag; Ctrl+Shift+Q to quit.</p>
-            </article>
-            <article class="step">
-              <div class="step-num">03</div>
-              <h3>Chase the catalog + TT</h3>
-              <p>Markers hot-reload for the session track. Pedal bars show the Garage 61 target. The status line stamps TT best when a public board matches.</p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section class="section" style="padding-top: 0">
-        <div class="wrap">
-          <div class="section-head">
-            <p class="kicker">Product</p>
-            <h2>Five surfaces. One racing stack.</h2>
-          </div>
-          <div class="feature-grid">
-            <article class="card feature" data-accent="boards">
-              <span class="pill">Leaderboards</span>
-              <h3>Track Titan–style boards</h3>
-              <p>Filter by track and car, then read ranked laps with sectors, gap, session, and weather. Barcelona Ferrari 296 is the featured sample combo.</p>
-              <a class="more" href="./leaderboards.html">Open leaderboards →</a>
-            </article>
-            <article class="card feature" data-accent="aid">
-              <span class="pill">Live Aid</span>
-              <h3>Next marker + BRAKE NOW</h3>
-              <p>Countdown in metres, PREPARE / BRAKE NOW cues, and short tips. Live mode reads iRacing session identity and never forces the Laguna sample onto the wrong circuit.</p>
-              <a class="more" href="./aid.html">Tour the overlay →</a>
-            </article>
-            <article class="card feature" data-accent="pedals">
-              <span class="pill">Pedal targets</span>
-              <h3>B left, T right</h3>
-              <p>Brake is red on the left; throttle is green on the right — the same motif as the icon. Fill is the reference trace; a thin white tick can show your live pedals for comparison.</p>
-              <a class="more" href="./aid.html">See pedal bars →</a>
-            </article>
-            <article class="card feature" data-accent="setups">
-              <span class="pill">Setups</span>
-              <h3>Open-setup .sto sync</h3>
-              <p>Copy a Garage 61 export into <em>your</em> My Setups folder as <code>G61_best_&lt;track&gt;.sto</code>. Refuses fixed-setup official series. Never impersonates another driver.</p>
-              <a class="more" href="./get-started.html">Install after you subscribe →</a>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section class="section" style="padding-top: 0">
-        <div class="wrap split">
-          <div>
-            <p class="kicker">Leaderboard teaser</p>
-            <h2>Barcelona · Ferrari 296 GT3</h2>
-            <p class="lede">The same filter model as app.tracktitan.io: pick a circuit, pick a car, read the ranked table. This homepage strip is a preview of the sample board.</p>
-            <div class="btn-row" style="margin-top: 18px">
-              <a class="btn btn-primary" href="./leaderboards.html?track=barcelona&amp;car=ferrari-296-gt3">Open full board</a>
-              <a class="btn btn-ghost" href="./leaderboards.html?track=laguna&amp;car=huracan-gt3-evo">Laguna Huracán sample</a>
-            </div>
-          </div>
-          <div class="table-wrap teaser-table">
-            <table class="board">
-              <thead>
-                <tr>
-                  <th>Pos</th>
-                  <th>Driver</th>
-                  <th>Lap</th>
-                  <th>Gap</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr><td class="rank gold">1</td><td>NicoApex</td><td class="mono">1:41.218</td><td class="mono gap">—</td></tr>
-                <tr><td class="rank silver">2</td><td>LateApex_</td><td class="mono">1:41.340</td><td class="mono gap">+0.122</td></tr>
-                <tr><td class="rank bronze">3</td><td>GridWalk</td><td class="mono">1:41.512</td><td class="mono gap">+0.294</td></tr>
-                <tr><td class="rank">4</td><td>TrailBrake</td><td class="mono">1:41.688</td><td class="mono gap">+0.470</td></tr>
-                <tr><td class="rank">5</td><td>PedalLeft</td><td class="mono">1:41.901</td><td class="mono gap">+0.683</td></tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </section>
-
-      <section class="section" style="padding-top: 0">
-        <div class="wrap">
-          <div class="section-head">
-            <p class="kicker">iRacing central</p>
-            <h2>Coaching library. Then the overlay.</h2>
-            <p class="lede">
-              lapsimpro.com is the live coach HUD. Coaching is official YouTube embeds only: we never host
-              someone else’s video file.
+              Five views are in the live coach when a reference matches your session. Standings,
+              Relative, Delta, Track Map, and Fuel Calculator are coming soon. Every cue is display
+              only.
             </p>
           </div>
-          <div class="feature-grid">
-            <article class="card feature" data-accent="aid">
-              <span class="pill">Coaching</span>
-              <h3>GT3 braking, trail brake, bias</h3>
-              <p>Coach Dave Academy with Laurence Dusoswa, Suellio Almeida, Driver61, VRS, and TraxionGG — titles and channels verified, Watch on YouTube on every card.</p>
-              <a class="more" href="./coaching.html">Open the coaching library →</a>
+
+          <div class="overlay-tabs" role="tablist" aria-label="LapSimPro overlays" data-overlay-tabs>
+            <button type="button" role="tab" id="tab-coach" aria-selected="true" aria-controls="panel-coach">Coach</button>
+            <button type="button" role="tab" id="tab-pedals" aria-selected="false" aria-controls="panel-pedals" tabindex="-1">Pedals</button>
+            <button type="button" role="tab" id="tab-speed" aria-selected="false" aria-controls="panel-speed" tabindex="-1">Speed</button>
+            <button type="button" role="tab" id="tab-bias" aria-selected="false" aria-controls="panel-bias" tabindex="-1">Brake bias</button>
+            <button type="button" role="tab" id="tab-reference" aria-selected="false" aria-controls="panel-reference" tabindex="-1">Auto reference</button>
+            <button type="button" role="tab" id="tab-standings" aria-selected="false" aria-controls="panel-standings" tabindex="-1">Standings <span class="soon">Soon</span></button>
+            <button type="button" role="tab" id="tab-relative" aria-selected="false" aria-controls="panel-relative" tabindex="-1">Relative <span class="soon">Soon</span></button>
+            <button type="button" role="tab" id="tab-delta" aria-selected="false" aria-controls="panel-delta" tabindex="-1">Delta <span class="soon">Soon</span></button>
+            <button type="button" role="tab" id="tab-track-map" aria-selected="false" aria-controls="panel-track-map" tabindex="-1">Track Map <span class="soon">Soon</span></button>
+            <button type="button" role="tab" id="tab-fuel" aria-selected="false" aria-controls="panel-fuel" tabindex="-1">Fuel <span class="soon">Soon</span></button>
+          </div>
+
+          <div class="overlay-stage">
+            <article class="overlay-panel" role="tabpanel" id="panel-coach" aria-labelledby="tab-coach" data-overlay-panel>
+              <figure class="sim-frame is-placeholder" data-sim-id="coach">
+                <picture>
+                  <source type="image/webp" srcset="./assets/img/sim/overlays/coach.webp" sizes="(min-width: 980px) 62vw, 100vw" />
+                  <img src="./assets/img/sim/overlays/coach.svg" alt="Placeholder art suggesting brake markers along a racing line." width="1600" height="900" loading="lazy" decoding="async" />
+                </picture>
+                <span class="sim-badge" aria-hidden="true">Placeholder art</span>
+              </figure>
+              <div class="overlay-copy">
+                <p class="kicker">Live</p>
+                <h3>Coach overlay</h3>
+                <p>
+                  Brake and throttle markers come from a pro fastest lap, and only for the exact track
+                  and car in your session. A different combo does not inherit those marks. The HUD draws
+                  on screen. It does not steer, brake, or change the car.
+                </p>
+                <div class="btn-row" style="margin-top: 16px">
+                  <a class="btn btn-ghost" href="./aid.html">Preview the live aid</a>
+                </div>
+              </div>
             </article>
-            <article class="card feature" data-accent="pedals">
-              <span class="pill">Overlay</span>
-              <h3>Practice the mark live</h3>
-              <p>After the lesson, the HUD calls the next brake marker and fills Garage 61 pedal targets. Dashboard scores your sessions when a catalog reference is bound.</p>
-              <a class="more" href="./aid.html">See the live aid →</a>
+
+            <article class="overlay-panel" role="tabpanel" id="panel-pedals" aria-labelledby="tab-pedals" data-overlay-panel hidden>
+              <figure class="sim-frame is-placeholder" data-sim-id="pedals">
+                <picture>
+                  <source type="image/webp" srcset="./assets/img/sim/overlays/pedals.webp" sizes="(min-width: 980px) 62vw, 100vw" />
+                  <img src="./assets/img/sim/overlays/pedals.svg" alt="Placeholder art with a reference pedal-bar motif over a dark circuit." width="1600" height="900" loading="lazy" decoding="async" />
+                </picture>
+                <span class="sim-badge" aria-hidden="true">Placeholder art</span>
+              </figure>
+              <div class="overlay-copy">
+                <p class="kicker">Live</p>
+                <h3>REF vs YOU pedal graph</h3>
+                <p>
+                  The pedal graph compares the reference trace with your brake and throttle. The fill is
+                  REF. A thin tick can show YOU. Both are display only, including when the loaded lap is
+                  a Garage 61 reference. The bars never drive the pedals.
+                </p>
+              </div>
             </article>
-            <article class="card feature" data-accent="setups">
-              <span class="pill">Dashboard</span>
-              <h3>Your laps, not a clip dump</h3>
-              <p>Log in for personal bests and coaching cards from telemetry versus a real catalog lap. No re-uploaded YouTube, no invented traces.</p>
-              <a class="more" href="./dashboard.html">Open dashboard →</a>
+
+            <article class="overlay-panel" role="tabpanel" id="panel-speed" aria-labelledby="tab-speed" data-overlay-panel hidden>
+              <figure class="sim-frame is-placeholder" data-sim-id="speed">
+                <picture>
+                  <source type="image/webp" srcset="./assets/img/sim/overlays/speed.webp" sizes="(min-width: 980px) 62vw, 100vw" />
+                  <img src="./assets/img/sim/overlays/speed.svg" alt="Placeholder art suggesting a live speed comparison on a dark circuit." width="1600" height="900" loading="lazy" decoding="async" />
+                </picture>
+                <span class="sim-badge" aria-hidden="true">Placeholder art</span>
+              </figure>
+              <div class="overlay-copy">
+                <p class="kicker">Live</p>
+                <h3>Live speed comparison</h3>
+                <p>
+                  While a matching reference is loaded, the coach shows your live speed against that
+                  lap. It is a comparison on the HUD, not a pace estimate invented for a combo that has
+                  no reference.
+                </p>
+              </div>
+            </article>
+
+            <article class="overlay-panel" role="tabpanel" id="panel-bias" aria-labelledby="tab-bias" data-overlay-panel hidden>
+              <figure class="sim-frame is-placeholder" data-sim-id="bias">
+                <picture>
+                  <source type="image/webp" srcset="./assets/img/sim/overlays/bias.webp" sizes="(min-width: 980px) 62vw, 100vw" />
+                  <img src="./assets/img/sim/overlays/bias.svg" alt="Placeholder art with a corner and a brake-bias cue." width="1600" height="900" loading="lazy" decoding="async" />
+                </picture>
+                <span class="sim-badge" aria-hidden="true">Placeholder art</span>
+              </figure>
+              <div class="overlay-copy">
+                <p class="kicker">Live</p>
+                <h3>Per-corner brake bias cues</h3>
+                <p>
+                  Bias cues call the reference brake bias for the corner you are approaching. They are
+                  text on the overlay. LapSimPro does not write brake bias into iRacing.
+                </p>
+              </div>
+            </article>
+
+            <article class="overlay-panel" role="tabpanel" id="panel-reference" aria-labelledby="tab-reference" data-overlay-panel hidden>
+              <figure class="sim-frame is-placeholder" data-sim-id="reference">
+                <picture>
+                  <source type="image/webp" srcset="./assets/img/sim/overlays/reference.webp" sizes="(min-width: 980px) 62vw, 100vw" />
+                  <img src="./assets/img/sim/overlays/reference.svg" alt="Placeholder art suggesting reference data loading for a new track." width="1600" height="900" loading="lazy" decoding="async" />
+                </picture>
+                <span class="sim-badge" aria-hidden="true">Placeholder art</span>
+              </figure>
+              <div class="overlay-copy">
+                <p class="kicker">Live</p>
+                <h3>Auto reference on a new track</h3>
+                <p>
+                  When you join a new track, LapSimPro pulls reference data for that session’s track and
+                  car if a match exists. If it does not, the HUD says there is no reference. It will not
+                  apply another circuit’s lap.
+                </p>
+              </div>
+            </article>
+
+            <article class="overlay-panel" role="tabpanel" id="panel-standings" aria-labelledby="tab-standings" data-overlay-panel hidden>
+              <figure class="sim-frame is-placeholder" data-sim-id="standings">
+                <picture>
+                  <source type="image/webp" srcset="./assets/img/sim/overlays/standings.webp" sizes="(min-width: 980px) 62vw, 100vw" />
+                  <img src="./assets/img/sim/overlays/standings.svg" alt="Placeholder art for the coming-soon standings overlay." width="1600" height="900" loading="lazy" decoding="async" />
+                </picture>
+                <span class="sim-badge" aria-hidden="true">Placeholder art</span>
+              </figure>
+              <div class="overlay-copy">
+                <p class="kicker">Coming soon</p>
+                <h3>Standings</h3>
+                <p>A standings overlay for the session you are in. It is not part of the live coach yet.</p>
+              </div>
+            </article>
+
+            <article class="overlay-panel" role="tabpanel" id="panel-relative" aria-labelledby="tab-relative" data-overlay-panel hidden>
+              <figure class="sim-frame is-placeholder" data-sim-id="relative">
+                <picture>
+                  <source type="image/webp" srcset="./assets/img/sim/overlays/relative.webp" sizes="(min-width: 980px) 62vw, 100vw" />
+                  <img src="./assets/img/sim/overlays/relative.svg" alt="Placeholder art for the coming-soon relative overlay." width="1600" height="900" loading="lazy" decoding="async" />
+                </picture>
+                <span class="sim-badge" aria-hidden="true">Placeholder art</span>
+              </figure>
+              <div class="overlay-copy">
+                <p class="kicker">Coming soon</p>
+                <h3>Relative</h3>
+                <p>A relative overlay for the cars around you. Coming soon, and not in the current coach.</p>
+              </div>
+            </article>
+
+            <article class="overlay-panel" role="tabpanel" id="panel-delta" aria-labelledby="tab-delta" data-overlay-panel hidden>
+              <figure class="sim-frame is-placeholder" data-sim-id="delta">
+                <picture>
+                  <source type="image/webp" srcset="./assets/img/sim/overlays/delta.webp" sizes="(min-width: 980px) 62vw, 100vw" />
+                  <img src="./assets/img/sim/overlays/delta.svg" alt="Placeholder art for the coming-soon delta overlay." width="1600" height="900" loading="lazy" decoding="async" />
+                </picture>
+                <span class="sim-badge" aria-hidden="true">Placeholder art</span>
+              </figure>
+              <div class="overlay-copy">
+                <p class="kicker">Coming soon</p>
+                <h3>Delta</h3>
+                <p>A delta overlay against the loaded reference lap. Coming soon.</p>
+              </div>
+            </article>
+
+            <article class="overlay-panel" role="tabpanel" id="panel-track-map" aria-labelledby="tab-track-map" data-overlay-panel hidden>
+              <figure class="sim-frame is-placeholder" data-sim-id="track-map">
+                <picture>
+                  <source type="image/webp" srcset="./assets/img/sim/overlays/track-map.webp" sizes="(min-width: 980px) 62vw, 100vw" />
+                  <img src="./assets/img/sim/overlays/track-map.svg" alt="Placeholder art of a generic circuit diagram for the coming-soon track map." width="1600" height="900" loading="lazy" decoding="async" />
+                </picture>
+                <span class="sim-badge" aria-hidden="true">Placeholder art</span>
+              </figure>
+              <div class="overlay-copy">
+                <p class="kicker">Coming soon</p>
+                <h3>Track Map</h3>
+                <p>A track map overlay for the circuit in your session. Coming soon.</p>
+              </div>
+            </article>
+
+            <article class="overlay-panel" role="tabpanel" id="panel-fuel" aria-labelledby="tab-fuel" data-overlay-panel hidden>
+              <figure class="sim-frame is-placeholder" data-sim-id="fuel">
+                <picture>
+                  <source type="image/webp" srcset="./assets/img/sim/overlays/fuel.webp" sizes="(min-width: 980px) 62vw, 100vw" />
+                  <img src="./assets/img/sim/overlays/fuel.svg" alt="Placeholder art for the coming-soon fuel calculator overlay." width="1600" height="900" loading="lazy" decoding="async" />
+                </picture>
+                <span class="sim-badge" aria-hidden="true">Placeholder art</span>
+              </figure>
+              <div class="overlay-copy">
+                <p class="kicker">Coming soon</p>
+                <h3>Fuel Calculator</h3>
+                <p>A fuel calculator overlay. Coming soon, and not in the live coach yet.</p>
+              </div>
             </article>
           </div>
         </div>
       </section>
 
-      <section class="section" style="padding-top: 0">
-        <div class="wrap cta-band">
-          <p class="kicker">Monthly plans</p>
-          <h2>Starter, Pro, or Elite — from $5.99/mo.</h2>
-          <p class="lede">Pay with Visa and major credit cards via Stripe. After checkout, Stripe returns you to Download so you can install the Windows overlay.</p>
-          <div class="btn-row" style="margin-top: 18px">
-            <a class="btn btn-primary" href="./pricing.html">Choose a plan</a>
-            <a class="btn btn-ghost" href="./download.html">Download installer</a>
+      <section class="market-section" style="padding-top: 0">
+        <div class="wrap">
+          <div class="section-head">
+            <p class="kicker">How a lap is chosen</p>
+            <h2>Match the session, or show nothing.</h2>
+          </div>
+          <div class="rule-grid">
+            <article class="card">
+              <p class="kicker">01</p>
+              <h3>Exact track and car</h3>
+              <p>Markers and the pedal reference load only when the session combo matches the reference lap.</p>
+            </article>
+            <article class="card">
+              <p class="kicker">02</p>
+              <h3>Display only</h3>
+              <p>The overlay never injects throttle, brake, or brake bias into the sim.</p>
+            </article>
+            <article class="card">
+              <p class="kicker">03</p>
+              <h3>No borrowed lap</h3>
+              <p>If this track has no reference, LapSimPro says so. It does not reuse a sample from another circuit.</p>
+            </article>
           </div>
         </div>
       </section>
 
-      <section class="section">
+      <section class="market-section" id="gallery" style="padding-top: 0">
+        <div class="wrap">
+          <div class="section-head">
+            <p class="kicker">On track</p>
+            <h2>In-sim frames.</h2>
+            <p class="lede">
+              This strip is for your own iRacing screenshots. Until those files are added, the frames
+              are original placeholder art, not photos from a session.
+            </p>
+          </div>
+          <div class="sim-gallery" data-sim-gallery>
+            <figure class="sim-frame is-placeholder" data-sim-id="gallery-1">
+              <picture>
+                <source type="image/webp" srcset="./assets/img/sim/gallery/01.webp" sizes="(min-width: 900px) 30vw, 80vw" />
+                <img src="./assets/img/sim/gallery/01.svg" alt="Placeholder art, gallery frame of a night circuit." width="1280" height="720" loading="lazy" decoding="async" />
+              </picture>
+              <span class="sim-badge" aria-hidden="true">Placeholder art</span>
+            </figure>
+            <figure class="sim-frame is-placeholder" data-sim-id="gallery-2">
+              <picture>
+                <source type="image/webp" srcset="./assets/img/sim/gallery/02.webp" sizes="(min-width: 900px) 30vw, 80vw" />
+                <img src="./assets/img/sim/gallery/02.svg" alt="Placeholder art, gallery frame with corner markers." width="1280" height="720" loading="lazy" decoding="async" />
+              </picture>
+              <span class="sim-badge" aria-hidden="true">Placeholder art</span>
+            </figure>
+            <figure class="sim-frame is-placeholder" data-sim-id="gallery-3">
+              <picture>
+                <source type="image/webp" srcset="./assets/img/sim/gallery/03.webp" sizes="(min-width: 900px) 30vw, 80vw" />
+                <img src="./assets/img/sim/gallery/03.svg" alt="Placeholder art, gallery frame with a speed streak." width="1280" height="720" loading="lazy" decoding="async" />
+              </picture>
+              <span class="sim-badge" aria-hidden="true">Placeholder art</span>
+            </figure>
+            <figure class="sim-frame is-placeholder" data-sim-id="gallery-4">
+              <picture>
+                <source type="image/webp" srcset="./assets/img/sim/gallery/04.webp" sizes="(min-width: 900px) 30vw, 80vw" />
+                <img src="./assets/img/sim/gallery/04.svg" alt="Placeholder art, gallery frame of a sweeping racing line." width="1280" height="720" loading="lazy" decoding="async" />
+              </picture>
+              <span class="sim-badge" aria-hidden="true">Placeholder art</span>
+            </figure>
+            <figure class="sim-frame is-placeholder" data-sim-id="gallery-5">
+              <picture>
+                <source type="image/webp" srcset="./assets/img/sim/gallery/05.webp" sizes="(min-width: 900px) 30vw, 80vw" />
+                <img src="./assets/img/sim/gallery/05.svg" alt="Placeholder art, gallery frame with a generic circuit outline." width="1280" height="720" loading="lazy" decoding="async" />
+              </picture>
+              <span class="sim-badge" aria-hidden="true">Placeholder art</span>
+            </figure>
+            <figure class="sim-frame is-placeholder" data-sim-id="gallery-6">
+              <picture>
+                <source type="image/webp" srcset="./assets/img/sim/gallery/06.webp" sizes="(min-width: 900px) 30vw, 80vw" />
+                <img src="./assets/img/sim/gallery/06.svg" alt="Placeholder art, gallery frame with pedal-colored bars." width="1280" height="720" loading="lazy" decoding="async" />
+              </picture>
+              <span class="sim-badge" aria-hidden="true">Placeholder art</span>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section class="market-section" id="plans" style="padding-top: 0">
+        <div class="wrap">
+          <div class="section-head">
+            <p class="kicker">Pricing</p>
+            <h2>Starter, Pro, or Elite.</h2>
+            <p class="lede">
+              Monthly plans from $5.99. Checkout stays on the pricing page and is billed by Stripe.
+              Visa and major credit cards. Card numbers are not stored on lapsimpro.com.
+            </p>
+          </div>
+          <div class="price-grid">
+            <a class="card price-card" href="./pricing.html">
+              <span class="pill">Starter</span>
+              <strong>$5.99<span>/mo</span></strong>
+              <p>Live coach overlay, brake markers, and reference pedal targets for core tracks.</p>
+              <span class="more">Choose Starter</span>
+            </a>
+            <a class="card price-card featured" href="./pricing.html">
+              <span class="pill">Pro</span>
+              <strong>$9.99<span>/mo</span></strong>
+              <p>Full track catalog, pedal and gear coaching, shift cues, and Track Titan community times.</p>
+              <span class="more">Choose Pro</span>
+            </a>
+            <a class="card price-card" href="./pricing.html">
+              <span class="pill">Elite</span>
+              <strong>$18.99<span>/mo</span></strong>
+              <p>Everything in Pro, plus Garage 61 open-setup sync and priority coaching updates.</p>
+              <span class="more">Choose Elite</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section class="market-section" id="start" style="padding-top: 0">
         <div class="wrap cta-band">
           <p class="kicker">Windows racing PC</p>
-          <h2>Ready when the session goes green.</h2>
-          <p class="lede">Subscribe, then download the Windows coach overlay. iRacing in borderless windowed. The package includes coaching data for cars and tracks covered by Garage 61 and Track Titan.</p>
+          <h2>Subscribe, then run it over iRacing.</h2>
+          <p class="lede">
+            Pick a plan, finish Stripe checkout, and download the Windows overlay. Use windowed or
+            borderless windowed so the HUD stays visible. Exclusive fullscreen covers it.
+          </p>
           <div class="btn-row" style="margin-top: 18px">
-            <a class="btn btn-primary" href="./download.html">Download installer</a>
-            <a class="btn btn-green" href="./aid.html">See the live aid</a>
+            <a class="btn btn-primary" href="./pricing.html">View pricing</a>
+            <a class="btn btn-ghost" href="./download.html">Download</a>
+            <a class="btn btn-ghost" href="./get-started.html">Get started</a>
           </div>
         </div>
       </section>
@@ -287,9 +443,9 @@
             </span>
           </div>
           <p class="legal">
-            Unofficial iRacing coaching HUD. Not affiliated with iRacing.com, Garage 61, or Track Titan.
-            Overlay is display-only: it never injects throttle, brake, or brake-bias into the sim.
-            Leaderboard tables on this site are authored sample data unless a live public source is connected.
+            Unofficial iRacing coaching overlay. Not affiliated with iRacing.com, Garage 61, or Track Titan.
+            Display only: the HUD never injects throttle, brake, or brake bias into the sim.
+            Images marked placeholder art are original graphics, not session screenshots.
           </p>
           <div class="pedal-rail" aria-hidden="true"><span class="b"></span><span class="t"></span></div>
         </div>

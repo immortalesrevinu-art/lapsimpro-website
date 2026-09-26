@@ -1,0 +1,17 @@
+<!-- PLACEHOLDER: original LapSimPro art, not an iRacing or third-party screenshot. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-hidden="true">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#05070b"/>
+      <stop offset="58%" stop-color="#10161e"/>
+      <stop offset="72%" stop-color="#2a241c"/>
+      <stop offset="100%" stop-color="#080a0c"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#sky)"/>
+  <ellipse cx="800.0" cy="558.0" rx="736.0" ry="144.0" fill="#d6ff4a" opacity="0.08"/>
+  <line x1="0" y1="162.0" x2="1600" y2="162.0" stroke="#ffffff" stroke-width="2" opacity="0.08"/><line x1="0" y1="187.2" x2="1600" y2="189.0" stroke="#ffffff" stroke-width="2" opacity="0.08"/><line x1="0" y1="212.4" x2="1600" y2="216.0" stroke="#ffffff" stroke-width="2" opacity="0.08"/><line x1="0" y1="237.6" x2="1600" y2="243.0" stroke="#ffffff" stroke-width="2" opacity="0.08"/><line x1="0" y1="262.8" x2="1600" y2="270.0" stroke="#ffffff" stroke-width="2" opacity="0.08"/><line x1="0" y1="288.0" x2="1600" y2="297.0" stroke="#ffffff" stroke-width="2" opacity="0.08"/><line x1="0" y1="313.2" x2="1600" y2="324.0" stroke="#ffffff" stroke-width="2" opacity="0.08"/><line x1="0" y1="338.4" x2="1600" y2="351.0" stroke="#ffffff" stroke-width="2" opacity="0.08"/><line x1="0" y1="363.6" x2="1600" y2="378.0" stroke="#ffffff" stroke-width="2" opacity="0.08"/><line x1="0" y1="388.8" x2="1600" y2="405.0" stroke="#ffffff" stroke-width="2" opacity="0.08"/><line x1="0" y1="414.0" x2="1600" y2="432.0" stroke="#ffffff" stroke-width="2" opacity="0.08"/><line x1="0" y1="439.2" x2="1600" y2="459.0" stroke="#ffffff" stroke-width="2" opacity="0.08"/>
+  <path d="M 0.0 523.8 Q 228.6 526.4 342.9 560.5 Q 457.1 594.7 571.4 598.1 Q 685.7 601.5 800.0 605.1 Q 914.3 608.8 1028.6 564.5 Q 1142.9 520.2 1257.1 504.1 Q 1371.4 488.0 1485.7 498.5 T 1600.0 508.9" fill="none" stroke="#d6ff4a" stroke-width="6" stroke-linecap="round"/>
+  <path d="M 0.0 523.8 Q 228.6 526.4 342.9 560.5 Q 457.1 594.7 571.4 598.1 Q 685.7 601.5 800.0 605.1 Q 914.3 608.8 1028.6 564.5 Q 1142.9 520.2 1257.1 504.1 Q 1371.4 488.0 1485.7 498.5 T 1600.0 508.9" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" opacity="0.85"/>
+  <rect x="992.0" y="252.0" width="448.0" height="40.5" rx="6" fill="#ffffff" opacity="0.16"/><rect x="992.0" y="324.0" width="400.0" height="40.5" rx="6" fill="#ffffff" opacity="0.16"/><rect x="992.0" y="396.0" width="352.0" height="40.5" rx="6" fill="#ffffff" opacity="0.16"/><rect x="992.0" y="468.0" width="304.0" height="40.5" rx="6" fill="#ffffff" opacity="0.16"/>
+</svg>
