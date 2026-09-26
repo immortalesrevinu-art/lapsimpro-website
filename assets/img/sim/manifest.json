@@ -1,0 +1,161 @@
+{
+  "version": 1,
+  "notes": "PLACEHOLDER art. Replace WebP files with iRacing screenshots you own. Set placeholder to false and update alt. Do not hotlink third-party images.",
+  "hero": {
+    "id": "hero",
+    "alt": "Placeholder art of a dark circuit and a single racing line.",
+    "width": 2560,
+    "height": 1440,
+    "placeholder": true,
+    "webp": "hero.webp",
+    "fallback": "hero.svg"
+  },
+  "overlays": [
+    {
+      "id": "coach",
+      "alt": "Placeholder art suggesting brake markers along a racing line.",
+      "width": 1600,
+      "height": 900,
+      "placeholder": true,
+      "webp": "overlays/coach.webp",
+      "fallback": "overlays/coach.svg"
+    },
+    {
+      "id": "pedals",
+      "alt": "Placeholder art with a reference pedal-bar motif over a dark circuit.",
+      "width": 1600,
+      "height": 900,
+      "placeholder": true,
+      "webp": "overlays/pedals.webp",
+      "fallback": "overlays/pedals.svg"
+    },
+    {
+      "id": "speed",
+      "alt": "Placeholder art suggesting a live speed comparison on a dark circuit.",
+      "width": 1600,
+      "height": 900,
+      "placeholder": true,
+      "webp": "overlays/speed.webp",
+      "fallback": "overlays/speed.svg"
+    },
+    {
+      "id": "bias",
+      "alt": "Placeholder art with a corner and a brake-bias cue.",
+      "width": 1600,
+      "height": 900,
+      "placeholder": true,
+      "webp": "overlays/bias.webp",
+      "fallback": "overlays/bias.svg"
+    },
+    {
+      "id": "reference",
+      "alt": "Placeholder art suggesting reference data loading for a new track.",
+      "width": 1600,
+      "height": 900,
+      "placeholder": true,
+      "webp": "overlays/reference.webp",
+      "fallback": "overlays/reference.svg"
+    },
+    {
+      "id": "standings",
+      "alt": "Placeholder art for the coming-soon standings overlay.",
+      "width": 1600,
+      "height": 900,
+      "placeholder": true,
+      "webp": "overlays/standings.webp",
+      "fallback": "overlays/standings.svg"
+    },
+    {
+      "id": "relative",
+      "alt": "Placeholder art for the coming-soon relative overlay.",
+      "width": 1600,
+      "height": 900,
+      "placeholder": true,
+      "webp": "overlays/relative.webp",
+      "fallback": "overlays/relative.svg"
+    },
+    {
+      "id": "delta",
+      "alt": "Placeholder art for the coming-soon delta overlay.",
+      "width": 1600,
+      "height": 900,
+      "placeholder": true,
+      "webp": "overlays/delta.webp",
+      "fallback": "overlays/delta.svg"
+    },
+    {
+      "id": "track-map",
+      "alt": "Placeholder art of a generic circuit diagram for the coming-soon track map.",
+      "width": 1600,
+      "height": 900,
+      "placeholder": true,
+      "webp": "overlays/track-map.webp",
+      "fallback": "overlays/track-map.svg"
+    },
+    {
+      "id": "fuel",
+      "alt": "Placeholder art for the coming-soon fuel calculator overlay.",
+      "width": 1600,
+      "height": 900,
+      "placeholder": true,
+      "webp": "overlays/fuel.webp",
+      "fallback": "overlays/fuel.svg"
+    }
+  ],
+  "gallery": [
+    {
+      "id": "gallery-1",
+      "alt": "Placeholder art, gallery frame of a night circuit.",
+      "width": 1280,
+      "height": 720,
+      "placeholder": true,
+      "webp": "gallery/01.webp",
+      "fallback": "gallery/01.svg"
+    },
+    {
+      "id": "gallery-2",
+      "alt": "Placeholder art, gallery frame with corner markers.",
+      "width": 1280,
+      "height": 720,
+      "placeholder": true,
+      "webp": "gallery/02.webp",
+      "fallback": "gallery/02.svg"
+    },
+    {
+      "id": "gallery-3",
+      "alt": "Placeholder art, gallery frame with a speed streak.",
+      "width": 1280,
+      "height": 720,
+      "placeholder": true,
+      "webp": "gallery/03.webp",
+      "fallback": "gallery/03.svg"
+    },
+    {
+      "id": "gallery-4",
+      "alt": "Placeholder art, gallery frame of a sweeping racing line.",
+      "width": 1280,
+      "height": 720,
+      "placeholder": true,
+      "webp": "gallery/04.webp",
+      "fallback": "gallery/04.svg"
+    },
+    {
+      "id": "gallery-5",
+      "alt": "Placeholder art, gallery frame with a generic circuit outline.",
+      "width": 1280,
+      "height": 720,
+      "placeholder": true,
+      "webp": "gallery/05.webp",
+      "fallback": "gallery/05.svg"
+    },
+    {
+      "id": "gallery-6",
+      "alt": "Placeholder art, gallery frame with pedal-colored bars.",
+      "width": 1280,
+      "height": 720,
+      "placeholder": true,
+      "webp": "gallery/06.webp",
+      "fallback": "gallery/06.svg"
+    }
+  ]
+}
