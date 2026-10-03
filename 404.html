@@ -63,8 +63,7 @@
       (function () {
         var path = location.pathname.replace(/\/+$/, "");
         if (!/\/releases\/LapSimPro-Setup\.zip$/i.test(path)) return;
-        var asset =
-          "https://github.com/immortalesrevinu-art/lapsimpro-website/releases/download/v0.1.0/LapSimPro-Setup.zip";
+        var asset = "/releases/";
         document.title = "Download installer — LapSimPro";
         var kicker = document.querySelector(".kicker");
         var heading = document.querySelector("h1");
@@ -73,12 +72,12 @@
         if (heading) heading.textContent = "This zip is not stored on the website.";
         if (lede) {
           lede.textContent =
-            "GitHub Pages cannot host LapSimPro-Setup.zip (it is about 280 MB). Download the public GitHub Release asset instead.";
+            "LapSimPro-Setup.zip (about 280 MB) is not served from this address. Use the button below to download it from the releases page.";
         }
         var note = document.getElementById("recovery-note");
         if (note) {
           note.innerHTML =
-            'Open <a href="./releases/" style="color: var(--cyan); font-weight: 600">/releases/</a> if this page does not start the file. Installer warnings and login issues are on <a href="./support.html" style="color: var(--cyan); font-weight: 600">Support</a>.';
+            'Open <a href="/releases/" style="color: var(--cyan); font-weight: 600">/releases/</a> if this page does not start the file. Installer warnings and login issues are on <a href="./support.html" style="color: var(--cyan); font-weight: 600">Support</a>.';
         }
         var row = document.querySelector(".btn-row");
         if (row) {

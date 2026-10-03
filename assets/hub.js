@@ -133,33 +133,6 @@ function wireFilters(buttons, onPick) {
   });
 }
 
-async function bootNews() {
-  const status = document.querySelector("[data-hub-status]");
-  try {
-    const res = await fetch("./data/news.json", { headers: { Accept: "application/json" } });
-    if (!res.ok) throw new Error("Could not load news.json");
-    const data = await res.json();
-    const items = Array.isArray(data.items) ? data.items.slice() : [];
-    items.sort((a, b) => String(b.date).localeCompare(String(a.date)));
-    const sources = unique(items.map((item) => item.source));
-    const bar = document.querySelector("[data-news-filters]");
-    if (bar) {
-      bar.innerHTML = `<button type="button" data-filter="all" aria-pressed="true">All</button>${sources
-        .map((source) => `<button type="button" data-filter="${escapeHtml(source)}">${escapeHtml(source)}</button>`)
-        .join("")}`;
-      wireFilters([...bar.querySelectorAll("button")], (filter) => {
-        renderNews(filter === "all" ? items : items.filter((item) => item.source === filter));
-      });
-    }
-    renderNews(items);
-    if (status) {
-      status.textContent = `${items.length} headlines · updated ${data.updated || "n/a"} · edit data/news.json to refresh the desk`;
-    }
-  } catch (err) {
-    if (status) status.textContent = err.message || "News feed failed to load.";
-  }
-}
-
 async function bootCoaching() {
   const status = document.querySelector("[data-hub-status]");
   try {
@@ -191,7 +164,6 @@ async function bootCoaching() {
 }
 
 function boot() {
-  if (document.querySelector("[data-news-grid]")) bootNews();
   if (document.querySelector("[data-video-grid]") || document.querySelector("[data-featured-grid]")) bootCoaching();
 }
 

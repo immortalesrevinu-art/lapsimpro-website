@@ -1,0 +1,20 @@
+# GitHub Pages (Jekyll) build settings for lapsimpro.com.
+# Only the public marketing pages and their assets are published. Backend code,
+# docs, tests, and deploy files stay in the repo but are not served on the site.
+exclude:
+  - README.md
+  - assets/img/sim/README.md
+  - docs/
+  - server/
+  - overlay/
+  - scripts/
+  - tests/
+  - Dockerfile
+  - Procfile
+  - fly.toml
+  - render.yaml
+  - requirements.txt
+  - runtime.txt
+  - pytest.ini
+  - .env.example
+  - .dockerignore
