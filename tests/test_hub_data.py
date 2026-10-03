@@ -1,4 +1,4 @@
-"""Static hub data: news.json and coaching-videos.json stay valid for GitHub Pages."""
+"""Static hub data: coaching-videos.json stays valid; the news desk is not published."""
 
 from __future__ import annotations
 
@@ -14,18 +14,9 @@ def load(name: str):
     return json.loads((ROOT / "data" / name).read_text(encoding="utf-8"))
 
 
-def test_news_json_has_dated_outbound_items():
-    data = load("news.json")
-    items = data["items"]
-    assert 6 <= len(items) <= 20
-    ids = [item["id"] for item in items]
-    assert len(ids) == len(set(ids))
-    for item in items:
-        assert item["title"]
-        assert item["source"]
-        assert item["url"].startswith("https://")
-        assert re.match(r"^\d{4}-\d{2}-\d{2}$", item["date"])
-        assert item["summary"]
+def test_news_desk_data_is_not_published():
+    assert not (ROOT / "data" / "news.json").exists()
+    assert "news.json" not in (ROOT / "assets" / "hub.js").read_text(encoding="utf-8")
 
 
 def test_coaching_videos_are_youtube_embeds_only():

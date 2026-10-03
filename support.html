@@ -30,6 +30,7 @@
     <link rel="stylesheet" crossorigin href="./assets/main-5q73IhdI.css" />
     <link rel="stylesheet" href="./assets/site-extra.css" />
     <link rel="stylesheet" href="./assets/marketing.css" />
+    <script type="module" src="./assets/installer.js"></script>
   </head>
   <body>
     <a class="skip" href="#main">Skip to content</a>
@@ -89,8 +90,7 @@
       <div class="note" style="margin: 8px 0 28px">
         <strong>The zip is not stored on lapsimpro.com.</strong>
         <code>https://lapsimpro.com/releases/LapSimPro-Setup.zip</code> returns 404 on purpose
-        (the file is about 280 MB, which GitHub Pages will not host). The working copy is the
-        public Release asset, linked from
+        (the file is about 280 MB and is served separately). The working download is on
         <a href="./releases/" style="color: var(--cyan); font-weight: 600">/releases/</a>.
       </div>
 
@@ -139,11 +139,8 @@
               That page forwards you to the installer.
             </li>
             <li>
-              Or save the Release asset directly:
-              <a
-                href="https://github.com/immortalesrevinu-art/lapsimpro-website/releases/download/v0.1.0/LapSimPro-Setup.zip"
-                >LapSimPro-Setup.zip</a
-              >.
+              Or start the file directly:
+              <a href="./releases/" data-installer-download>LapSimPro-Setup.zip</a>.
             </li>
           </ol>
           <p>

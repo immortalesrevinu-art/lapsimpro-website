@@ -6,9 +6,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 SUPPORT = ROOT / "support.html"
-RELEASE_ASSET = (
-    "https://github.com/immortalesrevinu-art/lapsimpro-website/releases/download/v0.1.0/LapSimPro-Setup.zip"
-)
+INSTALLER_JS = ROOT / "assets" / "installer.js"
 
 
 def test_support_page_covers_download_recovery():
@@ -23,7 +21,9 @@ def test_support_page_covers_download_recovery():
     assert 'id="contact"' in html
     assert "lapsimpro.com/releases/LapSimPro-Setup.zip" in html
     assert 'href="./releases/"' in html
-    assert RELEASE_ASSET in html
+    assert "github.com" not in html.lower()
+    assert "data-installer-download" in html
+    assert "assets/installer.js" in html
     assert "mailto:theuniversecontractor@gmail.com" in html
     assert "SmartScreen" in html
     assert "No active subscription" in html or "not subscribed" in html
@@ -54,12 +54,19 @@ def test_not_found_and_releases_link_support():
     assert 'href="./support.html"' in missing
     assert 'id="recovery-note"' in missing
     assert 'href="./releases/"' in missing
+    assert "github" not in missing.lower()
     assert "Download help" in missing
 
     releases = (ROOT / "releases" / "index.html").read_text(encoding="utf-8")
     assert 'href="../support.html"' in releases
-    assert RELEASE_ASSET in releases
-    assert 'http-equiv="refresh"' in releases
+    assert "github" not in releases.lower()
+    assert 'http-equiv="refresh"' not in releases
+    assert "data-installer-download" in releases
+    assert "data-installer-autostart" in releases
+    assert "../assets/installer.js" in releases
+    script = INSTALLER_JS.read_text(encoding="utf-8")
+    assert "LapSimPro-Setup.zip" in script
+    assert "data-installer-download" in script
 
 
 def test_home_footer_links_support():
