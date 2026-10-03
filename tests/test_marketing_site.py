@@ -21,7 +21,7 @@ OVERLAYS = (
     "track-map",
     "fuel",
 )
-COMING_SOON = ("standings", "relative", "delta", "track-map", "fuel")
+RACE_PANELS = ("standings", "relative", "delta", "track-map", "fuel")
 
 PUBLIC_PAGES = (
     "index.html",
@@ -81,13 +81,15 @@ def test_home_features_overlays_and_checkout_paths():
     assert "REF vs YOU" in html
     assert "Fuel Calculator" in html
     assert "Track Map" in html
-    assert html.lower().count("coming soon") >= 5
+    assert "coming soon" not in html.lower()
+    assert "off by default" in html.lower()
     for overlay_id in OVERLAYS:
         assert f'data-sim-id="{overlay_id}"' in html
         assert f'id="panel-{overlay_id}"' in html
-    for overlay_id in COMING_SOON:
+    for overlay_id in RACE_PANELS:
         panel = html.split(f'id="panel-{overlay_id}"', 1)[1].split("</article>", 1)[0]
-        assert "Coming soon" in panel
+        assert "off by default" in panel.lower()
+        assert "settings" in panel
     assert 'type="image/webp"' in html
     assert 'loading="eager"' in html
     assert 'loading="lazy"' in html

@@ -104,8 +104,9 @@
             <p class="kicker">Overlays</p>
             <h2>What the coach draws while you drive.</h2>
             <p class="lede">
-              Five views are in the live coach when a reference matches your session. Standings,
-              Relative, Delta, Track Map, and Fuel Calculator are coming soon. Every cue is display
+              Five coaching views run in the live coach when a reference matches your session.
+              Standings, Relative, Delta, Track Map, and Fuel Calculator panels ship in the app too.
+              They are off by default; turn on the ones you want in settings. Every cue is display
               only.
             </p>
           </div>
@@ -116,11 +117,11 @@
             <button type="button" role="tab" id="tab-speed" aria-selected="false" aria-controls="panel-speed" tabindex="-1">Speed</button>
             <button type="button" role="tab" id="tab-bias" aria-selected="false" aria-controls="panel-bias" tabindex="-1">Brake bias</button>
             <button type="button" role="tab" id="tab-reference" aria-selected="false" aria-controls="panel-reference" tabindex="-1">Auto reference</button>
-            <button type="button" role="tab" id="tab-standings" aria-selected="false" aria-controls="panel-standings" tabindex="-1">Standings <span class="soon">Soon</span></button>
-            <button type="button" role="tab" id="tab-relative" aria-selected="false" aria-controls="panel-relative" tabindex="-1">Relative <span class="soon">Soon</span></button>
-            <button type="button" role="tab" id="tab-delta" aria-selected="false" aria-controls="panel-delta" tabindex="-1">Delta <span class="soon">Soon</span></button>
-            <button type="button" role="tab" id="tab-track-map" aria-selected="false" aria-controls="panel-track-map" tabindex="-1">Track Map <span class="soon">Soon</span></button>
-            <button type="button" role="tab" id="tab-fuel" aria-selected="false" aria-controls="panel-fuel" tabindex="-1">Fuel <span class="soon">Soon</span></button>
+            <button type="button" role="tab" id="tab-standings" aria-selected="false" aria-controls="panel-standings" tabindex="-1">Standings <span class="soon">Optional</span></button>
+            <button type="button" role="tab" id="tab-relative" aria-selected="false" aria-controls="panel-relative" tabindex="-1">Relative <span class="soon">Optional</span></button>
+            <button type="button" role="tab" id="tab-delta" aria-selected="false" aria-controls="panel-delta" tabindex="-1">Delta <span class="soon">Optional</span></button>
+            <button type="button" role="tab" id="tab-track-map" aria-selected="false" aria-controls="panel-track-map" tabindex="-1">Track Map <span class="soon">Optional</span></button>
+            <button type="button" role="tab" id="tab-fuel" aria-selected="false" aria-controls="panel-fuel" tabindex="-1">Fuel <span class="soon">Optional</span></button>
           </div>
 
           <div class="overlay-stage">
@@ -225,14 +226,14 @@
               <figure class="sim-frame is-placeholder" data-sim-id="standings">
                 <picture>
                   <source type="image/webp" srcset="./assets/img/sim/overlays/standings.webp" sizes="(min-width: 980px) 62vw, 100vw" />
-                  <img src="./assets/img/sim/overlays/standings.svg" alt="Placeholder art for the coming-soon standings overlay." width="1600" height="900" loading="lazy" decoding="async" />
+                  <img src="./assets/img/sim/overlays/standings.svg" alt="Placeholder art for the standings overlay." width="1600" height="900" loading="lazy" decoding="async" />
                 </picture>
                 <span class="sim-badge" aria-hidden="true">Placeholder art</span>
               </figure>
               <div class="overlay-copy">
-                <p class="kicker">Coming soon</p>
+                <p class="kicker">In the app, off by default</p>
                 <h3>Standings</h3>
-                <p>A standings overlay for the session you are in. It is not part of the live coach yet.</p>
+                <p>A standings panel for the session you are in. It ships off by default; turn it on in settings.</p>
               </div>
             </article>
 
@@ -240,14 +241,14 @@
               <figure class="sim-frame is-placeholder" data-sim-id="relative">
                 <picture>
                   <source type="image/webp" srcset="./assets/img/sim/overlays/relative.webp" sizes="(min-width: 980px) 62vw, 100vw" />
-                  <img src="./assets/img/sim/overlays/relative.svg" alt="Placeholder art for the coming-soon relative overlay." width="1600" height="900" loading="lazy" decoding="async" />
+                  <img src="./assets/img/sim/overlays/relative.svg" alt="Placeholder art for the relative overlay." width="1600" height="900" loading="lazy" decoding="async" />
                 </picture>
                 <span class="sim-badge" aria-hidden="true">Placeholder art</span>
               </figure>
               <div class="overlay-copy">
-                <p class="kicker">Coming soon</p>
+                <p class="kicker">In the app, off by default</p>
                 <h3>Relative</h3>
-                <p>A relative overlay for the cars around you. Coming soon, and not in the current coach.</p>
+                <p>A relative panel for the cars ahead of and behind you. It ships off by default; turn it on in settings.</p>
               </div>
             </article>
 
@@ -255,14 +256,14 @@
               <figure class="sim-frame is-placeholder" data-sim-id="delta">
                 <picture>
                   <source type="image/webp" srcset="./assets/img/sim/overlays/delta.webp" sizes="(min-width: 980px) 62vw, 100vw" />
-                  <img src="./assets/img/sim/overlays/delta.svg" alt="Placeholder art for the coming-soon delta overlay." width="1600" height="900" loading="lazy" decoding="async" />
+                  <img src="./assets/img/sim/overlays/delta.svg" alt="Placeholder art for the delta overlay." width="1600" height="900" loading="lazy" decoding="async" />
                 </picture>
                 <span class="sim-badge" aria-hidden="true">Placeholder art</span>
               </figure>
               <div class="overlay-copy">
-                <p class="kicker">Coming soon</p>
+                <p class="kicker">In the app, off by default</p>
                 <h3>Delta</h3>
-                <p>A delta overlay against the loaded reference lap. Coming soon.</p>
+                <p>A live delta against the loaded reference lap. It ships off by default; turn it on in settings.</p>
               </div>
             </article>
 
@@ -270,14 +271,14 @@
               <figure class="sim-frame is-placeholder" data-sim-id="track-map">
                 <picture>
                   <source type="image/webp" srcset="./assets/img/sim/overlays/track-map.webp" sizes="(min-width: 980px) 62vw, 100vw" />
-                  <img src="./assets/img/sim/overlays/track-map.svg" alt="Placeholder art of a generic circuit diagram for the coming-soon track map." width="1600" height="900" loading="lazy" decoding="async" />
+                  <img src="./assets/img/sim/overlays/track-map.svg" alt="Placeholder art of a generic circuit diagram for the track map." width="1600" height="900" loading="lazy" decoding="async" />
                 </picture>
                 <span class="sim-badge" aria-hidden="true">Placeholder art</span>
               </figure>
               <div class="overlay-copy">
-                <p class="kicker">Coming soon</p>
+                <p class="kicker">In the app, off by default</p>
                 <h3>Track Map</h3>
-                <p>A track map overlay for the circuit in your session. Coming soon.</p>
+                <p>A track map for the circuit in your session. It ships off by default; turn it on in settings.</p>
               </div>
             </article>
 
@@ -285,14 +286,14 @@
               <figure class="sim-frame is-placeholder" data-sim-id="fuel">
                 <picture>
                   <source type="image/webp" srcset="./assets/img/sim/overlays/fuel.webp" sizes="(min-width: 980px) 62vw, 100vw" />
-                  <img src="./assets/img/sim/overlays/fuel.svg" alt="Placeholder art for the coming-soon fuel calculator overlay." width="1600" height="900" loading="lazy" decoding="async" />
+                  <img src="./assets/img/sim/overlays/fuel.svg" alt="Placeholder art for the fuel calculator overlay." width="1600" height="900" loading="lazy" decoding="async" />
                 </picture>
                 <span class="sim-badge" aria-hidden="true">Placeholder art</span>
               </figure>
               <div class="overlay-copy">
-                <p class="kicker">Coming soon</p>
+                <p class="kicker">In the app, off by default</p>
                 <h3>Fuel Calculator</h3>
-                <p>A fuel calculator overlay. Coming soon, and not in the live coach yet.</p>
+                <p>A fuel calculator for your stint. It ships off by default; turn it on in settings.</p>
               </div>
             </article>
           </div>

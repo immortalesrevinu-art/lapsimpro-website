@@ -58,7 +58,7 @@
     },
     {
       "id": "standings",
-      "alt": "Placeholder art for the coming-soon standings overlay.",
+      "alt": "Placeholder art for the standings overlay.",
       "width": 1600,
       "height": 900,
       "placeholder": true,
@@ -67,7 +67,7 @@
     },
     {
       "id": "relative",
-      "alt": "Placeholder art for the coming-soon relative overlay.",
+      "alt": "Placeholder art for the relative overlay.",
       "width": 1600,
       "height": 900,
       "placeholder": true,
@@ -76,7 +76,7 @@
     },
     {
       "id": "delta",
-      "alt": "Placeholder art for the coming-soon delta overlay.",
+      "alt": "Placeholder art for the delta overlay.",
       "width": 1600,
       "height": 900,
       "placeholder": true,
@@ -85,7 +85,7 @@
     },
     {
       "id": "track-map",
-      "alt": "Placeholder art of a generic circuit diagram for the coming-soon track map.",
+      "alt": "Placeholder art of a generic circuit diagram for the track map.",
       "width": 1600,
       "height": 900,
       "placeholder": true,
@@ -94,7 +94,7 @@
     },
     {
       "id": "fuel",
-      "alt": "Placeholder art for the coming-soon fuel calculator overlay.",
+      "alt": "Placeholder art for the fuel calculator overlay.",
       "width": 1600,
       "height": 900,
       "placeholder": true,

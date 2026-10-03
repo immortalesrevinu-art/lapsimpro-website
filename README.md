@@ -37,11 +37,11 @@ Reload. [`assets/sim-images.js`](assets/sim-images.js) copies the new alt text o
 | Live speed | `assets/img/sim/overlays/speed.webp` |
 | Brake bias | `assets/img/sim/overlays/bias.webp` |
 | Auto reference | `assets/img/sim/overlays/reference.webp` |
-| Standings (coming soon) | `assets/img/sim/overlays/standings.webp` |
-| Relative (coming soon) | `assets/img/sim/overlays/relative.webp` |
-| Delta (coming soon) | `assets/img/sim/overlays/delta.webp` |
-| Track Map (coming soon) | `assets/img/sim/overlays/track-map.webp` |
-| Fuel Calculator (coming soon) | `assets/img/sim/overlays/fuel.webp` |
+| Standings (optional panel) | `assets/img/sim/overlays/standings.webp` |
+| Relative (optional panel) | `assets/img/sim/overlays/relative.webp` |
+| Delta (optional panel) | `assets/img/sim/overlays/delta.webp` |
+| Track Map (optional panel) | `assets/img/sim/overlays/track-map.webp` |
+| Fuel Calculator (optional panel) | `assets/img/sim/overlays/fuel.webp` |
 | Gallery | `assets/img/sim/gallery/01.webp` through `06.webp` |
 
 Images use `<picture>` with an explicit width and height. Hero art is eager. Overlay and gallery frames are lazy-loaded.
