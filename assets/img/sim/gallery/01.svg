@@ -1,0 +1,17 @@
+<!-- PLACEHOLDER: original LapSimPro art, not an iRacing or third-party screenshot. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720" role="img" aria-hidden="true">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#05070b"/>
+      <stop offset="58%" stop-color="#10161e"/>
+      <stop offset="72%" stop-color="#2a241c"/>
+      <stop offset="100%" stop-color="#080a0c"/>
+    </linearGradient>
+  </defs>
+  <rect width="1280" height="720" fill="url(#sky)"/>
+  <ellipse cx="640.0" cy="446.4" rx="588.8" ry="115.2" fill="#d6ff4a" opacity="0.08"/>
+  <line x1="0" y1="129.6" x2="1280" y2="129.6" stroke="#ffffff" stroke-width="2" opacity="0.08"/><line x1="0" y1="149.8" x2="1280" y2="151.2" stroke="#ffffff" stroke-width="2" opacity="0.08"/><line x1="0" y1="169.9" x2="1280" y2="172.8" stroke="#ffffff" stroke-width="2" opacity="0.08"/><line x1="0" y1="190.1" x2="1280" y2="194.4" stroke="#ffffff" stroke-width="2" opacity="0.08"/><line x1="0" y1="210.2" x2="1280" y2="216.0" stroke="#ffffff" stroke-width="2" opacity="0.08"/><line x1="0" y1="230.4" x2="1280" y2="237.6" stroke="#ffffff" stroke-width="2" opacity="0.08"/><line x1="0" y1="250.6" x2="1280" y2="259.2" stroke="#ffffff" stroke-width="2" opacity="0.08"/><line x1="0" y1="270.7" x2="1280" y2="280.8" stroke="#ffffff" stroke-width="2" opacity="0.08"/><line x1="0" y1="290.9" x2="1280" y2="302.4" stroke="#ffffff" stroke-width="2" opacity="0.08"/><line x1="0" y1="311.0" x2="1280" y2="324.0" stroke="#ffffff" stroke-width="2" opacity="0.08"/><line x1="0" y1="331.2" x2="1280" y2="345.6" stroke="#ffffff" stroke-width="2" opacity="0.08"/><line x1="0" y1="351.4" x2="1280" y2="367.2" stroke="#ffffff" stroke-width="2" opacity="0.08"/>
+  <path d="M 0.0 375.2 Q 182.9 465.9 274.3 475.1 Q 365.7 484.2 457.1 482.3 Q 548.6 480.5 640.0 454.6 Q 731.4 428.7 822.9 416.2 Q 914.3 403.7 1005.7 413.6 Q 1097.1 423.5 1188.6 455.2 T 1280.0 487.0" fill="none" stroke="#d6ff4a" stroke-width="5" stroke-linecap="round"/>
+  <path d="M 0.0 375.2 Q 182.9 465.9 274.3 475.1 Q 365.7 484.2 457.1 482.3 Q 548.6 480.5 640.0 454.6 Q 731.4 428.7 822.9 416.2 Q 914.3 403.7 1005.7 413.6 Q 1097.1 423.5 1188.6 455.2 T 1280.0 487.0" fill="none" stroke="#ffffff" stroke-width="1" stroke-linecap="round" opacity="0.85"/>
+  
+</svg>
