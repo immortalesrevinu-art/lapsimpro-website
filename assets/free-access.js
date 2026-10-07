@@ -28,7 +28,16 @@ function setStatus(status, text, state) {
 }
 
 function showDownload(downloadWrap) {
+  if (!downloadWrap) return;
   downloadWrap.hidden = false;
+  downloadWrap.querySelectorAll("a, button").forEach((el) => {
+    if (el.dataset.wired === "1") return;
+    el.dataset.wired = "1";
+    el.addEventListener("click", (event) => {
+      event.preventDefault();
+      startInstallerDownload();
+    });
+  });
 }
 
 async function unlock(raw, { input, status, downloadWrap, submitBtn }) {
@@ -37,21 +46,23 @@ async function unlock(raw, { input, status, downloadWrap, submitBtn }) {
     const ok = await accessCodeMatches(raw);
     if (!ok) {
       setStatus(status, REJECTED, "bad");
-      return;
+      return false;
     }
     rememberUnlock();
     setStatus(status, ACCEPTED, "ok");
     showDownload(downloadWrap);
     input.value = "";
     startInstallerDownload();
+    return true;
   } catch {
     setStatus(status, REJECTED, "bad");
+    return false;
   } finally {
     submitBtn.disabled = false;
   }
 }
 
-function boot() {
+export function bootFreeAccess() {
   const root = document.querySelector("[data-free-access]");
   if (!root) return;
   const form = root.querySelector("[data-free-access-form]");
@@ -60,23 +71,34 @@ function boot() {
   const downloadWrap = root.querySelector("[data-free-access-download]");
   const submitBtn = form.querySelector("button[type=submit]");
   const ui = { input, status, downloadWrap, submitBtn };
+  const resumeDownload = root.hasAttribute("data-free-access-resume");
 
   if (readUnlocked()) showDownload(downloadWrap);
 
   form.addEventListener("submit", (event) => {
     event.preventDefault();
-    unlock(input.value, ui);
+    return unlock(input.value, ui);
   });
 
   const params = new URLSearchParams(location.search);
-  if (!params.has("code")) return;
-  const fromUrl = params.get("code") ?? "";
-  input.value = fromUrl;
-  params.delete("code");
-  const query = params.toString();
-  history.replaceState(null, "", `${location.pathname}${query ? `?${query}` : ""}${location.hash}`);
-  unlock(fromUrl, ui);
+  if (params.has("code")) {
+    const fromUrl = params.get("code") ?? "";
+    input.value = fromUrl;
+    params.delete("code");
+    const query = params.toString();
+    history.replaceState(null, "", `${location.pathname}${query ? `?${query}` : ""}${location.hash}`);
+    return unlock(fromUrl, ui).then((ok) => {
+      if (!ok && readUnlocked() && resumeDownload) startInstallerDownload();
+    });
+  }
+
+  if (readUnlocked() && resumeDownload) {
+    setStatus(status, ACCEPTED, "ok");
+    startInstallerDownload();
+  }
 }
 
-if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", boot);
-else boot();
+if (!globalThis.__LSP_SKIP_FREE_ACCESS_BOOT) {
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", bootFreeAccess);
+  else bootFreeAccess();
+}

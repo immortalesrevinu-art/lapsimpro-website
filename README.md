@@ -148,7 +148,7 @@ Use a [restricted API key](https://docs.stripe.com/keys/restricted-api-keys.md) 
 
 ## Windows installer
 
-Paying subscribers receive `LapSimPro-Setup.zip` from `GET /api/download` after the Stripe entitlement check. The file is a [GitHub Release asset](https://github.com/immortalesrevinu-art/lapsimpro-website/releases/download/v0.1.0/LapSimPro-Setup.zip) on this repo (`v0.1.0`, about 282MB). GitHub Pages serves `download.html` and a thin [`releases/`](./releases/index.html) redirect. It does not host the zip. `/releases/LapSimPro-Setup.zip` stays a 404 that links to the same Release asset.
+Paying subscribers receive `LapSimPro-Setup.zip` from `GET /api/download` after the Stripe entitlement check. The file is a [GitHub Release asset](https://github.com/immortalesrevinu-art/lapsimpro-website/releases/download/v0.1.0/LapSimPro-Setup.zip) on this repo (`v0.1.0`, about 282MB). GitHub Pages serves `download.html` and [`releases/`](./releases/index.html). An access code on either page starts the installer with no login. It does not host the zip. `/releases/LapSimPro-Setup.zip` stays a 404 that links to `download.html`.
 
 Do not upload the installer with `actions/upload-artifact`. That storage is quota-limited and is what blocked Windows release builds. Publish with `scripts/publish-installer.sh` or the **Publish Windows installer** workflow. Full steps: [`docs/publish-installer.md`](docs/publish-installer.md).
 

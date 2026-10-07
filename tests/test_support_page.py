@@ -20,10 +20,11 @@ def test_support_page_covers_download_recovery():
     assert 'id="fps"' in html
     assert 'id="contact"' in html
     assert "lapsimpro.com/releases/LapSimPro-Setup.zip" in html
-    assert 'href="./releases/"' in html
+    assert 'href="./download.html"' in html
     assert "github.com" not in html.lower()
-    assert "data-installer-download" in html
-    assert "assets/installer.js" in html
+    assert "data-installer-download" not in html
+    assert "data-installer-autostart" not in html
+    assert "assets/installer.js" not in html
     assert "mailto:theuniversecontractor@gmail.com" in html
     assert "SmartScreen" in html
     assert "No active subscription" in html or "not subscribed" in html
@@ -43,30 +44,41 @@ def test_download_flow_links_support_and_releases():
     assert 'href="./support.html"' in download or "support.html" in download
     assert 'href="./releases/"' in download
     assert "data-nav=\"support\"" in download
+    assert "data-installer-download" not in download
+    assert "data-installer-autostart" not in download
 
     started = (ROOT / "get-started.html").read_text(encoding="utf-8")
     assert 'href="./support.html"' in started
-    assert 'href="./releases/"' in started
+    assert 'href="./download.html"' in started
+    assert "data-installer-download" not in started
+    assert "assets/installer.js" not in started
 
 
 def test_not_found_and_releases_link_support():
     missing = (ROOT / "404.html").read_text(encoding="utf-8")
     assert 'href="./support.html"' in missing
     assert 'id="recovery-note"' in missing
-    assert 'href="./releases/"' in missing
+    assert 'href="./download.html"' in missing
+    assert "/download.html" in missing
+    assert "data-installer-download" not in missing
+    assert "assets/installer.js" not in missing
     assert "github" not in missing.lower()
     assert "Download help" in missing
 
     releases = (ROOT / "releases" / "index.html").read_text(encoding="utf-8")
     assert 'href="../support.html"' in releases
+    assert 'href="../pricing.html"' in releases
     assert "github" not in releases.lower()
     assert 'http-equiv="refresh"' not in releases
-    assert "data-installer-download" in releases
-    assert "data-installer-autostart" in releases
-    assert "../assets/installer.js" in releases
+    assert "data-installer-download" not in releases
+    assert "data-installer-autostart" not in releases
+    assert "../assets/free-access.js" in releases
+    assert "../assets/installer.js" not in releases
     script = INSTALLER_JS.read_text(encoding="utf-8")
     assert "LapSimPro-Setup.zip" in script
-    assert "data-installer-download" in script
+    assert "startInstallerDownload" in script
+    assert "data-installer-download" not in script
+    assert "data-installer-autostart" not in script
 
 
 def test_home_footer_links_support():

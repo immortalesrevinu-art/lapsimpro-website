@@ -47,9 +47,10 @@
       <h1>Off track.</h1>
       <p class="lede">That page is not on this circuit. Head back to the grid.</p>
       <p class="lede" id="recovery-note">
-        If a download failed,
-        <a href="./releases/" style="color: var(--cyan); font-weight: 600">/releases/</a>
-        forwards to the installer. Steps for a 404, SmartScreen, or a missing subscription are on
+        If a download failed, open
+        <a href="./download.html" style="color: var(--cyan); font-weight: 600">Download</a>
+        and enter an access code, or log in after you subscribe. Steps for a 404, SmartScreen, or a
+        missing subscription are on
         <a href="./support.html" style="color: var(--cyan); font-weight: 600">Support</a>.
       </p>
       <div class="btn-row" style="margin-top: 18px">
@@ -63,7 +64,6 @@
       (function () {
         var path = location.pathname.replace(/\/+$/, "");
         if (!/\/releases\/LapSimPro-Setup\.zip$/i.test(path)) return;
-        var asset = "/releases/";
         document.title = "Download installer — LapSimPro";
         var kicker = document.querySelector(".kicker");
         var heading = document.querySelector("h1");
@@ -72,31 +72,26 @@
         if (heading) heading.textContent = "This zip is not stored on the website.";
         if (lede) {
           lede.textContent =
-            "LapSimPro-Setup.zip (about 280 MB) is not served from this address. Use the button below to download it from the releases page.";
+            "LapSimPro-Setup.zip (about 280 MB) is not served from this address. Open the download page and enter an access code, or log in after you subscribe.";
         }
         var note = document.getElementById("recovery-note");
         if (note) {
           note.innerHTML =
-            'Open <a href="/releases/" style="color: var(--cyan); font-weight: 600">/releases/</a> if this page does not start the file. Installer warnings and login issues are on <a href="./support.html" style="color: var(--cyan); font-weight: 600">Support</a>.';
+            'Open <a href="/download.html" style="color: var(--cyan); font-weight: 600">Download</a>. Installer warnings and login issues are on <a href="./support.html" style="color: var(--cyan); font-weight: 600">Support</a>.';
         }
         var row = document.querySelector(".btn-row");
         if (row) {
           row.innerHTML = "";
           var link = document.createElement("a");
           link.className = "btn btn-primary";
-          link.href = asset;
-          link.textContent = "Download LapSimPro-Setup.zip";
+          link.href = "/download.html";
+          link.textContent = "Open download page";
           row.appendChild(link);
           var help = document.createElement("a");
           help.className = "btn btn-ghost";
           help.href = "./support.html";
           help.textContent = "Download help";
           row.appendChild(help);
-          var releases = document.createElement("a");
-          releases.className = "btn btn-ghost";
-          releases.href = "./releases/";
-          releases.textContent = "Releases page";
-          row.appendChild(releases);
         }
       })();
     </script>
