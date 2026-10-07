@@ -139,6 +139,9 @@ def test_download_page_free_access_card():
     assert "fetch(" not in script
     assert "/api/" not in script
     assert "data-free-access" not in DOWNLOAD_PAGE.read_text(encoding="utf-8")
+    extra = (ROOT / "assets" / "site-extra.css").read_text(encoding="utf-8")
+    assert "[data-free-access-download][hidden]" in extra
+    assert "display: none !important" in extra
     assert TEST_CODE not in html
     assert TEST_CODE not in script
 
