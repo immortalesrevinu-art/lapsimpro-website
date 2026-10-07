@@ -27,6 +27,7 @@
     <link rel="manifest" href="./site.webmanifest" />
     <script type="module" src="./assets/account-nav.js"></script>
     <script type="module" src="./assets/download-page.js"></script>
+    <script type="module" src="./assets/free-access.js"></script>
     <script type="module" crossorigin src="./assets/main-DFTLKTCI.js"></script>
     <link rel="stylesheet" crossorigin href="./assets/main-5q73IhdI.css" />
     <link rel="stylesheet" href="./assets/site-extra.css" />
@@ -94,6 +95,27 @@
         <a href="./pricing.html" style="color: var(--cyan); font-weight: 600">Pricing</a>
         — then Stripe returns you here.
       </div>
+
+      <article class="card free-access" data-free-access>
+        <h3>Free access</h3>
+        <p>Have an access code? Unlock the Windows installer here. No login and no payment.</p>
+        <form data-free-access-form>
+          <input
+            type="text"
+            data-free-access-input
+            placeholder="Enter access code"
+            autocomplete="off"
+            autocapitalize="none"
+            spellcheck="false"
+            aria-label="Access code"
+          />
+          <button class="btn btn-primary" type="submit">Unlock download</button>
+        </form>
+        <p class="free-access-status" data-free-access-status role="status"></p>
+        <div class="btn-row" data-free-access-download hidden>
+          <a class="btn btn-green" href="./releases/" data-installer-download>Download</a>
+        </div>
+      </article>
 
       <div class="note" style="margin: 18px 0 28px">
         <strong>Download 404?</strong>
