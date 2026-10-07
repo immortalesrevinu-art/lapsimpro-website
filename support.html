@@ -30,7 +30,6 @@
     <link rel="stylesheet" crossorigin href="./assets/main-5q73IhdI.css" />
     <link rel="stylesheet" href="./assets/site-extra.css" />
     <link rel="stylesheet" href="./assets/marketing.css" />
-    <script type="module" src="./assets/installer.js"></script>
   </head>
   <body>
     <a class="skip" href="#main">Skip to content</a>
@@ -64,16 +63,14 @@
         <p class="kicker">Support · FAQ</p>
         <h1>Download failed? Start here.</h1>
         <p class="lede">
-          Paying subscribers install from
-          <a href="./download.html">Download</a>
-          after login. That page checks your Stripe subscription, then points at
-          <code>LapSimPro-Setup.zip</code>. If the website path for the zip 404s, use the
-          <a href="./releases/">releases page</a>
-          — it forwards to the installer file.
+          Install from
+          <a href="./download.html">Download</a>.
+          An access code unlocks the installer with no login. Paying subscribers log in on that
+          page so we can check the Stripe subscription, then receive
+          <code>LapSimPro-Setup.zip</code>. The website path for the zip 404s on purpose.
         </p>
         <div class="btn-row" style="margin-top: 18px">
           <a class="btn btn-primary" href="./download.html">Open download</a>
-          <a class="btn btn-green" href="./releases/">Open releases page</a>
           <a class="btn btn-ghost" href="#contact">Email support</a>
         </div>
         <nav class="faq-jump" aria-label="On this page">
@@ -90,8 +87,9 @@
       <div class="note" style="margin: 8px 0 28px">
         <strong>The zip is not stored on lapsimpro.com.</strong>
         <code>https://lapsimpro.com/releases/LapSimPro-Setup.zip</code> returns 404 on purpose
-        (the file is about 280 MB and is served separately). The working download is on
-        <a href="./releases/" style="color: var(--cyan); font-weight: 600">/releases/</a>.
+        (the file is about 280 MB and is served separately). Open
+        <a href="./download.html" style="color: var(--cyan); font-weight: 600">Download</a>
+        and enter an access code, or log in if you subscribe.
       </div>
 
       <div class="faq-list">
@@ -130,25 +128,22 @@
           <summary>The download 404s. Where is the installer?</summary>
           <p>
             A 404 on <code>lapsimpro.com/releases/LapSimPro-Setup.zip</code> means the browser asked
-            the website for a file it does not keep. Use either of these:
+            the website for a file it does not keep.
           </p>
           <ol>
             <li>
               Open
-              <a href="./releases/">https://lapsimpro.com/releases/</a>.
-              That page forwards you to the installer.
+              <a href="./download.html">Download</a>.
+              Enter an access code, or log in if you have an active subscription.
             </li>
-            <li>
-              Or start the file directly:
-              <a href="./releases/" data-installer-download>LapSimPro-Setup.zip</a>.
-            </li>
+            <li>Do not bookmark the zip address. That path stays a 404.</li>
           </ol>
           <p>
-            If you are a subscriber, start from
+            An access code does not use the subscriber check. A paid plan still starts from
             <a href="./download.html">Download</a>
-            while logged in so the subscription check runs first. The file you receive is the same
-            zip. If the browser says the download failed, blocked it, or saved an HTML page named
-            like the zip, delete that file and use the releases page again.
+            while logged in so the subscription check can run. The file is the same zip. If the
+            browser says the download failed, blocked it, or saved an HTML page named like the zip,
+            delete that file and use Download again.
           </p>
         </details>
 
@@ -195,9 +190,7 @@
           <ol>
             <li>
               Confirm the file is <code>LapSimPro-Setup.zip</code> from
-              <a href="./download.html">Download</a>
-              or
-              <a href="./releases/">/releases/</a>.
+              <a href="./download.html">Download</a>.
             </li>
             <li>Extract the zip, then start the installer from that folder.</li>
             <li>On the SmartScreen dialog, choose <strong>More info</strong>, then <strong>Run anyway</strong>.</li>

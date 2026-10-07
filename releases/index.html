@@ -7,7 +7,7 @@
     <title>Download installer — LapSimPro</title>
     <meta
       name="description"
-      content="Download LapSimPro-Setup.zip, the LapSimPro Windows coach installer, from lapsimpro.com."
+      content="Download the LapSimPro Windows installer with an access code, or subscribe and log in. lapsimpro.com"
     />
     <link rel="canonical" href="https://lapsimpro.com/releases/" />
     <link rel="icon" type="image/png" href="../favicon.png" />
@@ -16,7 +16,7 @@
     <link rel="stylesheet" crossorigin href="../assets/main-5q73IhdI.css" />
     <link rel="stylesheet" href="../assets/site-extra.css" />
     <link rel="stylesheet" href="../assets/marketing.css" />
-    <script type="module" src="../assets/installer.js"></script>
+    <script type="module" src="../assets/free-access.js"></script>
   </head>
   <body>
     <a class="skip" href="#main">Skip to content</a>
@@ -39,23 +39,40 @@
       </div>
     </header>
     <main id="main" class="wrap page-hero">
-      <p class="kicker">Installer · public release</p>
-      <h1>Download LapSimPro-Setup.zip.</h1>
+      <p class="kicker">Installer</p>
+      <h1>Download the Windows installer.</h1>
       <p class="lede">
-        Your download of the Windows installer (about 280 MB) starts in a moment. If it does not,
-        press the button below. Extract the zip on Windows and run the installer.
+        Enter an access code to download LapSimPro. That path does not ask you to log in or pay.
+        Subscribers can choose a plan and sign in instead.
       </p>
+
+      <article class="card free-access" data-free-access data-free-access-resume>
+        <h3>Free access</h3>
+        <p>Have an access code? Unlock the Windows installer here. No login and no payment.</p>
+        <form data-free-access-form>
+          <input
+            type="text"
+            data-free-access-input
+            placeholder="Enter access code"
+            autocomplete="off"
+            autocapitalize="none"
+            spellcheck="false"
+            aria-label="Access code"
+          />
+          <button class="btn btn-primary" type="submit">Unlock download</button>
+        </form>
+        <p class="free-access-status" data-free-access-status role="status"></p>
+      </article>
+
       <div class="btn-row" style="margin-top: 18px">
-        <a class="btn btn-primary" href="./" data-installer-download data-installer-autostart
-          >Download LapSimPro-Setup.zip</a
-        >
-        <a class="btn btn-ghost" href="../download.html">Subscriber download</a>
+        <a class="btn btn-ghost" href="../pricing.html">Subscribe on Pricing</a>
+        <a class="btn btn-ghost" href="../login.html">Log in</a>
         <a class="btn btn-ghost" href="../support.html">Download help</a>
       </div>
       <p class="lede" style="margin-top: 18px">
         <code>https://lapsimpro.com/releases/LapSimPro-Setup.zip</code> is not the file. It
-        returns a 404 page that sends you back here. If the file will not download, or
-        Windows blocks the installer, follow
+        returns a 404 page. Enter a code above, or subscribe and log in. If Windows blocks the
+        installer, follow
         <a href="../support.html" style="color: var(--cyan); font-weight: 600">Support</a>.
       </p>
     </main>

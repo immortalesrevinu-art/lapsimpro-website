@@ -52,7 +52,7 @@ Then point subscribers at the new asset:
 1. Set `LAPSIMPRO_DOWNLOAD_URL` to `https://github.com/immortalesrevinu-art/lapsimpro-website/releases/download/v0.1.1/LapSimPro-Setup.zip` (Render and `.env`).
 2. Or change `DEFAULT_DOWNLOAD_URL` in `server/config.py` and deploy the API.
 
-`releases/index.html` and the `/releases/LapSimPro-Setup.zip` 404 recovery in `404.html` must keep pointing at the same public asset. Do not commit the zip to make that Pages path succeed.
+The public asset URL stays in `assets/installer.js` (and `LAPSIMPRO_DOWNLOAD_URL` for the API). `releases/index.html` and `download.html` call it only after an access code. The `/releases/LapSimPro-Setup.zip` 404 recovery in `404.html` links to `download.html`. Do not commit the zip, and do not put the asset URL in a public HTML page.
 
 Until that URL changes, the API keeps serving the `v0.1.0` asset.
 
